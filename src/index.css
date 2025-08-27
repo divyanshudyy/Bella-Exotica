@@ -1,17 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: 'Stardom';
-  src: url('/src/assets/fonts/melodrama/Melodrama-Variable.ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@theme {
-  --font-melodrama: "MelodramaVariable", serif;
-}
-
 *{
     box-sizing: border-box;
 }
