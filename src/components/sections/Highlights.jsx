@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Highlights = () => {
   return (
-  <section className='h-screen' >
+    <section className="h-screen flex justify-center items-center">
+      <h1>Highlights</h1>
+    </section>
+  );
+};
 
-  </section>
-  )
-}
-
-export default Highlights
+export default Highlights;
