@@ -35,7 +35,7 @@ const Hero = () => {
             {word.split("").map((char, ci) => (
               <motion.span
                 key={ci}
-                className="inline-block"
+                className="inline-block font-boska font-extrabold"
                 variants={{
                   hidden: {
                     opacity: 0,
@@ -93,6 +93,12 @@ const Hero = () => {
             {line}
           </motion.p>
         ))}
+        <motion.div
+          initial={{ width: "0%", opacity: 0, y: 40 }}
+          animate={{ width: "100%", opacity: 0.9, y: 0 }}
+          transition={{ duration: 2.5, ease: "easeInOut" }}
+          className="h-0.5 bg-[#3D2B1F]  mt-3"
+        />
       </motion.div>
     </section>
   );

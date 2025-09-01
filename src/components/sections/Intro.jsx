@@ -21,14 +21,14 @@ const Intro = () => {
   const width = useTransform(
     scrollYProgress,
     [0, 0.6],
-    isMobile ? ["100vw", "90vw"] : ["100vw", "30vw"]
+    isMobile ? ["100vw", "90vw"] : ["100vw", "25vw"]
   );
 
   const height = useTransform(
     scrollYProgress,
     [0, 0.6],
-    isMobile ? ["100vh", "55vh"] : ["100vh", "70vh"]
-  )
+    isMobile ? ["100vh", "55vh"] : ["100vh", "60vh"]
+  );
 
   const y = useTransform(
     scrollYProgress,
@@ -48,7 +48,7 @@ const Intro = () => {
           className="relative w-full h-full"
         >
           <motion.img
-            src={intro.images[0]}
+            src={`${intro.images[0]}`}
             className="absolute w-full h-full object-cover"
             style={{
               opacity: useTransform(
@@ -100,7 +100,7 @@ const Intro = () => {
               y: useTransform(scrollYProgress, [0.6, 0.7], ["50px", "0px"]),
               opacity: useTransform(scrollYProgress, [0.6, 0.7], [0, 1]),
             }}
-            className="absolute md:bottom-45 bottom-74 md:left-10 left-6 md:text-[5rem] text-[3rem]  font-bold mb-4  font-melodrama "
+            className="absolute md:bottom-45 bottom-74 md:left-10 left-6 md:text-[5rem] text-[3rem]  font-bold mb-4  font-boska"
           >
             {intro.title1}
           </motion.h2>
@@ -122,17 +122,17 @@ const Intro = () => {
                 ["50px", "0px", "0px"]
               ),
             }}
-            className="absolute md:bottom-60 bottom-10  px-9 md:px-0 md:right-0 z-10 text-md h-auto md:w-1/3 w-3/3 md:pr-15 flex flex-col md:items-start items-end md:gap-7 gap-8"
+            className="absolute md:bottom-58 bottom-10  px-9 md:px-0 md:right-0 z-10 text-md h-auto md:w-1/3 w-3/3 md:pr-17 flex flex-col md:items-start items-end md:gap-7 gap-8"
           >
-            <p className=" font-semibold">{intro.description}</p>
-            <FillButton value={intro.button} />
+            <p className="font-semibold text-md">{intro.description}</p>
+            <FillButton size="lg" >Learn More</FillButton>
           </motion.div>
           <motion.h2
             style={{
               y: useTransform(scrollYProgress, [0.7, 0.8], ["50px", "0px"]),
               opacity: useTransform(scrollYProgress, [0.7, 0.8], [0, 1]),
             }}
-            className="absolute md:bottom-8 bottom-55 w-full md:text-[6.5rem] text-[3rem] font-bold md:text-center text-end md:right-0 right-7 mb-8 font-melodrama"
+            className="absolute md:bottom-8 bottom-55 w-full md:text-[6.5rem] text-[3rem] font-bold md:text-center text-end md:right-0 right-7 mb-8 font-boska"
           >
             {intro.title2}
           </motion.h2>

@@ -1,10 +1,13 @@
 import Home from "./components/pages/Home";
+import { ReactLenis } from "lenis/react";
 
 const App = () => {
   return (
-    <main>
-      <Home />
-    </main>
+    <ReactLenis root>
+      <main>
+        <Home />
+      </main>
+    </ReactLenis>
   );
 };
 
