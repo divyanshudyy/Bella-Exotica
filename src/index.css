@@ -7,18 +7,32 @@
   font-style: normal;
   font-display: swap;
 }
+/* 1. Self-hosted font-face (if you have TTF/OTF/WOFF2 locally) */
 @font-face {
-  font-family: "Boska";
-  src: url("/src/assets/fonts/boska/Boska-Variable.ttf") format("truetype");
-  font-weight: 100 900; /* 👈 tells browser it's a variable range */
-  font-style: normal;
+  font-family: "PlayfairDisplay";
+  src: url("/src/assets/fonts/playfair/PlayfairDisplay-Italic.ttf") format("truetype");
+  font-weight: 400; /* adjust if you have multiple weights */
+  font-style: italic;
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/src/assets/fonts/playFair/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900;   /* full variable range */
+  font-style: italic;     /* italic axis */
+  font-display: swap;
+}
+
+
+
+/* 4. Tailwind v4 theme tokens */
 @theme {
+  --font-playfair: "Playfair Display", serif;
   --font-melodrama: "Melodrama", serif;
   --font-boska: "Boska", serif;
 }
+
 
 *{
     box-sizing: border-box;

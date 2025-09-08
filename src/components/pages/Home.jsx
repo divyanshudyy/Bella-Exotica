@@ -1,28 +1,23 @@
-import About from "../sections/About";
 import Hero from "../sections/Hero";
-import Highlights from "../sections/Highlights";
-import Intro from "../sections/Intro";
+import Showcase from "../sections/Bowl";
 import Products from "../sections/Products";
-import Contact from "../sections/Contact";
 import Footer from "../layout/Footer";
 import { useRef } from "react";
+import Quote from "../sections/Quote";
+import Highlight from "../sections/Highlight";
 
 const Home = () => {
   const footerRef = useRef(null);
 
   return (
-    <section className="bg-[#F5E6CA]">
+    <section>
       <Hero />
-      <Intro />
-      <Highlights />
-      <About />
+      {/* <Intro /> */}
       <Products />
-      <div className="relative">
-        <Contact footerRef={footerRef} />
-
-        {/* Footer */}
-        <Footer footerRef={footerRef} />
-      </div>
+      <Showcase />
+      <Quote />
+    <Highlight />
+      <Footer footerRef={footerRef} />
     </section>
   );
 };
