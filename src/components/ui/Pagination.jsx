@@ -1,9 +1,4 @@
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  PauseIcon,
-  PlayIcon,
-} from "./Icons";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
 export const SliderPagination = ({
   currentIndex,
@@ -26,7 +21,7 @@ export const SliderPagination = ({
         className="p-2 rounded-full transition-colors duration-300 hover:bg-[#4a2c2a] group disabled:opacity-30 disabled:hover:bg-transparent"
         disabled={totalSlides <= 1}
       >
-        <ChevronLeftIcon className="h-6 w-6 text-[#4a2c2a] group-hover:text-[#fdfbf7] transition-colors duration-300" />
+        <ChevronLeft className="h-6 w-6 text-[#4a2c2a] group-hover:text-[#fdfbf7] transition-colors duration-300" />
       </button>
 
       <div className="flex items-center gap-3">
@@ -54,9 +49,9 @@ export const SliderPagination = ({
         disabled={totalSlides <= 1}
       >
         {isAutoplaying ? (
-          <PauseIcon className="h-6 w-6 text-[#4a2c2a] group-hover:text-[#fdfbf7] transition-colors duration-300" />
+          <Pause className="h-6 w-6 text-[#4a2c2a] group-hover:text-[#fdfbf7] transition-colors duration-300" />
         ) : (
-          <PlayIcon className="h-6 w-6 text-[#4a2c2a] group-hover:text-[#fdfbf7] transition-colors duration-300" />
+          <Play className="h-6 w-6 text-[#4a2c2a] group-hover:text-[#fdfbf7] transition-colors duration-300" />
         )}
       </button>
 
@@ -66,7 +61,7 @@ export const SliderPagination = ({
         className="p-2 rounded-full transition-colors duration-300 hover:bg-[#4a2c2a] group disabled:opacity-30 disabled:hover:bg-transparent"
         disabled={totalSlides <= 1}
       >
-        <ChevronRightIcon className="h-6 w-6 text-[#4a2c2a] group-hover:text-[#fdfbf7] transition-colors duration-300" />
+        <ChevronRight className="h-6 w-6 text-[#4a2c2a] group-hover:text-[#fdfbf7] transition-colors duration-300" />
       </button>
     </div>
   );
