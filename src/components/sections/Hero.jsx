@@ -1,26 +1,27 @@
+import CustomButton from "../ui/CustomButton";
+
 const Hero = () => {
   return (
-    <section className="relative h-screen w-full flex flex-col items-center justify-between">
-      <div className="h-auto w-auto mt-30">
-        <h1 className="text-4xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-stone-800 text-center capitalize">
+    <section className="relative min-h-180 md:min-h-svh w-full flex flex-col items-center justify-between px-4 sm:px-6">
+      {/* Text Content */}
+      <div className="mt-30 sm:mt-24 lg:mt-25 text-center">
+        <h1 className="text-3xl sm:text-5xl lg:text-5xl font-bold tracking-tight text-stone-800 capitalize leading-snug lg:leading-tight ">
           Pure taste timeless nutrition
         </h1>
-        <p className="text-lg sm:text-xl lg:text-3xl text-stone-600 mt-4 max-w-3xl mx-auto text-center">
+        <p className="text-md sm:text-xl lg:text-3xl text-stone-600 mt-0 lg:mt-2 max-w-md sm:max-w-2xl lg:max-w-3xl mx-auto">
           Premium Organic Cereals, Granolas & Nuts
         </p>
       </div>
 
+      {/* Background Image */}
       <img
         src="/images/hero/HeroBanner.png"
-        alt="A collection of Bella Exotica organic products including oats, muesli, granola, cereals, and almonds"
-        className="absolute z-[-1] bottom-0 top-0 h-full w-full object-cover select-none pointer-events-none"
+        alt="Bella Exotica organic products including oats, muesli, granola, cereals, and almonds"
+        className="absolute inset-0 z-[-1] md:h-full md:w-full object-cover w-full h-full object cover select-none pointer-events-none"
       />
 
-      <div className="mb-8">
-        <button className="px-8 py-3 sm:px-10 sm:py-4 border rounded-4xl border-stone-800 text-stone-800 tracking-widest text-sm font-semibold hover:bg-stone-800 hover:text-white transition-all duration-300">
-          EXPLORE COLLECTION
-        </button>
-      </div>
+      {/* CTA Button */}
+      <CustomButton text={"EXPLORE COLLECTION"} margin={"mb-5"} />
     </section>
   );
 };

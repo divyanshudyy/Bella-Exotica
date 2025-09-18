@@ -133,7 +133,7 @@ const ProductSection = () => {
   }, [activeCategory]);
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 min-h-screen overflow-hidden">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 min-h-full w-full  overflow-hidden">
       <SwiperCustomStyles />
       <div className="max-w-8xl mx-auto text-center">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-stone-800 text-center capitalize">
@@ -160,7 +160,7 @@ const ProductSection = () => {
             spaceBetween={50}
             coverflowEffect={{
               rotate: 25, // side tilt
-              stretch: -100,
+              stretch: -120,
               depth: 200, // less depth so sides are bigger
               modifier: 1.2, // intensity of effect
               slideShadows: false,
@@ -177,17 +177,14 @@ const ProductSection = () => {
                 <img
                   src={product.imageUrl}
                   alt={product.name}
-                  className="w-[300px] h-[300px] object-cover transition-transform duration-500"
+                  className="w-full h-[180px]  sm:w-[220px] sm:h-[220px] md:w-[300px] md:h-[300px] object-cover md:object-cover transition-transform duration-500 overflow-visible"
                 />
-                <h3 className="mt-4 text-lg font-semibold text-stone-800">
-                  {product.name}
-                </h3>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
 
-        <div className="mt-8">
+        <div className="mt-0 sm:mt-0 md:mt-8">
           <button className="px-8 py-3 sm:px-10 sm:py-4 border rounded-xl border-stone-800 text-stone-800 tracking-widest text-sm font-semibold hover:bg-stone-800 hover:text-white transition-all duration-300">
             EXPLORE ALL PRODUCTS
           </button>

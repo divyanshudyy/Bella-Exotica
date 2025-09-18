@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /node_modules/
+Disallow: /admin/
+Allow: /
+
+Sitemap: https://www.bellaexotica.com/sitemap.xml

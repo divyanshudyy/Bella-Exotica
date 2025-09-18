@@ -87,17 +87,18 @@ const Quote = () => {
   return (
     <section
       ref={sectionRef}
-      className="flex items-center justify-center min-h-screen w-full py-20 px-4"
+      className="relative flex md:items-center justify-center h-96 sm:min-h-[80vh] md:min-h-screen w-full py-12 sm:py-16 md:py-20 px-4 overflow-hidden"
       aria-label="Quote section"
     >
+      {/* Quote figure */}
       <motion.figure
-        className="max-w-3xl mx-auto relative"
+        className="max-w-3xl mx-auto relative z-10"
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
       >
         <motion.span
           variants={quoteMarkVariants}
-          className="absolute -top-6 -left-5 font-playfair text-9xl text-[#3D2B1F]"
+          className="absolute -top-3 md:-top-6 -left-3 sm:-left-5 font-playfair text-6xl sm:text-8xl md:text-9xl text-[#3D2B1F]"
         >
           “
         </motion.span>
@@ -109,7 +110,7 @@ const Quote = () => {
             <div key={index} className="overflow-hidden">
               <motion.p
                 variants={lineVariants}
-                className=" text-4xl md:text-5xl font-playfair  font-semibold text-[#3D2B1F] leading-[1.35]"
+                className="text-2xl sm:text-3xl md:text-5xl font-playfair font-semibold  text-[#3D2B1F] leading-snug sm:leading-[1.35]"
               >
                 {line}
               </motion.p>
@@ -118,11 +119,55 @@ const Quote = () => {
         </motion.blockquote>
         <motion.span
           variants={quoteMarkVariants}
-          className="absolute -bottom-10 -right-5 font-playfair  text-9xl text-[#3D2B1F]"
+          className="absolute bottom-30 md:-bottom-8 -right-3 sm:-right-5 font-playfair text-6xl sm:text-8xl md:text-9xl text-[#3D2B1F]"
         >
           ”
         </motion.span>
       </motion.figure>
+
+      {/* Images overlay */}
+      <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
+        <motion.img
+          src="/images/highlight/Muesli-Jar3.png"
+          alt="Bella Exotica product highlights"
+          className="absolute left-0 sm:left-20 bottom-26 sm:bottom-10 h-32 sm:h-44 md:h-60 scale-60 sm:scale-70 md:scale-70 md:bottom-3"
+          initial={{ y: 500, filter: "blur(0rem)" }}
+          animate={
+            isVisible
+              ? { y: [500, -100, 0], filter: "blur(.15rem)" }
+              : { y: 500 }
+          }
+          transition={{ duration: 1.2, ease: "easeInOut", times: [0, 0.6, 1] }}
+        />
+
+        <motion.img
+          src="/images/highlight/Muesli-Jar2.png"
+          alt="Bella Exotica product highlights"
+          className="absolute left-24 sm:left-36 bottom-32 sm:bottom-40 h-32 sm:h-44 md:h-60 scale-0 sm:scale-90 md:scale-90 blur-[.06rem] md:left-50"
+          initial={{ y: 900 }}
+          animate={isVisible ? { y: [900, -50, 0], opacity: 1 } : { y: 600 }}
+          transition={{
+            duration: 1.2,
+            ease: "easeInOut",
+            times: [0, 0.6, 1],
+            delay: 0.1,
+          }}
+        />
+
+        <motion.img
+          src="/images/highlight/Muesli-Jar1.png"
+          alt="Bella Exotica product highlights"
+          className="absolute right-16 sm:right-20 bottom-35 sm:bottom-20 h-32 sm:h-44 md:h-60 scale-[140%] sm:scale-[130%] md:scale-[160%] blur-[.09rem] md:blur-[0rem]"
+          initial={{ y: 500 }}
+          animate={isVisible ? { y: [500, -100, 0], opacity: 1 } : { y: 500 }}
+          transition={{
+            duration: 1.2,
+            ease: "easeInOut",
+            times: [0, 0.6, 1],
+            delay: 0.3,
+          }}
+        />
+      </div>
     </section>
   );
 };

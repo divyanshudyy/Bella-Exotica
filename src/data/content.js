@@ -8,16 +8,16 @@ export const hero = {
 };
 
 export const intro = {
-  title1: " Healthy Food",
-  title2: "Future Ready",
+  title1: "Our Purpose",
+  title2: "Our Mission",
   description:
     "Bella Exotica Foods, based in Gandhidham, Gujarat, produces premium freeze-dried and dehydrated fruits, vegetables, herbs, and spices that are nutritious, long-lasting, and full of flavor.",
   button: "Learn More",
   images: [
-    "/images/metin-ozer-2GT3z_R0bco-unsplash.jpg",
-    "/images/purvi-shah-CJljgde_4zg-unsplash.jpg",
-    "/images/uliana-kopanytsia-7SfBWchOVpw-unsplash.jpg",
-    "/images/widuri-putri-cfAzVP-N0Fo-unsplash.jpg",
+    "/images/logo/logo.jpg",
+    "/images/logo/logo.jpg",
+    "/images/logo/logo.jpg",
+    "/images/logo/logo.jpg",
   ],
 };
 
@@ -47,29 +47,148 @@ export const products = [
   { id: 5, name: "Product 5", image: "/images/71IhSmiyXAL._SL1500_.png" },
 ];
 
-// <div className="sticky top-0 h-screen grid place-items-center">
-//   {cards.map((card, i) => {
-//     const Icon = card.icon;
-//     return (
-//       <motion.div
-//         key={i}
-//         style={{
-//           y: card.y,
-//           opacity: card.opacity,
-//           scale: card.scale,
-//           zIndex: card.zIndex,
-//         }}
-//         className={`absolute w-[80vw] h-[90vh]   flex flex-col gap-3 bg-[#F5E6CA] overflow-hidden`}
-//       >
-//         <div className="overflow-hidden ">
-//           <img src={card.image} alt="" />
-//         </div>
-//         {/* <Icon className="w-12 h-12 text-[#3D2B1F]" /> */}
-//         <h3 className="text-5xl font-bold text-[#3D2B1F]">
-//           {card.title}
-//         </h3>
-//         <p className={`text-lg leading-relaxed `}>{card.desc}</p>
-//       </motion.div>
-//     );
-//   })}
-// </div>
+export const REVIEWS = [
+  {
+    id: 1,
+    category: "TRAVEL PACKS",
+    text: "I often travel for work, and carrying these mixed dry fruit packs has been a lifesaver. Healthy and convenient.",
+    rating: 5.0,
+    author: {
+      name: "Ananya Verma",
+      title: "Consultant, Gurugram",
+      avatarUrl: "https://picsum.photos/id/1027/100/100",
+    },
+  },
+  {
+    id: 2,
+    category: "KIDS' FAVORITES",
+    text: "My daughter loves the crunchy freeze-dried bananas. Finally a healthy snack she actually enjoys!",
+    rating: 4.7,
+    author: {
+      name: "Vikram Singh",
+      title: "Parent of Two, Jaipur",
+      avatarUrl: "https://picsum.photos/id/1005/100/100",
+    },
+  },
+  {
+    id: 3,
+    category: "NUTRIENT BOOST",
+    text: "Adding their chia seeds and walnuts to my smoothie has completely changed my mornings. Great energy boost!",
+    rating: 4.8,
+    author: {
+      name: "Kavita Pillai",
+      title: "Yoga Instructor, Mumbai",
+      avatarUrl: "https://picsum.photos/id/1011/100/100",
+    },
+  },
+  {
+    id: 4,
+    category: "MORNING MIX",
+    text: "I start my morning with their millet-based muesli. Tastes amazing and keeps me full for hours.",
+    rating: 5.0,
+    author: {
+      name: "Aarav Iyer",
+      title: "Software Engineer, Bengaluru",
+      avatarUrl: "https://picsum.photos/id/1012/100/100",
+    },
+  },
+  {
+    id: 5,
+    category: "DEHYDRATED SNACKS",
+    text: "The dehydrated mango slices were delicious and not overly sweet. A guilt-free snack I keep going back to.",
+    rating: 4.9,
+    author: {
+      name: "Rahul Deshpande",
+      title: "Fitness Enthusiast, Pune",
+      avatarUrl: "https://picsum.photos/id/1013/100/100",
+    },
+  },
+  {
+    id: 6,
+    category: "BERRY BLAST",
+    text: "The mix of berries is perfect for my yogurt bowl. They are fresh, tangy, and full of antioxidants.",
+    rating: 4.6,
+    author: {
+      name: "Priya Sharma",
+      title: "Dietitian, Delhi",
+      avatarUrl: "https://picsum.photos/id/1014/100/100",
+    },
+  },
+  {
+    id: 7,
+    category: "SAVORY TREATS",
+    text: "Was skeptical about spiced nuts, but the masala cashews are incredibly addictive. A perfect evening snack.",
+    rating: 4.9,
+    author: {
+      name: "Rohan Gupta",
+      title: "Architect, Kolkata",
+      avatarUrl: "https://picsum.photos/id/1015/100/100",
+    },
+  },
+  {
+    id: 8,
+    category: "SEED MIX",
+    text: "The omega-3 seed mix is a staple in my pantry now. I sprinkle it on salads and soups for that extra crunch.",
+    rating: 5.0,
+    author: {
+      name: "Meera Krishnan",
+      title: "Home Baker, Chennai",
+      avatarUrl: "https://picsum.photos/id/1025/100/100",
+    },
+  },
+];
+
+// constants.js
+
+export const CATEGORIES = ["ALL", "OATS", "NUTS", "MUSELI", "BERRIES"];
+
+export const PRODUCTS = [
+  {
+    id: 1,
+    name: "ALMONDS",
+    image: "/images/products/alm1.png",
+    category: "NUTS",
+  },
+  {
+    id: 2,
+    name: "MUESLI",
+    image: "/images/products/muesli2.png",
+    category: "MUSELI",
+  },
+  {
+    id: 3,
+    name: "GRANOLA",
+    image: "/images/products/granola2.png",
+    category: "MUSELI",
+  },
+  {
+    id: 4,
+    name: "OATMEAL",
+    image: "/images/products/alm1.png",
+    category: "OATS",
+  },
+  {
+    id: 5,
+    name: "WALNUTS",
+    image: "/images/products/muesli2.png",
+    category: "NUTS",
+  },
+  {
+    id: 6,
+    name: "CASHEWS",
+    image: "/images/products/granola2.png",
+    category: "NUTS",
+  },
+  {
+    id: 7,
+    name: "BERRY MIX",
+    image: "/images/products/alm1.png",
+    category: "BERRIES",
+  },
+  {
+    id: 8,
+    name: "STEEL CUT OATS",
+    image: "/images/products/muesli2.png",
+    category: "OATS",
+  },
+];
