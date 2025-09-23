@@ -1,40 +1,36 @@
-import { useRef } from "react";
 import SeoHead from "../seo/SeoHead";
 // import Schema from "../seo/Schema";
 
-import Hero from "../sections/Hero";
+import Hero from "../sections/Home/Hero";
 // import Products from "../sections/Products";
-import Showcase from "../sections/Bowl";
-import Quote from "../sections/Quote";
-import Highlight from "../sections/Highlight";
-import Certification from "../sections/Certification";
-import ChooseUs from "../sections/ChooseUs";
-import Counter from "../sections/Counter";
-import Review from "../sections/Review";
+import Showcase from "../sections/Home/Bowl";
+import Quote from "../sections/Home/Quote";
+import Highlight from "../sections/Home/Highlight";
+import Certification from "../sections/Home/Certification";
+import ChooseUs from "../sections/Home/ChooseUs";
+import Counter from "../sections/Home/Counter";
+import Review from "../sections/Home/Review";
 import Footer from "../layout/Footer";
-import Products from "../sections/Productss";
+import Products from "../sections/Home/Productss";
 import { REVIEWS } from "../../data/content";
 
 const HomePage = () => {
-  const footerRef = useRef(null);
-
   return (
     <>
       <SeoHead page="home" />
       {/* <Schema /> */}
-      <main>
+      <main className="">
         <Hero />
         <Showcase />
         <Quote />
+        <Highlight />
         <Counter />
         <Products />
         <ChooseUs />
-        <div className="bg-[#F2F2F2] h-screen w-full flex flex-col items-center justify-center font-sans overflow-hidden py-4 sm:py-8">
+        <div className="h-screen w-full flex flex-col items-center justify-center font-sans overflow-hidden py-4 sm:py-8">
           <Review reviews={REVIEWS} />
         </div>
         <Certification />
-
-        <Footer footerRef={footerRef} />
       </main>
     </>
   );

@@ -45,13 +45,21 @@ export const SliderPagination = ({
       <button
         onClick={toggleAutoplay}
         aria-label={isAutoplaying ? "Pause autoplay" : "Start autoplay"}
-        className="p-2 rounded-full transition-colors duration-300 hover:bg-[#4a2c2a] group disabled:opacity-30 disabled:hover:bg-transparent"
+        className="p-2 rounded-full transition-transform duration-300 hover:scale-120 group disabled:opacity-30 disabled:hover:bg-transparent"
         disabled={totalSlides <= 1}
       >
         {isAutoplaying ? (
-          <Pause className="h-6 w-6 text-[#4a2c2a] group-hover:text-[#fdfbf7] transition-colors duration-300" />
+          <Pause
+            fill="#4a2c2a"
+            strokeWidth={0}
+            className="h-5 w-5  transition-transform duration-300"
+          />
         ) : (
-          <Play className="h-6 w-6 text-[#4a2c2a] group-hover:text-[#fdfbf7] transition-colors duration-300" />
+          <Play
+            fill="#4a2c2a"
+            strokeWidth={0}
+            className="h-5 w-5 ] transition-transform duration-300"
+          />
         )}
       </button>
 
