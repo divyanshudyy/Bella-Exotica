@@ -67,7 +67,7 @@ const Bowl = ({ category }) => {
   return (
     <section className="w-full md:min-h-screen overflow-hidden">
       <motion.div
-        className="relative w-full h-120 sm:min-h-svh md:min-h-svh flex items-center justify-center"
+        className="relative w-full h-120 sm:min-h-svh md:min-h-svh flex items-center justify-center "
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
@@ -76,7 +76,7 @@ const Bowl = ({ category }) => {
         {/* Background Spread */}
         <motion.img
           src="/images/bowl/ingredients/Spread.png"
-          className="absolute md:h-[80%] md:w-[80%] object-contain left-1/2 md:top-[50%] top-[60%]  -translate-x-1/2 -translate-y-1/2"
+          className="absolute md:h-[80%] md:w-[80%] object-contain left-1/2 md:top-[53%] top-[60%]  -translate-x-1/2 -translate-y-1/2"
           alt="Fruits and nuts spread behind the bowl"
           variants={bowlVariants}
         />
@@ -85,13 +85,12 @@ const Bowl = ({ category }) => {
         <motion.img
           src={category.imageUrl}
           alt={` ${category.name} with milk`}
-          className="absolute z-1 md:w-[70%]  object-contain drop-shadow-[0_10px_9px_rgba(0,0,0,0.5)] left-1/2 top-[60%] md:top-[55%] -translate-x-1/2 -translate-y-1/2"
+          className="absolute z-1 md:w-[70%]  object-contain drop-shadow-[0_10px_9px_rgba(0,0,0,0.5)] left-1/2 top-[60%] md:top-[58%] -translate-x-1/2 -translate-y-1/2"
           variants={bowlVariants}
         />
-        {/* Text images staggered AFTER bowl animation */}
         <motion.div
           variants={textContainerVariants}
-          className="absolute inset-0 flex items-center justify-center w-full md:h-full md:top-[3%] top-[25%]"
+          className="absolute inset-0 flex items-center justify-center w-full md:h-full md:top-[7%] top-[25%]"
         >
           {textImages.map((file, i) => (
             <motion.img
@@ -112,8 +111,8 @@ const Bowl = ({ category }) => {
 const Header = ({ categories, selectedCategory, onSelectCategory }) => {
   return (
     <header className="absolute top-0 left-0 w-full  py-6 z-10">
-      <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-stone-800 text-center capitalize mb-3">
-        GOOD STUFF
+      <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-stone-800 text-center capitalize mb-4">
+        Wholesome & Delicious
       </h1>
       <nav className="flex justify-center items-center space-x-6 md:space-x-10 px-4">
         {categories.map((category) => (

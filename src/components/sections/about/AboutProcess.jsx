@@ -4,7 +4,7 @@ const storyItemsData = [
   {
     title: "ADVANCED TECHNOLOGY",
     description:
-      "We use cutting-edge freeze-drying and dehydration systems that gently remove moisture while preserving up to 95% of nutrients, flavor, and aroma — keeping food close to its fresh form.",
+      "We use advanced freeze-drying and dehydration systems that gently remove moisture while preserving nutrients, flavor, and aroma — keeping food as close to fresh as possible.",
     expandedDescription:
       "Our precision technology works under low temperatures and vacuum conditions, protecting vitamins, antioxidants, and bioactive compounds often lost in conventional methods. With real-time monitoring, automated quality checks, and sustainable energy practices, we deliver lighter, crisper, nutrient-rich products that last longer while retaining natural taste, color, and texture.",
     imageUrl: "/images/about/Morning Vibe_2.png",
@@ -13,7 +13,7 @@ const storyItemsData = [
   {
     title: "NUTRIENT RETENTION",
     description:
-      "Our process locks in essential vitamins, minerals, and antioxidants, preserving up to 90–95% of original nutritional value.",
+      "Our process locks in vitamins, minerals, and antioxidants, retaining up to 95% of nutritional value and offering food as wholesome as its natural form.",
     expandedDescription:
       "By combining low temperatures with vacuum dehydration, we gently remove moisture while safeguarding Vitamin C, polyphenols, and natural enzymes. This ensures food retains its health benefits, offering consumers a nutrient-dense and wholesome experience as close to fresh as possible.",
     imageUrl: "/images/about/Almonds.png",
@@ -22,7 +22,7 @@ const storyItemsData = [
   {
     title: "GLOBAL STANDARDS",
     description:
-      "We follow globally recognized safety and quality standards, ensuring our products are safe, consistent, and export-ready.",
+      "We comply with FSSAI, ISO, HACCP, and Codex standards, ensuring safe, consistent, and export-ready products trusted worldwide.",
     expandedDescription:
       "Every step — from sourcing to packaging — complies with FSSAI, ISO 22000, HACCP, and Codex Alimentarius guidelines. With certified machinery, hygienic handling, and strict quality checks, we guarantee trust, transparency, and global competitiveness for our products.",
     imageUrl: "/images/about/Dark_2.png",
@@ -98,7 +98,7 @@ const AboutProcess = () => {
                     className="w-[400px] h-[400px] object-cover rounded-full shadow-xl"
                   />
                 </div>
-                <div className="md:w-1/2 text-center md:text-left">
+                <div className="md:w-1/2 text-center md:text-left mx-10">
                   <h3
                     id={headingId}
                     className="text-xl font-medium tracking-[0.2em] text-brand-dark-brown uppercase mb-4"

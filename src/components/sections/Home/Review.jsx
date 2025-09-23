@@ -19,7 +19,7 @@ const StarRating = ({ rating, totalStars = 5 }) => {
   return (
     <div className="flex items-center">
       {Array.from({ length: totalStars }, (_, index) => (
-        <StarIcon key={index}  filled={index < Math.round(rating)} />
+        <StarIcon key={index} filled={index < Math.round(rating)} />
       ))}
     </div>
   );
@@ -92,7 +92,7 @@ const Review = ({ reviews }) => {
 
   return (
     <>
-      <section className="text-center max-w-3xl mx-auto px-4 h-full ">
+      <section className=" text-center max-w-3xl mx-auto px-4 h-full">
         <h1 className="text-4xl sm:text-5xl md:text-5xl font-bold text-slate-900 tracking-tight leading-snug">
           Read reviews,
         </h1>

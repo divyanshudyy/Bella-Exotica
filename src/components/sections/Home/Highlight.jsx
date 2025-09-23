@@ -1,8 +1,12 @@
 import { motion } from "framer-motion";
 
 const fadeIn = {
-  hidden: { opacity: 0, y: 100 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, ease: "easeInOut" },
+  },
 };
 
 const Highlight = () => {
@@ -21,7 +25,7 @@ const Highlight = () => {
         variants={fadeIn}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
+        viewport={{ once: true, amount: 0.2 }}
       >
         <p className="uppercase tracking-normal text-4xl font-bold">
           ALMOND JAR
@@ -37,7 +41,7 @@ const Highlight = () => {
         variants={fadeIn}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
+        viewport={{ once: true, amount: 0.4 }}
       >
         <p className="uppercase tracking-normal text-4xl font-bold">
           MUESLI BOWL
@@ -53,7 +57,7 @@ const Highlight = () => {
         variants={fadeIn}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
+        viewport={{ once: true, amount: 0.6 }}
       >
         <p className="uppercase tracking-normal text-4xl font-bold">
           CORN FLAKES
@@ -69,7 +73,7 @@ const Highlight = () => {
         variants={fadeIn}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
+        viewport={{ once: true, amount: 0.8 }}
       >
         <p className="uppercase tracking-normal text-4xl font-bold">
           TASTY OATS
@@ -78,13 +82,7 @@ const Highlight = () => {
       </motion.div>
 
       {/* Center Title */}
-      <motion.div
-        className="absolute top-[46%] left-1/2 -translate-x-1/2 text-center w-full"
-        variants={fadeIn}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
-      >
+      <motion.div className="absolute top-[46%] left-1/2 -translate-x-1/2 text-center w-full">
         <h2 className="text-[4.5rem] font-bold text-[#306211] tracking-tighter">
           Healthy Organic Breakfast
         </h2>

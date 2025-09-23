@@ -23,13 +23,11 @@ const HomePage = () => {
         <Hero />
         <Showcase />
         <Quote />
-        <Highlight />
-        <Counter />
         <Products />
+        <Counter />
+        <Highlight />
         <ChooseUs />
-        <div className="h-screen w-full flex flex-col items-center justify-center font-sans overflow-hidden py-4 sm:py-8">
-          <Review reviews={REVIEWS} />
-        </div>
+        <Review reviews={REVIEWS} />
         <Certification />
       </main>
     </>
@@ -37,3 +35,7 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+// <div className="h-screen w-full flex flex-col items-center justify-center font-sans overflow-hidden py-4 sm:py-8">
+//           <Review reviews={REVIEWS} />
+//         </div>

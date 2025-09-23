@@ -7,28 +7,28 @@ const features = [
     icon: Leaf,
     title: "High quality ingredients",
     description: "from the best farms",
-    color: "#14b8a6", // teal-500
+    color: "#34241D", // teal-500
     textPosition: "top",
   },
   {
     icon: Truck,
     title: "Delicious and healthy meals",
     description: "are delivered three times a day",
-    color: "#ec4899", // pink-500
+    color: "#34241D", // pink-500
     textPosition: "bottom",
   },
   {
     icon: Recycle,
     title: "Eco-friendly food",
     description: "packaging for delivery",
-    color: "#14b8a6", // teal-500
+    color: "#34241D", // teal-500
     textPosition: "top",
   },
   {
     icon: MessageSquareText,
     title: "Free consultation",
     description: "with a dietitian",
-    color: "#ec4899", // pink-500
+    color: "#34241D", // pink-500
     textPosition: "bottom",
   },
 ];
@@ -82,7 +82,7 @@ const WhyChooseUs = () => {
           className="text-center mb-16 z-10 relative"
         >
           <h2 className="text-4xl font-semibold text-gray-800">
-            Why Good Food?
+            Why Choose Bella Exotica?
           </h2>
         </motion.div>
 
@@ -130,15 +130,6 @@ const WhyChooseUs = () => {
           })}
         </motion.div>
       </div>
-
-      {/* <div className="absolute inset-0 flex items-center justify-between z-0 pointer-events-none">
-        <span className="font-cursive text-[18rem] font-bold text-pink-200 -translate-x-1/4 select-none opacity-50">
-          Good
-        </span>
-        <span className="font-cursive text-[18rem] font-bold text-teal-200 translate-x-1/4 select-none opacity-50">
-          Food
-        </span>
-      </div> */}
     </section>
   );
 };
