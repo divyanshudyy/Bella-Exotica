@@ -179,7 +179,7 @@ function GlobeGroup({ active, preActive, arcs, markers }) {
   );
 }
 
-export default function LargeGlobeWithArcs() {
+export default function GlobeViz() {
   const [active, setActive] = useState(false);
   const [preActive, setPreActive] = useState(false);
   const sectionRef = useRef();
@@ -225,7 +225,7 @@ export default function LargeGlobeWithArcs() {
 
   return (
     <section ref={sectionRef} className="wrapper-section">
-      <div className="canvas-wrapper">
+      <div className="canvas-wrapper ">
         <Canvas
           style={{
             width: "100%",
@@ -233,6 +233,7 @@ export default function LargeGlobeWithArcs() {
             borderRadius: "20px",
             boxShadow: "0 2px 6px rgba(0,0,0,0.5)",
             overflow: "hidden",
+            cursor: "grab",
           }}
           camera={{
             orthographic: true,

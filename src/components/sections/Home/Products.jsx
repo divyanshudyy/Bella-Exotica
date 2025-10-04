@@ -70,12 +70,12 @@ const Products = () => {
         </div>
 
         {/* Explore Button */}
-        <button
+        {/* <button
           className="relative z-10 mt-2 px-10 py-3 bg-white rounded-full text-[#4a2c2a] font-semibold tracking-wider hover:shadow-lg transition-all duration-300 shadow-md animate-fadeInUp hover:bg-[#4a2c2a] hover:text-[#fdfbf7]"
           style={{ animationDelay: "500ms" }}
         >
           EXPLORE ALL PRODUCTS
-        </button>
+        </button> */}
       </div>
     </section>
   );

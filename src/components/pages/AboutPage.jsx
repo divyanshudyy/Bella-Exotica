@@ -12,7 +12,12 @@ const AboutPage = () => {
         <PageHero image={"/images/about/about-banner.png"} text={"About"} />
         <AboutStory />
         <AboutProcess />
-        <MapContent />
+        <MapContent
+          heading={"Know Your Source"}
+          para={
+            "Discover the true origins of freshness and flavour. This is where our commitment to quality begins."
+          }
+        />
       </main>
     </>
   );

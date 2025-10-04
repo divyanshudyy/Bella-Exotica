@@ -7,23 +7,24 @@ const ContactInfo = () => {
       style={{ animationDelay: "0.2s" }}
     >
       <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-12">
-        We are always ready to help you and answer your questions
+        Have a question?
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
         <div>
           <h3 className="font-bold text-lg mb-3">Call Center</h3>
           <p className="text-gray-600">(+91) 97248 84985</p>
-          <p className="text-gray-600">(+91) 97248 84985 </p>
+          <p className="text-gray-600">(+91) XXXXX XXXXX </p>
         </div>
         <div>
           <h3 className="font-bold text-lg mb-3">Our Location</h3>
+          <p className="text-gray-600">BELLA EXOTICA PVT LTD</p>
+           
           <p className="text-gray-600">
             Plot No. 1, Survey No. NA-160, Village: Ajapar, Anjar, 370110 -
             Kutch, Gujarat, India.{" "}
           </p>
-          &nbsp;
-          <p className="text-gray-600">BELLA EXOTICA PVT LTD</p>
+         
         </div>
         <div>
           <h3 className="font-bold text-lg mb-3">Email</h3>

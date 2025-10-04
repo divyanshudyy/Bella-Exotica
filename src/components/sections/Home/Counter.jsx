@@ -1,5 +1,7 @@
 import { motion } from "motion/react";
 import CountUp from "../../ui/CountUp";
+import CustomButton from "../../ui/CustomButton";
+import { Link } from "react-router-dom";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -50,27 +52,31 @@ const Counter = () => {
         variants={itemVariants}
         className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight"
       >
-        Goodness that Lasts, Naturally.
+        Purpose in Every Pack.
       </motion.h1>
       <motion.p
         variants={itemVariants}
         className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto"
       >
-        We gently dehydrate the best seasonal produce to lock in flavor and
-        nutrients. Perfect for your pantry, your backpack, and a healthier
-        planet.
+        We exist to create delicious snacks that are better for you and the
+        planet. Every pack you purchase helps us rescue good food from going to
+        waste and significantly reduce plastic use.
       </motion.p>
 
       <motion.div
         variants={itemVariants}
         className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4"
       >
-        <button className="bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-amber-700 transition-colors duration-300 w-full sm:w-auto">
-          Shop Our Snacks
-        </button>
-        <button className="bg-white text-gray-700 font-semibold py-3 px-6 rounded-lg shadow-md border border-gray-200 hover:bg-gray-50 transition-colors duration-300 w-full sm:w-auto">
-          Our Process
-        </button>
+        <div>
+          <Link to="/products">
+            <CustomButton text="Shop Our Products" margin="mb-5 " />
+          </Link>
+        </div>
+        <div>
+          <Link to="/technology">
+            <CustomButton text="Our Process" margin="mb-5 mx-5" />
+          </Link>
+        </div>
       </motion.div>
 
       <motion.div
@@ -78,9 +84,9 @@ const Counter = () => {
         className="mt-12 md:mt-16 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 md:p-12 max-w-5xl mx-auto"
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4">
-          <CountUp endValue={10500} label="Products Bought" suffix="+" />
+          <CountUp endValue={1005} label="Products Bought" suffix="+" />
           <CountUp endValue={5500} label="Lbs of Food Saved" suffix="+" />
-          <CountUp endValue={300} label="Kg of Plastic Reduced" suffix="+" />
+          <CountUp endValue={320} label="Kg of Plastic Reduced" suffix="+" />
         </div>
       </motion.div>
     </motion.div>

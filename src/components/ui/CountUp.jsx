@@ -28,7 +28,7 @@ const CountUp = ({ endValue, duration = 2, label, suffix = "" }) => {
 
   return (
     <div ref={ref} className="flex flex-col items-center justify-center p-4">
-      <span className="text-4xl sm:text-5xl font-bold text-amber-600 tracking-tight">
+      <span className="text-4xl sm:text-5xl font-bold text-amber-900 tracking-tight">
         <span ref={countRef}>0</span>
         {suffix}
       </span>

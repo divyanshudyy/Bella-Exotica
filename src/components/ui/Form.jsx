@@ -25,9 +25,9 @@ const ContactForm = () => {
       style={{ animationDelay: "0.5s" }}
     >
       <h3 className="text-2xl font-bold mb-2 text-gray-800">Get in Touch</h3>
-      <p className="text-gray-600 mb-8">
-        Define your goals and identify areas where AI can add value to your
-        business.
+      <p className="text-gray-600 mb-8 max-w-md">
+        We welcome all your questions and inquiries. Our team will be in touch
+        with you shortly.
       </p>
 
       <form onSubmit={handleSubmit(submitHandler)} className="space-y-6">
@@ -43,9 +43,8 @@ const ContactForm = () => {
             <input
               id="firstName"
               {...register("firstName", { required: true })}
-              placeholder="e.g., John"
-              className="mt-1 block w-full bg-transparent border-b border-gray-300 py-2 px-2 
-                         focus:outline-none focus:border-b-2 focus:border-gray-800 sm:text-sm transition-colors"
+              placeholder="e.g., abc"
+              className="mt-1 block w-full bg-transparent border-b border-gray-300 py-2 px-2 focus:outline-none focus:border-b-2 focus:border-gray-800 sm:text-sm transition-colors"
             />
           </div>
           <div>
@@ -57,10 +56,9 @@ const ContactForm = () => {
             </label>
             <input
               id="lastName"
+              placeholder="e.g., xyz"
               {...register("lastName", { required: true })}
-              placeholder="e.g., Doe"
-              className="mt-1 block w-full bg-transparent border-b border-gray-300 py-2 px-2 
-                         focus:outline-none focus:border-b-2 focus:border-gray-800 sm:text-sm transition-colors"
+              className="mt-1 block w-full bg-transparent border-b border-gray-300 py-2 px-2 focus:outline-none focus:border-b-2 focus:border-gray-800 sm:text-sm transition-colors"
             />
           </div>
         </div>
@@ -77,9 +75,8 @@ const ContactForm = () => {
             type="email"
             id="email"
             {...register("email", { required: true })}
-            placeholder="e.g., john.doe@example.com"
-            className="mt-1 block w-full bg-transparent border-b border-gray-300 py-2 px-2 
-                       focus:outline-none focus:border-b-2 focus:border-gray-800 sm:text-sm transition-colors"
+            placeholder="e.g., 123@example.com"
+            className="mt-1 block w-full bg-transparent border-b border-gray-300 py-2 px-2 focus:outline-none focus:border-b-2 focus:border-gray-800 sm:text-sm transition-colors"
           />
         </div>
 
@@ -95,8 +92,7 @@ const ContactForm = () => {
             id="subject"
             {...register("subject", { required: true })}
             placeholder="e.g., Inquiry about your services"
-            className="mt-1 block w-full bg-transparent border-b border-gray-300 py-2 px-2 
-                       focus:outline-none focus:border-b-2 focus:border-gray-800 sm:text-sm transition-colors"
+            className="mt-1 block w-full bg-transparent border-b border-gray-300 py-2 px-2 focus:outline-none focus:border-b-2 focus:border-gray-800 sm:text-sm transition-colors"
           />
         </div>
 
@@ -111,9 +107,8 @@ const ContactForm = () => {
           <input
             id="company"
             {...register("orgName")}
-            placeholder="e.g., Acme Corporation"
-            className="mt-1 block w-full bg-transparent border-b border-gray-300 py-2 px-2 
-                       focus:outline-none focus:border-b-2 focus:border-gray-800 sm:text-sm transition-colors"
+            placeholder="e.g., Food Corporation"
+            className="mt-1 block w-full bg-transparent border-b border-gray-300 py-2 px-2 focus:outline-none focus:border-b-2 focus:border-gray-800 sm:text-sm transition-colors"
           />
         </div>
 
@@ -130,8 +125,7 @@ const ContactForm = () => {
             rows="3"
             {...register("message", { required: true })}
             placeholder="Write your message..."
-            className="mt-1 block w-full bg-transparent border-b border-gray-300 py-2 px-2 
-                       focus:outline-none focus:border-b-2 focus:border-gray-800 sm:text-sm resize-none transition-colors"
+            className="mt-1 block w-full bg-transparent border-b border-gray-300 py-2 px-2 focus:outline-none focus:border-b-2 focus:border-gray-800 sm:text-sm resize-none transition-colors"
           ></textarea>
         </div>
 
@@ -139,10 +133,7 @@ const ContactForm = () => {
         <div>
           <button
             type="submit"
-            className="bg-gray-800 text-white px-6 py-3 rounded-full flex items-center space-x-2 
-                       hover:bg-gray-700 transition-all duration-300 ease-in-out transform hover:scale-105 
-                       focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 
-                       focus-visible:ring-offset-slate-50 focus-visible:ring-gray-800"
+            className="bg-gray-800 text-white px-6 py-3 rounded-full flex items-center space-x-2  hover:bg-gray-700 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2  focus-visible:ring-offset-slate-50 focus-visible:ring-gray-800"
           >
             <ArrowRight />
             <span>Send a message</span>

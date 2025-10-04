@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -27,11 +27,11 @@ const Highlight = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <p className="uppercase tracking-normal text-4xl font-bold">
-          ALMOND JAR
+        <p className="capitalize tracking-normal text-4xl font-bold">
+          No Refined Sugar
         </p>
         <p className="text-3xl tracking-tighter font-semibold">
-          With Vitamin A
+          With Pure Delight
         </p>
       </motion.div>
 
@@ -43,11 +43,11 @@ const Highlight = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.4 }}
       >
-        <p className="uppercase tracking-normal text-4xl font-bold">
-          MUESLI BOWL
+        <p className="capitalize tracking-normal text-4xl font-bold">
+          Purely Organic
         </p>
         <p className="text-3xl tracking-tighter font-semibold text-end">
-          With Fibres
+          With Nature
         </p>
       </motion.div>
 
@@ -59,12 +59,10 @@ const Highlight = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.6 }}
       >
-        <p className="uppercase tracking-normal text-4xl font-bold">
-          CORN FLAKES
+        <p className="capitalize tracking-normal text-4xl font-bold">
+          High Protein & Fibre
         </p>
-        <p className="text-3xl tracking-tighter font-semibold text-end">
-          Morning Crunch
-        </p>
+        <p className="text-3xl tracking-tighter font-semibold text-end">Rich Flavour</p>
       </motion.div>
 
       {/* Tasty Oats */}
@@ -75,10 +73,12 @@ const Highlight = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.8 }}
       >
-        <p className="uppercase tracking-normal text-4xl font-bold">
-          TASTY OATS
+        <p className="capitalize tracking-normal text-4xl font-bold">
+          100% Whole Grains
         </p>
-        <p className="text-3xl tracking-tighter font-semibold">High Protein</p>
+        <p className="text-3xl tracking-tighter font-semibold">
+          Added Minerals
+        </p>
       </motion.div>
 
       {/* Center Title */}

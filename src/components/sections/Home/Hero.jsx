@@ -2,6 +2,7 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import CustomButton from "../../ui/CustomButton";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const ref = useRef(null);
@@ -40,7 +41,12 @@ const Hero = () => {
       />
 
       {/* CTA Button */}
-      <CustomButton text={"EXPLORE COLLECTION"} margin={"mb-5"} />
+
+      <div>
+        <Link to="/products">
+          <CustomButton text="EXPLORE COLLECTION" margin="mb-5" />
+        </Link>
+      </div>
     </motion.section>
   );
 };
