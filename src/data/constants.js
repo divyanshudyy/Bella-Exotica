@@ -253,49 +253,49 @@ export const TIMELINE_DATA = [
     title: "Harvest & Selection",
     description:
       "Carefully source fresh, high-quality fruits and vegetables. Inspect all produce to meet strict quality standards.",
-    imageUrl: "https://picsum.photos/seed/harvest/400/400",
+    imageUrl: "/images/process/Dark_2.png",
   },
   {
     step: "Step 2",
     title: "Cleaning & Preparation",
     description:
       "Thoroughly wash, peel, and trim all produce. Cut into uniform sizes for even processing.",
-    imageUrl: "https://picsum.photos/seed/preparation/400/400",
+    imageUrl: "/images/process/Freshness.png",
   },
   {
     step: "Step 3",
     title: "Blanching & Pre-Treatment",
     description:
       "Blanch with steam or hot water to lock in color, texture, and nutrients. Use optional natural dips (e.g., lemon solution) to prevent browning.",
-    imageUrl: "https://picsum.photos/seed/blanching/400/400",
+    imageUrl: "/images/process/Morning Vibe_2.png",
   },
   {
     step: "Step 4",
     title: "Drying Process",
     description:
       "Moisture is removed either through dehydration, which uses warm air to gently preserve flavor, or through freeze-drying, where produce is frozen and placed under vacuum so ice turns directly into vapor, keeping the structure intact.",
-    imageUrl: "https://picsum.photos/seed/drying/400/400",
+    imageUrl: "/images/process/Dark.png",
   },
   {
     step: "Step 5",
     title: "Quality Check",
     description:
       "Test moisture levels, taste, color, and texture. Ensure the product is safe, consistent, and delicious.",
-    imageUrl: "https://picsum.photos/seed/quality/400/400",
+    imageUrl: "/images/process/Morning Vibe.png",
   },
   {
     step: "Step 6",
     title: "Packaging",
     description:
       "Seal products in air-tight, moisture-proof packaging. Lock in freshness and extend shelf life.",
-    imageUrl: "https://picsum.photos/seed/packaging/400/400",
+    imageUrl: "/images/process/Freshness.png",
   },
   {
     step: "Step 7",
     title: "Ready to Enjoy",
     description:
       "Produce lightweight, shelf-stable, and nutrient-rich foods. Ready for consumers to enjoy worldwide.",
-    imageUrl: "https://picsum.photos/seed/enjoy/400/400",
+    imageUrl: "/images/process/Dark_2.png",
   },
 ];
 
