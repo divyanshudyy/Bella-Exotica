@@ -10,8 +10,7 @@ import Certification from "../sections/Home/Certification";
 import ChooseUs from "../sections/Home/ChooseUs";
 import Counter from "../sections/Home/Counter";
 import Review from "../sections/Home/Review";
-import Footer from "../layout/Footer";
-import Products from "../sections/Home/Productss";
+import Products from "../sections/Home/Products";
 import { REVIEWS } from "../../data/content";
 
 const HomePage = () => {
