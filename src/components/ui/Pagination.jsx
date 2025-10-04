@@ -1,12 +1,10 @@
-import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export const SliderPagination = ({
   currentIndex,
   totalSlides,
   onPrev,
   onNext,
-  isAutoplaying,
-  toggleAutoplay,
 }) => {
   const formatNumber = (num) => String(num).padStart(2, "0");
 
@@ -15,6 +13,7 @@ export const SliderPagination = ({
 
   return (
     <div className="flex items-center justify-center gap-4 text-[#4a2c2a]">
+      {/* Prev Button */}
       <button
         onClick={onPrev}
         aria-label="Previous Product"
@@ -24,6 +23,7 @@ export const SliderPagination = ({
         <ChevronLeft className="h-6 w-6 text-[#4a2c2a] group-hover:text-[#fdfbf7] transition-colors duration-300" />
       </button>
 
+      {/* Progress Bar */}
       <div className="flex items-center gap-3">
         <span className="font-bold text-lg w-8 text-center">
           {formatNumber(currentIndex + 1)}
@@ -42,27 +42,7 @@ export const SliderPagination = ({
         </span>
       </div>
 
-      <button
-        onClick={toggleAutoplay}
-        aria-label={isAutoplaying ? "Pause autoplay" : "Start autoplay"}
-        className="p-2 rounded-full transition-transform duration-300 hover:scale-120 group disabled:opacity-30 disabled:hover:bg-transparent"
-        disabled={totalSlides <= 1}
-      >
-        {isAutoplaying ? (
-          <Pause
-            fill="#4a2c2a"
-            strokeWidth={0}
-            className="h-5 w-5  transition-transform duration-300"
-          />
-        ) : (
-          <Play
-            fill="#4a2c2a"
-            strokeWidth={0}
-            className="h-5 w-5 ] transition-transform duration-300"
-          />
-        )}
-      </button>
-
+      {/* Next Button */}
       <button
         onClick={onNext}
         aria-label="Next Product"

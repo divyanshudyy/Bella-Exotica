@@ -30,7 +30,7 @@ export const ScrollVelocity = ({
   scrollContainerRef,
   texts = [],
   velocity = 100,
-  numCopies = 10,
+  numCopies = 5,
 }) => {
   function VelocityText({ children, baseVelocity = velocity }) {
     const baseX = useMotionValue(0);
@@ -111,13 +111,13 @@ export const ScrollVelocity = ({
         }}
       />
 
-      <VelocityText baseVelocity={100}>
+      <VelocityText baseVelocity={50}>
         {texts.map((text, idx) => (
           <div key={idx} className="flex items-center px-10">
             <img
               src={`/images/logo/certificates/${text}.png`}
               alt={text}
-              className="w-auto object-contain sm:h-30 md:h-23 h-20 opacity-20"
+              className="w-auto object-contain sm:h-30 md:h-15 h-20 opacity-20"
             />
           </div>
         ))}

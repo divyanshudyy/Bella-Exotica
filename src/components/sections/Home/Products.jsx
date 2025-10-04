@@ -5,13 +5,14 @@ import { CATEGORIES, PRODUCTS } from "../../../data/content";
 const Products = () => {
   const [activeCategory, setActiveCategory] = useState("ALL");
 
+  // Filter products by active category
   const filteredProducts = useMemo(() => {
-    if (activeCategory === "ALL") {
-      return PRODUCTS;
-    }
-    return PRODUCTS.filter((product) => product.category === activeCategory);
+    return activeCategory === "ALL"
+      ? PRODUCTS
+      : PRODUCTS.filter((product) => product.category === activeCategory);
   }, [activeCategory]);
 
+  // Reorder categories to place "ALL" in the middle
   const reorderedCategories = useMemo(() => {
     const allIndex = CATEGORIES.indexOf("ALL");
     if (allIndex === -1) return CATEGORIES;
@@ -25,6 +26,7 @@ const Products = () => {
   return (
     <section className="h-190 w-full flex flex-col items-center font-sans text-[#4a2c2a] px-4 py-2 overflow-hidden">
       <div className="w-full h-full flex flex-col items-center">
+        {/* Heading */}
         <h1
           className="relative z-10 text-4xl sm:text-4xl md:text-5xl font-bold mb-5 text-center animate-fadeInUp"
           style={{ animationDelay: "100ms" }}
@@ -39,8 +41,9 @@ const Products = () => {
           crafted to nourish your body and delight your senses.
         </p>
 
+        {/* Category Filters */}
         <nav
-          className="relative z-10 flex items-center space-x-2 md:space-x-4 mb-2 animate-fadeInUp"
+          className="relative z-10 flex flex-wrap items-center justify-center gap-2 md:gap-4 mb-2 animate-fadeInUp"
           style={{ animationDelay: "300ms" }}
         >
           {reorderedCategories.map((category) => (
@@ -58,6 +61,7 @@ const Products = () => {
           ))}
         </nav>
 
+        {/* Product Slider */}
         <div
           className="flex-grow w-full max-w-7xl mx-auto animate-fadeInUp"
           style={{ animationDelay: "400ms" }}
@@ -65,6 +69,7 @@ const Products = () => {
           <ProductSlider products={filteredProducts} />
         </div>
 
+        {/* Explore Button */}
         <button
           className="relative z-10 mt-2 px-10 py-3 bg-white rounded-full text-[#4a2c2a] font-semibold tracking-wider hover:shadow-lg transition-all duration-300 shadow-md animate-fadeInUp hover:bg-[#4a2c2a] hover:text-[#fdfbf7]"
           style={{ animationDelay: "500ms" }}

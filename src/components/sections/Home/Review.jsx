@@ -19,7 +19,7 @@ const StarRating = ({ rating, totalStars = 5 }) => {
   return (
     <div className="flex items-center">
       {Array.from({ length: totalStars }, (_, index) => (
-        <StarIcon key={index}  filled={index < Math.round(rating)} />
+        <StarIcon key={index} filled={index < Math.round(rating)} />
       ))}
     </div>
   );
@@ -37,7 +37,7 @@ const ReviewCard = ({ review, isActive }) => {
         <p className="text-xs font-bold tracking-widest text-gray-400 uppercase">
           {review.category}
         </p>
-        <p className="mt-4 text-lg sm:text-md text-gray-800 leading-snug font-medium ">
+        <p className="mt-4 text-lg sm:text-[1.1rem] text-gray-800 leading-snug font-medium ">
           {review.text}
         </p>
       </div>
@@ -92,7 +92,7 @@ const Review = ({ reviews }) => {
 
   return (
     <>
-      <section className="text-center max-w-3xl mx-auto px-4 h-full ">
+      <section className=" text-center max-w-5xl mx-auto  h-full">
         <h1 className="text-4xl sm:text-5xl md:text-5xl font-bold text-slate-900 tracking-tight leading-snug">
           Read reviews,
         </h1>
@@ -115,7 +115,7 @@ const Review = ({ reviews }) => {
         </div>
       </section>
 
-      <div className="w-full mt-4 sm:mt-8 px-8 sm:px-12 lg:px-35">
+      <div className="w-full mt-4 sm:mt-8 px-8 sm:px-12 lg:px-25">
         <Swiper
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
@@ -154,7 +154,7 @@ const Review = ({ reviews }) => {
               {({ isActive }) => (
                 <div
                   className={`transition-transform duration-500 ease-in-out ${
-                    isActive ? "scale-115" : "scale-90"
+                    isActive ? "scale-110" : "scale-90"
                   }`}
                 >
                   <ReviewCard review={review} isActive={isActive} />

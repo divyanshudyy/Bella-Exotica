@@ -10,8 +10,7 @@ import Certification from "../sections/Home/Certification";
 import ChooseUs from "../sections/Home/ChooseUs";
 import Counter from "../sections/Home/Counter";
 import Review from "../sections/Home/Review";
-import Footer from "../layout/Footer";
-import Products from "../sections/Home/Productss";
+import Products from "../sections/Home/Products";
 import { REVIEWS } from "../../data/content";
 
 const HomePage = () => {
@@ -23,13 +22,11 @@ const HomePage = () => {
         <Hero />
         <Showcase />
         <Quote />
-        <Highlight />
-        <Counter />
         <Products />
+        <Counter />
+        <Highlight />
         <ChooseUs />
-        <div className="h-screen w-full flex flex-col items-center justify-center font-sans overflow-hidden py-4 sm:py-8">
-          <Review reviews={REVIEWS} />
-        </div>
+        <Review reviews={REVIEWS} />
         <Certification />
       </main>
     </>
@@ -37,3 +34,7 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+// <div className="h-screen w-full flex flex-col items-center justify-center font-sans overflow-hidden py-4 sm:py-8">
+//           <Review reviews={REVIEWS} />
+//         </div>

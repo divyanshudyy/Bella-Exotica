@@ -107,11 +107,16 @@ const Header = () => {
 
       {/* Right side CTA (desktop only) */}
       <div className="hidden lg:flex justify-end">
-        <CustomButton
-          margin={"my-0"}
-          padding={"px-5 py-2"}
-          text={"Partner Now"}
-        />
+        <NavLink
+          to="/b2b" // target route
+          className={({ isActive }) => `${isActive ? "font-semibold" : ""}`}
+        >
+          <CustomButton
+            margin={"my-0"}
+            padding={"px-5 py-2"}
+            text={"Partner Now"}
+          />
+        </NavLink>
       </div>
 
       {/* Dark overlay when menu open */}

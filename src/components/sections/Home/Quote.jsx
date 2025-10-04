@@ -38,10 +38,10 @@ function useIntersectionObserver(
 }
 
 const quoteLines = [
-  "This mix of oats, quinoa,",
-  "amaranth, chia, and almonds is",
-  "what so few good-for-you",
-  "cereals aren't: satisfying.",
+  "Health you can feel,",
+  "Taste you will love,",
+  "Energy that endures in",
+  "grains, nuts, and fruits.",
 ];
 
 const containerVariants = {
@@ -98,7 +98,7 @@ const Quote = () => {
       >
         <motion.span
           variants={quoteMarkVariants}
-          className="absolute -top-3 md:-top-6 -left-3 sm:-left-5 font-playfair text-6xl sm:text-8xl md:text-9xl text-[#3D2B1F]"
+          className="absolute -top-3 md:-top-6 -left-3 sm:-left-10 font-playfair text-6xl sm:text-8xl md:text-9xl text-[#3D2B1F]"
         >
           “
         </motion.span>
@@ -110,7 +110,7 @@ const Quote = () => {
             <div key={index} className="overflow-hidden">
               <motion.p
                 variants={lineVariants}
-                className="text-2xl sm:text-3xl md:text-5xl font-playfair font-semibold  text-[#3D2B1F] leading-snug sm:leading-[1.35]"
+                className="text-2xl sm:text-3xl md:text-[3.2rem] font-playfair font-semibold   text-[#3D2B1F] leading-snug sm:leading-[1.35]"
               >
                 {line}
               </motion.p>
@@ -119,14 +119,14 @@ const Quote = () => {
         </motion.blockquote>
         <motion.span
           variants={quoteMarkVariants}
-          className="absolute bottom-30 md:-bottom-8 -right-3 sm:-right-5 font-playfair text-6xl sm:text-8xl md:text-9xl text-[#3D2B1F]"
+          className="absolute bottom-30 md:-bottom-8 -right-3 sm:-right-20 font-playfair text-6xl sm:text-8xl md:text-9xl text-[#3D2B1F]"
         >
           ”
         </motion.span>
       </motion.figure>
 
       {/* Images overlay */}
-      <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
+      <div className="inset-0 flex items-center justify-center z-0 pointer-events-none">
         <motion.img
           src="/images/highlight/Muesli-Jar3.png"
           alt="Bella Exotica product highlights"

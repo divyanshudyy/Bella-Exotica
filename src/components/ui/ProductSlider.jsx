@@ -7,15 +7,10 @@ const ProductSlider = ({ products }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [startPos, setStartPos] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
-  const [isAutoplaying, setIsAutoplaying] = useState(true);
 
   const DRAG_THRESHOLD = 50;
   const autoplayIntervalRef = useRef(null);
   const sliderRef = useRef(null);
-
-  const pauseAutoplay = useCallback(() => {
-    setIsAutoplaying(false);
-  }, []);
 
   const nextSlide = useCallback(() => {
     if (products.length <= 1) return;
@@ -27,45 +22,13 @@ const ProductSlider = ({ products }) => {
     setCurrentIndex((prev) => (prev === 0 ? products.length - 1 : prev - 1));
   }, [products.length]);
 
-  const handleNextWithPause = useCallback(() => {
-    pauseAutoplay();
-    nextSlide();
-  }, [nextSlide, pauseAutoplay]);
-
-  const handlePrevWithPause = useCallback(() => {
-    pauseAutoplay();
-    prevSlide();
-  }, [prevSlide, pauseAutoplay]);
-
   useEffect(() => {
-    const sliderElement = sliderRef.current;
-    if (!sliderElement) return;
-
-    const handleMouseEnter = () => setIsAutoplaying(false);
-    const handleMouseLeave = () => setIsAutoplaying(true);
-
-    sliderElement.addEventListener("mouseenter", handleMouseEnter);
-    sliderElement.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      sliderElement.removeEventListener("mouseenter", handleMouseEnter);
-      sliderElement.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (autoplayIntervalRef.current) {
-      clearInterval(autoplayIntervalRef.current);
-    }
-    if (isAutoplaying && products.length > 1) {
+    if (autoplayIntervalRef.current) clearInterval(autoplayIntervalRef.current);
+    if (products.length > 1) {
       autoplayIntervalRef.current = setInterval(nextSlide, 3000);
     }
-    return () => {
-      if (autoplayIntervalRef.current) {
-        clearInterval(autoplayIntervalRef.current);
-      }
-    };
-  }, [isAutoplaying, nextSlide, products.length]);
+    return () => clearInterval(autoplayIntervalRef.current);
+  }, [nextSlide, products.length]);
 
   useEffect(() => {
     if (products.length > 0 && currentIndex >= products.length) {
@@ -74,7 +37,6 @@ const ProductSlider = ({ products }) => {
   }, [products, currentIndex]);
 
   const handleDragStart = (clientX) => {
-    pauseAutoplay();
     setIsDragging(true);
     setStartPos(clientX);
     setDragOffset(0);
@@ -91,11 +53,8 @@ const ProductSlider = ({ products }) => {
     setIsDragging(false);
 
     if (Math.abs(dragOffset) > DRAG_THRESHOLD) {
-      if (dragOffset < 0) {
-        nextSlide();
-      } else {
-        prevSlide();
-      }
+      if (dragOffset < 0) nextSlide();
+      else prevSlide();
     }
 
     setDragOffset(0);
@@ -110,17 +69,10 @@ const ProductSlider = ({ products }) => {
     handleDragMove(e.clientX);
   };
   const onMouseUpOrLeave = () => {
-    if (isDragging) {
-      handleDragEnd();
-    }
+    if (isDragging) handleDragEnd();
   };
-
-  const onTouchStart = (e) => {
-    handleDragStart(e.touches[0].clientX);
-  };
-  const onTouchMove = (e) => {
-    handleDragMove(e.touches[0].clientX);
-  };
+  const onTouchStart = (e) => handleDragStart(e.touches[0].clientX);
+  const onTouchMove = (e) => handleDragMove(e.touches[0].clientX);
 
   if (!products || products.length === 0) {
     return (
@@ -206,7 +158,6 @@ const ProductSlider = ({ products }) => {
             let transform = "",
               opacity = 0,
               filter = "blur(0px)";
-
             if (absOffset < 2) {
               const factor = Math.max(0, 1 - absOffset);
               const scale = sideScale + (centerScale - sideScale) * factor;
@@ -253,10 +204,8 @@ const ProductSlider = ({ products }) => {
           <SliderPagination
             currentIndex={currentIndex}
             totalSlides={products.length}
-            onPrev={handlePrevWithPause}
-            onNext={handleNextWithPause}
-            isAutoplaying={isAutoplaying}
-            toggleAutoplay={() => setIsAutoplaying((prev) => !prev)}
+            onPrev={prevSlide}
+            onNext={nextSlide}
           />
         </div>
       )}
