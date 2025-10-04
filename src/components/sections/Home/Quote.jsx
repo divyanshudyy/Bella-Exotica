@@ -38,10 +38,10 @@ function useIntersectionObserver(
 }
 
 const quoteLines = [
-  "Health you can feel,",
-  "Taste you will love,",
-  "Energy that endures in",
-  "grains, nuts, and fruits.",
+  "Elevate your breakfast",
+  "with a masterful blend offering",
+  "natural radiance and wellness",
+  "in every single spoonful. ",
 ];
 
 const containerVariants = {
@@ -92,7 +92,7 @@ const Quote = () => {
     >
       {/* Quote figure */}
       <motion.figure
-        className="max-w-3xl mx-auto relative z-10"
+        className="max-w-5xl mx-auto relative z-10"
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
       >
@@ -110,7 +110,7 @@ const Quote = () => {
             <div key={index} className="overflow-hidden">
               <motion.p
                 variants={lineVariants}
-                className="text-2xl sm:text-3xl md:text-[3.2rem] font-playfair font-semibold   text-[#3D2B1F] leading-snug sm:leading-[1.35]"
+                className="text-2xl sm:text-3xl md:text-[3.2rem] font-playfair font-semibold  italic text-[#3D2B1F] leading-snug sm:leading-[1.35]"
               >
                 {line}
               </motion.p>

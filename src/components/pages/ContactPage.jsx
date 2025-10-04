@@ -17,7 +17,7 @@ const ContactPage = () => {
           <ContactInfo />
           <Form />
         </div>
-        <MapContent />
+        <MapContent heading ={"Our Location"} para={"Discover the true origins of freshness and flavour. This is where our commitment to quality begins.  "} />
       </main>
     </>
   );

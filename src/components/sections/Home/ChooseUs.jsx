@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Leaf, Truck, Recycle, MessageSquareText } from "lucide-react";
+import { Leaf, Salad, Recycle, CircleSlash } from "lucide-react";
 
 // --- Feature Data ---
 const features = [
@@ -11,9 +11,9 @@ const features = [
     textPosition: "top",
   },
   {
-    icon: Truck,
+    icon: Salad,
     title: "Delicious and healthy meals",
-    description: "are delivered three times a day",
+    description: "Where Health and Taste Align",
     color: "#34241D", // pink-500
     textPosition: "bottom",
   },
@@ -25,9 +25,9 @@ const features = [
     textPosition: "top",
   },
   {
-    icon: MessageSquareText,
-    title: "Free consultation",
-    description: "with a dietitian",
+    icon: CircleSlash,
+    title: "Purity and Freshness",
+    description: "With 0% Artifical Additives",
     color: "#34241D", // pink-500
     textPosition: "bottom",
   },

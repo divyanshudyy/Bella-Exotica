@@ -111,8 +111,8 @@ const Bowl = ({ category }) => {
 const Header = ({ categories, selectedCategory, onSelectCategory }) => {
   return (
     <header className="absolute top-0 left-0 w-full  py-6 z-10">
-      <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-stone-800 text-center capitalize mb-4">
-        Wholesome & Delicious
+      <h1 className="text-4xl md:text-5xl font-bold  text-stone-800 text-center Capitalize mb-4 ">
+        Unleash Your Morning.
       </h1>
       <nav className="flex justify-center items-center space-x-6 md:space-x-10 px-4">
         {categories.map((category) => (

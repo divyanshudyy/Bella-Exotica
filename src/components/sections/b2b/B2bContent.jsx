@@ -5,7 +5,7 @@ const B2bContent = () => {
       <section className="py-10  bg-gray-50">
         <div className="max-w-3xl mx-auto text-center px-6 lg:px-8">
           <h2 className="text-4xl sm:text-5xl font-bold leading-tightest mb-6">
-            Collaboration
+            Collaborate with Bella Exotica
           </h2>
           <p className="text-gray-600 text-lg font-light leading-relaxed">
             We partner with businesses worldwide to deliver high-quality
@@ -25,21 +25,19 @@ const B2bContent = () => {
               <br />
               Global Exports
             </h2>
-            <button className="bg-gray-800 text-white px-6 py-3 rounded-full flex items-center space-x-2 hover:bg-gray-700 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 focus-visible:ring-gray-800 mt-10">
-              Learn More
-            </button>
           </div>
           <div className="text-gray-500 font-light space-y-6 text-sm leading-relaxed">
             <p className="mt-6 text-lg text-gray-600 font-light">
-              From local markets to international tables, our products have
-              reached over 20+ countries, sharing the taste and quality of our
-              offerings worldwide.
+              A commitment to our roots, a promise to the world.
             </p>
             <p>
-              Our export strategy focuses on maintaining product integrity,
-              ensuring timely deliveries, and building trusted partnerships in
-              foreign markets. We pride ourselves on delivering excellence
-              globally.
+              Our story is deeply rooted in the rich, natural landscapes of
+              India. While we begin by serving our local community, our vision
+              is to share this authentic goodness with the world. We are
+              building our export strategy on a foundation of product integrity,
+              reliability, and a commitment to forming trusted global
+              partnerships. Our ambition is to bring the wholesome, exquisite
+              taste of modern India to tables everywhere.
             </p>
           </div>
         </div>
