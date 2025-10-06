@@ -8,7 +8,7 @@ const Hero = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"], // animation starts when hero in view and ends after scroll
+    offset: ["start start", "end start"],
   });
 
   // Scale from 1 -> 0.95
@@ -25,7 +25,7 @@ const Hero = () => {
     >
       {/* Text Content */}
       <div className="mt-30 sm:mt-24 lg:mt-25 text-center">
-        <h1 className="text-3xl sm:text-5xl lg:text-5xl font-bold tracking-tight text-stone-800 capitalize leading-snug lg:leading-tight">
+        <h1 className="text-3xl sm:text-5xl lg:text-5xl font-bold tracking-tight text-stone-800 capitalize leading-snug lg:leading-tight ">
           Pure taste timeless nutrition
         </h1>
         <p className="text-md sm:text-xl lg:text-3xl text-stone-600 mt-0 lg:mt-2 max-w-md sm:max-w-2xl lg:max-w-3xl mx-auto">
