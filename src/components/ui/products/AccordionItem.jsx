@@ -15,8 +15,9 @@ const AccordionItem = ({ title, children }) => {
         aria-expanded={isOpen}
         aria-controls={contentId}
       >
-        <span>{title}</span>
+        <span className="text-[#3D2B1F]">{title}</span>
         <ChevronDown
+        stroke="#3D2B1F"
           className={`w-5 h-5 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}

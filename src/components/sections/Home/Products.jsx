@@ -24,17 +24,17 @@ const Products = () => {
   }, []);
 
   return (
-    <section className="h-190 w-full flex flex-col items-center font-sans text-[#4a2c2a] px-4 py-2 overflow-hidden">
+    <section className="h-190 w-full flex flex-col items-center font-sans text-[#3D2B1F] px-4 py-2 overflow-hidden">
       <div className="w-full h-full flex flex-col items-center">
         {/* Heading */}
         <h1
-          className="relative z-10 text-4xl sm:text-4xl md:text-5xl font-bold mb-5 text-center animate-fadeInUp"
+          className="relative z-10 text-4xl md:text-5xl font-bold font-oakes-grostek text-[#3D2B1F] mb-5 text-center animate-fadeInUp "
           style={{ animationDelay: "100ms" }}
         >
           Healthy Food Future Ready
         </h1>
         <p
-          className="relative z-10 text-center text-sm sm:text-base text-gray-500 mb-8 max-w-md animate-fadeInUp"
+          className="relative z-10 text-center text-sm sm:text-base text-[#3D2B1F] mb-8 max-w-md animate-fadeInUp"
           style={{ animationDelay: "200ms" }}
         >
           Discover our premium selection of natural and wholesome products,
@@ -50,10 +50,10 @@ const Products = () => {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`text-sm md:text-base font-medium tracking-wider uppercase transition-all duration-300 px-4 py-2 rounded-full ${
+              className={`text-sm md:text-base font-medium tracking-wider  uppercase transition-all duration-300 px-4 py-2 rounded-full ${
                 activeCategory === category
-                  ? "bg-white text-[#4a2c2a] shadow-md"
-                  : "text-gray-500 hover:bg-[#4a2c2a] hover:text-[#fdfbf7]"
+                  ? "text-white bg-[#3D2B1F] shadow-md"
+                  : "text-gray-500 hover:text-white hover:bg-[#3D2B1F]"
               }`}
             >
               {category}
@@ -68,14 +68,6 @@ const Products = () => {
         >
           <ProductSlider products={filteredProducts} />
         </div>
-
-        {/* Explore Button */}
-        {/* <button
-          className="relative z-10 mt-2 px-10 py-3 bg-white rounded-full text-[#4a2c2a] font-semibold tracking-wider hover:shadow-lg transition-all duration-300 shadow-md animate-fadeInUp hover:bg-[#4a2c2a] hover:text-[#fdfbf7]"
-          style={{ animationDelay: "500ms" }}
-        >
-          EXPLORE ALL PRODUCTS
-        </button> */}
       </div>
     </section>
   );

@@ -71,7 +71,7 @@ const Dots = ({ color }) => (
 const WhyChooseUs = () => {
   return (
     <section className="relative min-h-full w-full flex justify-center items-center">
-      <div className="relative w-full max-w-6xl py-20 px-4 sm:px-6 lg:px-8 md:my-30 overflow-hidden bg-white rounded-3xl shadow-md">
+      <div className="relative w-full max-w-6xl py-20 px-4 sm:px-6 lg:px-8 md:my-30 overflow-hidden bg-white rounded-xl shadow-sm">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -81,7 +81,7 @@ const WhyChooseUs = () => {
           }}
           className="text-center mb-16 z-10 relative"
         >
-          <h2 className="text-4xl font-semibold text-gray-800">
+          <h2 className="text-4xl font-semibold text-[#3D2b1F]">
             Why Choose Bella Exotica?
           </h2>
         </motion.div>
@@ -97,7 +97,9 @@ const WhyChooseUs = () => {
             const IconComponent = feature.icon;
             const TitleAndDescription = () => (
               <div className="text-center">
-                <h3 className="font-semibold text-gray-700">{feature.title}</h3>
+                <h3 className="font-semibold text-[#3D2b1F]">
+                  {feature.title}
+                </h3>
                 <p className="text-sm text-gray-500">{feature.description}</p>
               </div>
             );

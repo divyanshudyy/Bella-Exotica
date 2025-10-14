@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { NavLink } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import CustomButton from "../ui/CustomButton";
 
 const Header = () => {
@@ -10,163 +11,123 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    // Lock/unlock scroll when menu toggles
-    if (menuOpen) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      document.body.classList.remove("overflow-hidden");
-    };
-  }, [menuOpen]);
-
-  const navLinks = [
-    { to: "/", label: "Home" },
-    { to: "/products", label: "Products" },
-    { to: "/technology", label: "Technology" },
-    { to: "/about", label: "About" },
-    { to: "/contact", label: "Contact" },
-  ];
+  // NavLink hover underline class
+  const navLinkClass = ({ isActive }) =>
+    `relative py-1 transition-all duration-300 ${
+      isActive
+        ? "text-[#3D2B1F] scale-105"
+        : "text-[#3D2B1F]/80 hover:text-[#3D2B1F] hover:scale-105"
+    } after:content-[''] after:absolute after:left-0 after:-bottom-0 after:h-[2px] after:bg-[#3D2B1F] after:transition-all after:duration-300 ${
+      isActive ? "after:w-full" : "after:w-0 hover:after:w-full"
+    }`;
 
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        opacity: { duration: 1.2, ease: "easeInOut" },
-        y: { duration: 0.8, ease: "easeOut" },
-      }}
-      className={`fixed z-100 top-0 left-0 right-0 h-auto flex items-center justify-between md:px-6 md:py-3 py-5 px-5 border-b border-black/10 ${
-        isScrolled
-          ? "backdrop-blur-md bg-white/30 shadow-sm transition-all duration-300 ease-in"
-          : "bg-transparent transition-all duration-300 ease-out"
-      }`}
-    >
-      {/* Left side (hamburger/close on mobile + nav on desktop) */}
-      <div className="flex items-center">
-        {/* Mobile Hamburger → Close */}
-        <div className="lg:hidden mr-4">
+    <>
+      {/* Mobile Menu Section */}
+      <div
+        className={`fixed top-0 left-0 w-full bg-[#fff9f5] z-50 transition-all duration-300 ${
+          menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+      >
+        <div className="flex flex-col items-center justify-center min-h-screen relative px-6 py-12">
+          {/* Close Button */}
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="relative w-8 h-6 flex flex-col justify-between items-center focus:outline-none"
+            onClick={() => setMenuOpen(false)}
+            className="absolute top-2 right-4 p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition"
           >
-            {/* Line 1 */}
-            <motion.span
-              animate={menuOpen ? { rotate: 45, y: 11 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="block w-8 h-[3px] bg-black border rounded-4xl"
-            />
-            {/* Line 2 */}
-            <motion.span
-              animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              className="block w-8 h-[2px] bg-black border rounded-4xl"
-            />
-            {/* Line 3 */}
-            <motion.span
-              animate={menuOpen ? { rotate: -45, y: -11 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="block w-8 h-[1px] bg-black border rounded-4xl"
-            />
+            <X size={28} className="text-[#3D2B1F]" />
+          </button>
+
+          {/* Mobile Nav */}
+          <motion.nav
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="flex flex-col gap-6 text-center text-2xl font-medium text-[#3D2B1F]"
+          >
+            <NavLink to="/" onClick={() => setMenuOpen(false)}>
+              Home
+            </NavLink>
+            <NavLink to="/products" onClick={() => setMenuOpen(false)}>
+              Products
+            </NavLink>
+            <NavLink to="/technology" onClick={() => setMenuOpen(false)}>
+              Technology
+            </NavLink>
+            <NavLink to="/about" onClick={() => setMenuOpen(false)}>
+              About
+            </NavLink>
+            <NavLink to="/contact" onClick={() => setMenuOpen(false)}>
+              Contact
+            </NavLink>
+            <NavLink to="/b2b" onClick={() => setMenuOpen(false)}>
+              <CustomButton text="Let's Collaborate" padding="px-6 py-3" />
+            </NavLink>
+          </motion.nav>
+        </div>
+      </div>
+
+      {/* Main Header */}
+      <header
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
+          isScrolled
+            ? "bg-[#fff9f5]/80 backdrop-blur-lg shadow-md"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto flex justify-between items-center h-16 px-5 md:px-0">
+          {/* Logo */}
+          <NavLink
+            to="/"
+            className="text-2xl font-bold text-[#3D2B1F] font-oakes-grotesk"
+          >
+            Bella Exotica
+          </NavLink>
+
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-8 font-medium font-oakes-grotesk">
+            <NavLink to="/" className={navLinkClass}>
+              Home
+            </NavLink>
+            <NavLink to="/products" className={navLinkClass}>
+              Products
+            </NavLink>
+            <NavLink to="/technology" className={navLinkClass}>
+              Technology
+            </NavLink>
+            <NavLink to="/about" className={navLinkClass}>
+              About
+            </NavLink>
+            <NavLink to="/contact" className={navLinkClass}>
+              Contact
+            </NavLink>
+          </nav>
+
+          {/* Desktop Button */}
+          <div className="hidden lg:block">
+            <NavLink to="/b2b">
+              <CustomButton
+                text="Let's Collaborate"
+                padding="px-4 py-1.5"
+                bgColor="bg-[#3D2B1F]"
+                textColor="text-white"
+              />
+            </NavLink>
+          </div>
+
+          {/* Mobile Menu Icon */}
+          <button
+            onClick={() => setMenuOpen(true)}
+            className="lg:hidden p-2 bg-white rounded-full shadow hover:bg-gray-100 transition"
+          >
+            <Menu size={24} className="text-[#3D2B1F]" />
           </button>
         </div>
-
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center space-x-10">
-          {navLinks.map(({ to, label }) => (
-            <NavLink
-              key={to}
-              to={to}
-              className={({ isActive }) =>
-                `text-md pb-1 border-b-2 ${
-                  isActive
-                    ? "text-[#8B5E34] border-[#8B5E34]"
-                    : "text-gray-600 border-transparent hover:text-[#8B5E34] transition-colors"
-                }`
-              }
-            >
-              {label}
-            </NavLink>
-          ))}
-        </nav>
-      </div>
-
-      {/* Logo */}
-      <div className="flex justify-center absolute left-1/2 md:right-1/2 -translate-x-1/2 md:translate-x-0">
-        <div className="text-center text-[#684627]">
-          <h2 className="font-bold text-[1.7rem] tracking-wider leading-3">
-            Bella
-          </h2>
-          <h2 className="font-normal tracking-wide text-lg">EXOTICA</h2>
-        </div>
-      </div>
-
-      {/* Right side CTA (desktop only) */}
-      <div className="hidden lg:flex justify-end">
-        <NavLink
-          to="/b2b" // target route
-          className={({ isActive }) => `${isActive ? "font-semibold" : ""}`}
-        >
-          <CustomButton
-            margin={"my-0"}
-            padding={"px-5 py-2"}
-            text={"Partner Now"}
-          />
-        </NavLink>
-      </div>
-
-      {/* Dark overlay when menu open */}
-      {menuOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={() => setMenuOpen(false)}
-          className="fixed inset-0z-0"
-        />
-      )}
-      {/* Mobile sliding menu */}
-      <motion.div
-        initial={{ x: "-100%" }}
-        animate={menuOpen ? { x: 0 } : { x: "-100%" }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="absolute top-full left-0 w-full min-h-svh bg-white shadow-md z-40 flex flex-col"
-      >
-        {/* Links */}
-        <nav className="flex flex-col divide-y divide-gray-200">
-          {navLinks.map(({ to, label }) => (
-            <NavLink
-              key={to}
-              to={to}
-              onClick={() => setMenuOpen(false)}
-              className={({ isActive }) =>
-                `px-6 py-6 text-lg ${
-                  isActive
-                    ? "text-[#8B5E34] font-semibold"
-                    : "text-gray-600 hover:text-[#8B5E34] bg-white shadow-md"
-                }`
-              }
-            >
-              {label}
-            </NavLink>
-          ))}
-        </nav>
-
-        {/* CTA inside menu */}
-        <div className="p-6">
-          <CustomButton
-            margin={"mt-2"}
-            padding={"px-10 py-3"}
-            text={"Partner Now"}
-            textSize={"text-md"}
-          />
-        </div>
-      </motion.div>
-    </motion.header>
+      </header>
+    </>
   );
 };
 

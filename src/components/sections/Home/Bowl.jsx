@@ -85,7 +85,7 @@ const Bowl = ({ category }) => {
         <motion.img
           src={category.imageUrl}
           alt={` ${category.name} with milk`}
-          className="absolute z-1 md:w-[70%]  object-contain drop-shadow-[0_10px_9px_rgba(0,0,0,0.5)] left-1/2 top-[60%] md:top-[58%] -translate-x-1/2 -translate-y-1/2"
+          className="absolute z-1 md:w-[70%]  object-contain left-1/2 top-[60%] md:top-[58%] -translate-x-1/2 -translate-y-1/2"
           variants={bowlVariants}
         />
         <motion.div
@@ -111,32 +111,24 @@ const Bowl = ({ category }) => {
 const Header = ({ categories, selectedCategory, onSelectCategory }) => {
   return (
     <header className="absolute top-0 left-0 w-full  py-6 z-10">
-      <h1 className="text-4xl md:text-5xl font-bold  text-stone-800 text-center Capitalize mb-4 ">
+      <h1 className="text-4xl md:text-5xl text-[#3D2B1F] text-center Capitalize mb-4  font-oakes-grostek font-[700]">
         Unleash Your Morning.
       </h1>
-      <nav className="flex justify-center items-center space-x-6 md:space-x-10 px-4">
+      <nav
+        className="relative z-10 flex flex-wrap items-center justify-center gap-2 md:gap-4 mb-2 animate-fadeInUp"
+        style={{ animationDelay: "300ms" }}
+      >
         {categories.map((category) => (
           <button
             key={category.id}
             onClick={() => onSelectCategory(category)}
-            className={`group relative text-xs md:text-sm tracking-widest font-semibold uppercase transition-colors duration-300 pb-1 
-              ${
-                selectedCategory.id === category.id
-                  ? "text-black scale-[1.2] transition-transform ease-in-out duration-500"
-                  : "text-gray-400 hover:text-gray-700"
-              }`}
+            className={`text-sm md:text-md uppercase font-semibold tracking-wider transition-all duration-300 px-4 py-2 rounded-full ${
+              selectedCategory.id === category.id
+                ? "text-white bg-[#3D2B1F] shadow-md scale-[1.05] transition-transform ease-in-out duration-500"
+                : "text-gray-500 hover:bg-[#4a2c2a] hover:text-[#fdfbf7]"
+            }`}
           >
             {category.name}
-
-            {/* Animated underline */}
-            <span
-              className={`absolute bottom-0 left-0 h-[2px] bg-black transition-all duration-500 ease-in-out
-                ${
-                  selectedCategory.id === category.id
-                    ? "w-full"
-                    : "w-0 group-hover:w-full"
-                }`}
-            ></span>
           </button>
         ))}
       </nav>

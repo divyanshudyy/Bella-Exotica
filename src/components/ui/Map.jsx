@@ -137,12 +137,12 @@ const Map = () => {
       </MapContainer>
 
       {/* Map Controls */}
-      <div className="absolute top-0 left-0 right-0 p-4 z-[500] pointer-events-none">
+      <div className="absolute top-0 left-0 right-0 p-4  pointer-events-none">
         <div className="flex justify-between items-start w-full max-w-7xl mx-auto">
           {/* Left Controls */}
           <div className="pointer-events-auto">
             <header className="absolute top-0 left-0  p-4 sm:p-6 lg:p-2 ">
-              <h1 className="text-xl sm:text-2xl font-semibold text-gray-800  backdrop-blur-sm px-4 py-2 rounded-full shadow">
+              <h1 className="text-xl sm:text-2xl font-semibold text-gray-800 backdrop-blur-sm px-4 py-2 rounded-full shadow">
                 Ajapar, Kutch, Gujarat
               </h1>
             </header>
@@ -179,7 +179,7 @@ const Map = () => {
       </div>
 
       {/* Attribution */}
-      <div className="absolute bottom-1 right-2 z-[11] bg-white/70 backdrop-blur-sm px-2 py-0.5 rounded text-xs text-gray-700">
+      <div className="absolute bottom-1 right-2  bg-white/70 backdrop-blur-sm px-2 py-0.5 rounded text-xs text-gray-700">
         {TILE_LAYER_ATTRIBUTION.replace(/<a[^>]*>|<\/a>/g, "")}
       </div>
     </div>

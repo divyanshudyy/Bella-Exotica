@@ -6,7 +6,7 @@ import B2bContent from "../sections/b2b/B2bContent";
 
 const B2BPage = () => {
   return (
-    <main className="py-18 px-10 flex flex-col gap-20">
+    <main className="py-16 flex flex-col gap-10 overflow-hidden">
       <PageHero
         image={"/images/contact/contact-banner.png"}
         text={"Collaboration"}

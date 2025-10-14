@@ -164,9 +164,11 @@ const ProductDrawer = ({
       ></div>
       <div
         ref={drawerRef}
-        className={`fixed bottom-0 inset-x-2 sm:inset-x-4 md:inset-x-8 h-[78vh] bg-white rounded-t-xl shadow-2xl transition-all duration-300 ease-out transform flex flex-col origin-bottom ${
-          isVisible ? "translate-y-0 scale-100" : "translate-y-full scale-97"
-        }`}
+        className={`fixed bottom-0 inset-x-2 sm:inset-x-2 md:inset-x-40 
+    h-[75vh] sm:h-[85vh] 
+    bg-white rounded-t-xl shadow-2xl transition-all duration-300 ease-out transform flex flex-col origin-bottom ${
+      isVisible ? "translate-y-0 scale-100" : "translate-y-full scale-97"
+    }`}
       >
         <div className="flex-1 overflow-y-auto p-3.5 sm:p-5 md:p-6 no-scrollbar">
           <div className="max-w-5xl mx-auto">
@@ -176,7 +178,7 @@ const ProductDrawer = ({
                 ref={closeButtonRef}
                 aria-label="Close"
                 onClick={onClose}
-                className="text-gray-500 hover:text-gray-800 transition-colors p-1.5 rounded-full hover:bg-gray-100 focus:outline-none"
+                className="text-gray-500 hover:text-[#3D2B1F] transition-colors p-1.5 rounded-full hover:bg-gray-100 focus:outline-none"
               >
                 <ArrowLeft className="w-5 h-5" />
               </button>
@@ -185,7 +187,7 @@ const ProductDrawer = ({
                 onClick={() =>
                   console.log("Sharing product:", activeProduct?.name)
                 }
-                className="text-gray-500 hover:text-gray-800 transition-colors p-1.5 rounded-full hover:bg-gray-100 focus:outline-none"
+                className="text-gray-500 hover:text-[#3D2B1F] transition-colors p-1.5 rounded-full hover:bg-gray-100 focus:outline-none"
               >
                 <Share className="w-5 h-5" />
               </button>
@@ -214,20 +216,20 @@ const ProductDrawer = ({
               <div>
                 <h2
                   id="product-drawer-title"
-                  className="text-xl sm:text-2xl font-bold text-gray-800"
+                  className="text-xl sm:text-2xl font-bold text-[#3D2B1F] "
                 >
                   {activeProduct.name}
                 </h2>
-                <span className="block mt-1.5 text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                <span className="block mt-1.5 text-xs sm:text-sm font-medium text-[#3D2B1F]/60 uppercase tracking-wider">
                   {activeProduct.category}
                 </span>
 
                 {totalReviews > 0 && (
                   <div className="flex items-center mt-2.5 gap-1">
-                    <span className="font-bold text-gray-800 text-sm">
+                    <span className="font-bold text-black/70 text-sm">
                       {averageRating.toFixed(1)} / 5.0
                     </span>
-                    <Star className="w-5 h-5 text-yellow-400" />
+                    <Star className="w-5 h-5 text-yellow-400" fill="#FBCC1E" />
                     <a
                       href="#reviews-section"
                       className="text-gray-500 text-sm ml-1 hover:underline"
@@ -257,15 +259,15 @@ const ProductDrawer = ({
                   )}
                 </div>
 
-                <p className="mt-3 sm:mt-5 text-sm sm:text-base text-gray-600 leading-relaxed">
+                <p className="mt-3 sm:mt-5 text-sm sm:text-base text-gray-800 leading-relaxed">
                   {activeProduct.description}
                 </p>
 
                 {/* Accordions */}
-                <div className="mt-5 sm:mt-7 pt-5 sm:pt-7 border-t border-gray-200 space-y-2">
+                <div className="mt-5 sm:mt-3 pt-5 sm:pt-7 border-t border-gray-200 space-y-5">
                   {activeProduct.ingredients && (
                     <AccordionItem title="Ingredients">
-                      <ul className="list-disc list-inside text-gray-600 text-sm space-y-1 pl-2">
+                      <ul className="list-disc list-inside text-gray-800 text-sm space-y-1 pl-2">
                         {activeProduct.ingredients.map((item, index) => (
                           <li key={index}>{item}</li>
                         ))}
@@ -295,7 +297,7 @@ const ProductDrawer = ({
               id="reviews-section"
               className="mt-6 pt-5 sm:mt-8 sm:pt-6 border-t border-gray-200"
             >
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-3.5">
+              <h3 className="text-base sm:text-lg font-semibold text-[#3D2B1F] mb-3.5">
                 Ratings & Reviews
               </h3>
               {totalReviews > 0 ? (
@@ -312,6 +314,7 @@ const ProductDrawer = ({
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
+                            fill="#FBCC1E"
                             className={`w-5.5 h-5.5 ${
                               i < Math.round(averageRating)
                                 ? "text-yellow-400"
@@ -339,7 +342,7 @@ const ProductDrawer = ({
             </div>
 
             {/* Write Review Section */}
-            <div className="mt-6 pt-5 sm:mt-8 sm:pt-6">
+            {/* <div className="mt-6 pt-5 sm:mt-8 sm:pt-6">
               <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-3.5">
                 Write a Review
               </h3>
@@ -413,18 +416,18 @@ const ProductDrawer = ({
                   </div>
                   <button
                     type="submit"
-                    className="inline-flex justify-center py-2 px-3.5 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                    className="inline-flex justify-center py-2 px-3.5 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-[#3D2B1F]  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                   >
                     Submit Review
                   </button>
                 </form>
               </div>
-            </div>
+            </div> */}
 
             {/* Related Products */}
             {relatedProducts.length > 0 && (
-              <div className="mt-6 pt-5 sm:mt-8 sm:pt-6">
-                <h3 className="text-sm sm:text-base font-semibold text-gray-800 mb-3.5">
+              <div className="mt-0-pt-0 sm:mt-5 sm:pt-0">
+                <h3 className="text-sm sm:text-lg font-semibold text-[#3D2B1F] mb-3.5">
                   You Might Also Like
                 </h3>
                 <div className="flex overflow-x-auto space-x-3.5 pb-3 no-scrollbar">
@@ -442,9 +445,9 @@ const ProductDrawer = ({
         </div>
 
         {/* Footer */}
-        <footer className="p-3.5 border border-gray-300 shrink-0 bg-white z-10">
-          <div className="max-w-5xl mx-auto flex items-center justify-between gap-2.5 sm:gap-3.5">
-            <div className="flex-shrink-0">
+        <footer className="p-3 m-2 border border-gray-300 rounded-xl bg-gray-100 z-10">
+          <div className="max-w-5xl mx-auto flex items-center justify-between ">
+            {/* <div className="flex-shrink-0">
               <div className="flex items-center border border-gray-300 rounded-md justify-center">
                 <button
                   onClick={handleDecrement}
@@ -474,21 +477,23 @@ const ProductDrawer = ({
                   Only {stockLimit} available.
                 </p>
               )}
-            </div>
+            </div> */}
             <div className="flex-grow flex items-stretch gap-2.5">
               <button
                 onClick={() => onAddToCart(activeProduct, quantity)}
-                className="flex-1 bg-gray-800 text-white font-bold py-2.5 px-3.5 rounded-md flex items-center justify-center gap-1.5 hover:bg-gray-700 transition-colors focus:outline-none disabled:bg-gray-400 disabled:cursor-not-allowed"
+                className="flex-1 bg-[#3D2B1F] text-white font-bold py-2.5 px-3.5 rounded-md flex items-center justify-center gap-1.5 transition-colors focus:outline-none disabled:bg-gray-400 disabled:cursor-not-allowed"
                 disabled={isAddToCartDisabled}
               >
-                <ShoppingCart className="w-5 h-5" />
-                <span className="hidden sm:inline">Add to Cart</span>
+                {/* <ShoppingCart className="w-5 h-5" /> */}
+                <span className="hidden sm:inline text-white">
+                  Visit Amazon
+                </span>
               </button>
               <button
-                className="flex-1 bg-white text-gray-800 border border-gray-300 font-bold py-2.5 px-3.5 rounded-md flex items-center justify-center hover:bg-gray-50 transition-colors focus:outline-none disabled:bg-gray-200 disabled:text-gray-400 disabled:border-gray-300 disabled:cursor-not-allowed"
+                className="flex-1 bg-white text-[#3D2F1F] border border-gray-300 font-bold py-2.5 px-3.5 rounded-md flex items-center justify-center hover:bg-gray-50 transition-colors focus:outline-none disabled:bg-gray-200 disabled:text-gray-400 disabled:border-gray-300 disabled:cursor-not-allowed"
                 disabled={isAddToCartDisabled}
               >
-                <span>Buy Now</span>
+                <span>Visit Flipkart</span>
               </button>
             </div>
           </div>

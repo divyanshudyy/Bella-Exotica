@@ -15,7 +15,7 @@ const ReviewCard = ({ review }) => {
           ))}
         </div>
       </div>
-      <p className="text-sm text-gray-600 mb-2">
+      <p className="text-sm text-[#3D2b1F] mb-2">
         <span className="font-semibold text-gray-800">{review.author}</span>
         <span className="mx-2 text-gray-400">|</span>
         <span>

@@ -50,13 +50,13 @@ const Counter = () => {
     >
       <motion.h1
         variants={itemVariants}
-        className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight"
+        className="text-4xl md:text-5xl text-[#3D2B1F] font-oakes-grostek font-[700] capitalize"
       >
         Purpose in Every Pack.
       </motion.h1>
       <motion.p
         variants={itemVariants}
-        className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto"
+        className="mt-4 text-sm sm:text-base text-[#3D2B1F] max-w-2xl mx-auto"
       >
         We exist to create delicious snacks that are better for you and the
         planet. Every pack you purchase helps us rescue good food from going to
@@ -69,7 +69,7 @@ const Counter = () => {
       >
         <div>
           <Link to="/products">
-            <CustomButton text="Shop Our Products" margin="mb-5 " />
+            <CustomButton text="Our Products" margin="mb-5 " />
           </Link>
         </div>
         <div>
@@ -81,7 +81,7 @@ const Counter = () => {
 
       <motion.div
         variants={cardVariants}
-        className="mt-12 md:mt-16 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 md:p-12 max-w-5xl mx-auto"
+        className="mt-12 md:mt-16 bg-white/80 backdrop-blur-xs rounded-2xl shadow-sm p-8 md:p-12 max-w-5xl mx-auto"
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4">
           <CountUp endValue={1005} label="Products Bought" suffix="+" />

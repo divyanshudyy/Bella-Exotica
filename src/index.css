@@ -1,37 +1,41 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Melodrama";
-  src: url("/src/assets/fonts/melodrama/Melodrama-Variable.ttf")
-    format("truetype");
-  font-weight: 100 900; /*  tells browser it's a variable range */
+  font-family: "Oakes Grotesk";
+  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Light.ttf") format("truetype");
+  font-weight: 300; /* Light */
   font-style: normal;
   font-display: swap;
 }
-/* 1. Self-hosted font-face (if you have TTF/OTF/WOFF2 locally) */
+
 @font-face {
-  font-family: "PlayfairDisplay";
-  src: url("/src/assets/fonts/playfair/PlayfairDisplay-Italic.ttf")
-    format("truetype");
-  font-weight: 400; /* adjust if you have multiple weights */
-  font-style: italic;
+  font-family: "Oakes Grotesk";
+  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Regular.ttf") format("truetype");
+  font-weight: 400; /* Regular */
+  font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Playfair Display";
-  src: url("/src/assets/fonts/playFair/PlayfairDisplay-Italic-VariableFont_wght.ttf")
-    format("truetype-variations");
-  font-weight: 100 900; /* full variable range */
-  font-style: italic; /* italic axis */
+  font-family: "Oakes Grotesk";
+  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Medium.ttf") format("truetype");
+  font-weight: 500; /* Medium */
+  font-style: normal;
   font-display: swap;
 }
 
-/* 4. Tailwind v4 theme tokens */
+@font-face {
+  font-family: "Oakes Grotesk";
+  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Semibold.ttf") format("truetype");
+  font-weight: 600; /* SemiBold */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Example of how to define it as a theme variable */
 @theme {
+  --font-oakes-grotesk: "Oakes Grotesk", sans-serif;
   --font-playfair: "Playfair Display", serif;
-  --font-melodrama: "Melodrama", serif;
-  --font-boska: "Boska", serif;
 }
 
 * {

@@ -55,7 +55,7 @@ export const REVIEWS = [
     rating: 5.0,
     author: {
       name: "Ananya Verma",
-      title: "Consultant, Gurugram",
+      title: "Gurugram, India",
       avatarUrl: "https://picsum.photos/id/1027/100/100",
     },
   },
@@ -66,7 +66,7 @@ export const REVIEWS = [
     rating: 4.7,
     author: {
       name: "Vikram Singh",
-      title: "Parent of Two, Jaipur",
+      title: "Jaipur, India",
       avatarUrl: "https://picsum.photos/id/1005/100/100",
     },
   },
@@ -77,7 +77,7 @@ export const REVIEWS = [
     rating: 4.8,
     author: {
       name: "Kavita Pillai",
-      title: "Yoga Instructor, Mumbai",
+      title: "Mumbai, India",
       avatarUrl: "https://picsum.photos/id/1011/100/100",
     },
   },
@@ -88,7 +88,7 @@ export const REVIEWS = [
     rating: 5.0,
     author: {
       name: "Aarav Iyer",
-      title: "Software Engineer, Bengaluru",
+      title: "Bengaluru, India",
       avatarUrl: "https://picsum.photos/id/1012/100/100",
     },
   },
@@ -99,7 +99,7 @@ export const REVIEWS = [
     rating: 4.9,
     author: {
       name: "Rahul Deshpande",
-      title: "Fitness Enthusiast, Pune",
+      title: "Pune, India",
       avatarUrl: "https://picsum.photos/id/1013/100/100",
     },
   },
@@ -110,7 +110,7 @@ export const REVIEWS = [
     rating: 4.6,
     author: {
       name: "Priya Sharma",
-      title: "Dietitian, Delhi",
+      title: "Delhi, India",
       avatarUrl: "https://picsum.photos/id/1014/100/100",
     },
   },
@@ -121,7 +121,7 @@ export const REVIEWS = [
     rating: 4.9,
     author: {
       name: "Rohan Gupta",
-      title: "Architect, Kolkata",
+      title: "Kolkata, India",
       avatarUrl: "https://picsum.photos/id/1015/100/100",
     },
   },
@@ -132,7 +132,7 @@ export const REVIEWS = [
     rating: 5.0,
     author: {
       name: "Meera Krishnan",
-      title: "Home Baker, Chennai",
+      title: "Chennai, India",
       avatarUrl: "https://picsum.photos/id/1025/100/100",
     },
   },

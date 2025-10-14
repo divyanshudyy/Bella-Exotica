@@ -183,7 +183,7 @@ const ListingProducts = () => {
   const cartItemCount = cartItems.length;
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
+    <div className="min-h-screen bg-white shadow-md font-oakes-grostek rounded-2xl">
       <ProductDrawer
         product={selectedProduct}
         isOpen={!!selectedProduct}
@@ -192,20 +192,20 @@ const ListingProducts = () => {
         onAddToCart={handleAddToCart}
         cartItems={cartItems}
       />
-      <CartDrawer
+      {/* <CartDrawer
         isOpen={isCartOpen}
         onClose={handleCloseCart}
         cartItems={cartItems}
         onUpdateQuantity={handleUpdateCartQuantity}
-      />
+      /> */}
 
       <header
-        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 transition-all duration-1000 ease-out ${
+        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-6 transition-all duration-1000 ease-out ${
           isPageLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}
       >
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center">
-          Products Collection
+        <h1 className="text-xl sm:text-5xl font-bold text-[#3D2B1F] text-center font-oakes-grotesk ">
+          Our Collection
         </h1>
         <CategoryFilters
           categories={CATEGORIES}
@@ -221,50 +221,59 @@ const ListingProducts = () => {
         style={{ transitionDelay: "200ms" }}
       >
         {/* --- Controls Bar --- */}
-        <div className="grid grid-cols-2 md:grid-cols-4 items-center gap-4 my-6 sm:my-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 items-center gap-4 my-2 sm:mb-8">
           {/* Sort Dropdown */}
-          <SortDropdown sortOrder={sortOrder} setSortOrder={setSortOrder} />
+          <div className="w-full md:col-span-1">
+            <SortDropdown sortOrder={sortOrder} setSortOrder={setSortOrder} />
+          </div>
 
           {/* Search Bar */}
-          <div className="relative w-full col-span-2 order-3 md:order-none md:col-span-2">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search />
-            </div>
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search products..."
-              className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-full bg-white text-gray-700 focus:outline-none focus:ring-0 transition"
-            />
-            {searchTerm && (
-              <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
-                <button
-                  onClick={() => setSearchTerm("")}
-                  className="p-1 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 focus:outline-none"
-                  aria-label="Clear search"
-                >
-                  <X />
-                </button>
+          <div className="relative w-full md:col-span-3 order-2 md:order-none">
+            <div className="relative w-full transition-transform duration-300 ease-out focus-within:scale-105">
+              {/* Left icon */}
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Search />
               </div>
-            )}
+
+              {/* Input */}
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search products..."
+                className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-full bg-white text-[#3D2B1F] focus:outline-none focus:ring-0 transition-colors duration-300 ease-out"
+              />
+
+              {/* Clear button */}
+              {searchTerm && (
+                <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
+                  <button
+                    onClick={() => setSearchTerm("")}
+                    className="p-1 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 focus:outline-none transition-colors duration-300 ease-out"
+                    aria-label="Clear search"
+                  >
+                    <X />
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
 
-          {/* Cart Button */}
-          <div className="justify-self-end">
-            <button
-              onClick={handleOpenCart}
-              className="relative p-2 rounded-full hover:bg-gray-100 transition-colors focus:outline-none"
-              aria-label={`Open cart with ${cartItemCount} items`}
-            >
-              <ShoppingCart className="text-gray-700" />
-              {cartItemCount > 0 && (
-                <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center pointer-events-none">
-                  {cartItemCount}
-                </span>
-              )}
-            </button>
-          </div>
+          {/* Optional Cart Button */}
+          {/* <div className="justify-self-end">
+    <button
+      onClick={handleOpenCart}
+      className="relative p-2 rounded-full hover:bg-gray-100 transition-colors focus:outline-none"
+      aria-label={`Open cart with ${cartItemCount} items`}
+    >
+      <ShoppingCart className="text-gray-700" />
+      {cartItemCount > 0 && (
+        <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center pointer-events-none">
+          {cartItemCount}
+        </span>
+      )}
+    </button>
+  </div> */}
         </div>
 
         <ProductGrid

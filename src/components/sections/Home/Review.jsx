@@ -30,11 +30,11 @@ const ReviewCard = ({ review, isActive }) => {
   return (
     <div
       className={`bg-white rounded-2xl p-6  flex flex-col justify-between h-[360px] w-80 transition-opacity duration-300 shadow-md ${
-        !isActive ? "opacity-60" : ""
+        !isActive ? "opacity-80" : ""
       }`}
     >
       <div>
-        <p className="text-xs font-bold tracking-widest text-gray-400 uppercase">
+        <p className="text-xs font-bold tracking-widest text-gray-400 uppercase ">
           {review.category}
         </p>
         <p className="mt-4 text-lg sm:text-[1.1rem] text-gray-800 leading-snug font-medium ">
@@ -92,11 +92,11 @@ const Review = ({ reviews }) => {
 
   return (
     <>
-      <section className=" text-center max-w-5xl mx-auto  h-full">
-        <h1 className="text-4xl sm:text-5xl md:text-5xl font-bold text-slate-900 tracking-tight leading-snug">
+      <section className="text-center max-w-5xl mx-auto  h-full">
+        <h1 className="text-4xl md:text-5xl font-bold font-oakes-grostek text-[#3D2b1F] leading-snug">
           Read reviews,
         </h1>
-        <h2 className="text-4xl sm:text-5xl md:text-5xl font-bold text-slate-900 tracking-tight leading-snug">
+        <h2 className="text-4xl md:text-5xl font-oakes-grostek font-bold text-[#3D2b1F] tracking-tight leading-snug">
           choose with confidence.
         </h2>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-slate-600 text-base sm:text-xl">
@@ -106,7 +106,7 @@ const Review = ({ reviews }) => {
             </span>
             <Star className="w-5 h-5 text-yellow-400" />
           </div>
-          <span className="text-2xl sm:text-2xl font-bold text-slate-800">
+          <span className="text-2xl sm:text-2xl font-bold text-[#3D2b1F]">
             Bella Exotica
           </span>
           <span className="w-full sm:w-auto text-base">
@@ -189,7 +189,7 @@ const Review = ({ reviews }) => {
         </div>
         <button
           onClick={handleNext}
-          className="p-2 text-slate-600 hover:text-slate-900 transition-colors"
+          className="p-2 text-slate-600 hover:text-[#3D2B1F] transition-colors"
           aria-label="Next review"
         >
           <ChevronRight className="h-6 w-6" />

@@ -8,7 +8,7 @@ const AboutPage = () => {
   return (
     <>
       <SeoHead page="about" />
-      <main className="py-18 px-10 flex flex-col gap-10">
+      <main className="py-16 flex flex-col gap-10 overflow-hidden">
         <PageHero image={"/images/about/about-banner.png"} text={"About"} />
         <AboutStory />
         <AboutProcess />

@@ -18,16 +18,16 @@ const HomePage = () => {
     <>
       <SeoHead page="home" />
       {/* <Schema /> */}
-      <main className="">
+      <main className="overflow-hidden">
         <Hero />
         <Showcase />
         <Quote />
         <Products />
         <Counter />
         <Highlight />
+        <Certification />
         <ChooseUs />
         <Review reviews={REVIEWS} />
-        <Certification />
       </main>
     </>
   );

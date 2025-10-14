@@ -62,27 +62,27 @@ const ProductCard = ({ product, onQuickView, index }) => {
       </div>
       <div className="p-2.5 sm:p-3">
         <div className="flex justify-between items-start">
-          <h3 className="text-xs sm:text-sm font-semibold text-gray-800 mb-0.5">
+          <h3 className="text-xs sm:text-lg font-semibold text-[#3D2b1F] mb-0.5">
             {product.name}
           </h3>
           <div className="flex-shrink-0 pl-1">
             {product.originalPrice ? (
               <div className="flex items-baseline justify-end gap-1">
-                <p className="text-gray-800 font-bold text-xs sm:text-sm">
+                <p className="text-gray-900 font-bold text-xs sm:text-lg">
                   {formatPrice(product.price)}
                 </p>
-                <p className="text-gray-400 text-[9px] line-through">
+                <p className="text-gray-600 text-[15px] font-semibold line-through">
                   {formatPrice(product.originalPrice)}
                 </p>
               </div>
             ) : (
-              <p className="text-gray-800 font-bold text-xs sm:text-sm text-right">
+              <p className="text-gray-800 font-bold text-xs sm:text-lg text-right">
                 {formatPrice(product.price)}
               </p>
             )}
           </div>
         </div>
-        <p className="text-[9px] sm:text-xs text-gray-500 mb-1 capitalize">
+        <p className="text-[9px] sm:text-sm font-medium text-gray-500 mb-1 capitalize">
           {product.category}
         </p>
       </div>

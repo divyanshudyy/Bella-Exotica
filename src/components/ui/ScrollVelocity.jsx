@@ -93,7 +93,7 @@ export const ScrollVelocity = ({
   }
 
   return (
-    <section className="w-full overflow-hidden py-10 relative">
+    <section className="w-full overflow-hidden py-5 relative">
       {/* Fade overlay on the left */}
       <div
         aria-hidden

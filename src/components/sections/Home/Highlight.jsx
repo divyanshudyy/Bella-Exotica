@@ -21,62 +21,64 @@ const Highlight = () => {
 
       {/* Almond Jar */}
       <motion.div
-        className="absolute top-[37.5%] left-[24%] text-[#464A45]"
+        className="absolute top-[37.5%] left-[24%] "
         variants={fadeIn}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <p className="capitalize tracking-normal text-4xl font-bold">
+        <p className="capitalize tracking-normal text-4xl font-bold text-[#3D2B1F]">
           No Refined Sugar
         </p>
-        <p className="text-3xl tracking-tighter font-semibold">
+        <p className="text-3xl tracking-tighter font-semibold text-[#3D2B1F]">
           With Pure Delight
         </p>
       </motion.div>
 
       {/* Muesli Bowl */}
       <motion.div
-        className="absolute top-[32%] right-[8%] text-[#464A45]"
+        className="absolute top-[32%] right-[8%] "
         variants={fadeIn}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.4 }}
       >
-        <p className="capitalize tracking-normal text-4xl font-bold">
+        <p className="capitalize tracking-normal text-4xl font-bold text-[#3D2B1F]">
           Purely Organic
         </p>
-        <p className="text-3xl tracking-tighter font-semibold text-end">
+        <p className="text-3xl tracking-tighter font-semibold text-end text-[#3D2B1F]">
           With Nature
         </p>
       </motion.div>
 
       {/* Corn Flakes */}
       <motion.div
-        className="absolute top-[54.5%] right-[17%] text-[#464A45]"
+        className="absolute top-[54.5%] right-[17%] "
         variants={fadeIn}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.6 }}
       >
-        <p className="capitalize tracking-normal text-4xl font-bold">
+        <p className="capitalize tracking-normal text-4xl font-bold text-[#3D2B1F]">
           High Protein & Fibre
         </p>
-        <p className="text-3xl tracking-tighter font-semibold text-end">Rich Flavour</p>
+        <p className="text-3xl tracking-tighter font-semibold text-end text-[#3D2B1F]">
+          Rich Flavour
+        </p>
       </motion.div>
 
       {/* Tasty Oats */}
       <motion.div
-        className="absolute bottom-[32%] left-[32%] text-[#464A45]"
+        className="absolute bottom-[32%] left-[32%] "
         variants={fadeIn}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.8 }}
       >
-        <p className="capitalize tracking-normal text-4xl font-bold">
+        <p className="capitalize tracking-normal text-4xl font-bold text-[#3D2B1F]">
           100% Whole Grains
         </p>
-        <p className="text-3xl tracking-tighter font-semibold">
+        <p className="text-3xl tracking-tighter font-semibold  text-[#3D2B1F]">
           Added Minerals
         </p>
       </motion.div>

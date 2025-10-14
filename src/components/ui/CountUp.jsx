@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useInView, animate } from "motion/react";
 
-const CountUp = ({ endValue, duration = 2, label, suffix = "" }) => {
+const CountUp = ({ endValue, duration = 1.5, label, suffix = "" }) => {
   const countRef = useRef(null);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "0px 0px -50px 0px" });
@@ -28,7 +28,7 @@ const CountUp = ({ endValue, duration = 2, label, suffix = "" }) => {
 
   return (
     <div ref={ref} className="flex flex-col items-center justify-center p-4">
-      <span className="text-4xl sm:text-5xl font-bold text-amber-900 tracking-tight">
+      <span className="text-4xl sm:text-5xl font-bold text-[#3D2B1F] ">
         <span ref={countRef}>0</span>
         {suffix}
       </span>

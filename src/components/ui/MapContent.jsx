@@ -4,23 +4,22 @@ import Map from "./Map";
 const MapContent = ({ heading, para }) => {
   return (
     <section className="h-auto w-full">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+        {/* Heading + Paragraph */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center ">
-          <h2 className="text-4xl sm:text-5xl font-bold text-brand-dark-brown max-w-md">
+          <h2 className="text-4xl sm:text-4xl md:text-5xl font-bold text-[#3D2B1F] font-oakes-grotesk max-w-full md:max-w-lg px-5">
             {heading}
           </h2>
-          <div className="mt-6 md:mt-0 text-right flex flex-col items-end">
-            <p className=" font-normal text-sm max-w-xs mb-4">
+          <div className="mt-4 md:mt-0 flex flex-col items-start md:items-end lg:text-right">
+            <p className="text-md sm:text-base max-w-full sm:max-w-sm text-gray-700 mb-4 px-5 md:px-0">
               {para}
             </p>
-            {/* <button className="bg-gray-800 text-white px-6 py-3 rounded-full flex items-center  justify-end space-x-2 hover:bg-gray-700 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 focus-visible:ring-gray-800 ">
-              Learn more <ArrowRight className="w-4 h-4" />
-            </button> */}
           </div>
         </div>
 
-        <div className="h-[800px] w-full flex items-start justify-center mt-10">
-          <div className="w-[100%] h-[80%] z-10 flex flex-col relative shadow-2xl rounded-lg overflow-hidden">
+        {/* Map Container */}
+        <div className="w-full flex justify-center mt-6 sm:mt-8 md:mt-10">
+          <div className="w-full sm:w-[95%] md:w-[100%] h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[80vh] flex flex-col relative shadow-lg rounded-2xl overflow-hidden">
             <div className="flex-grow">
               <Map />
             </div>

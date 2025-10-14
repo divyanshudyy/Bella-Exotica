@@ -25,10 +25,10 @@ const Hero = () => {
     >
       {/* Text Content */}
       <div className="mt-30 sm:mt-24 lg:mt-25 text-center">
-        <h1 className="text-3xl sm:text-5xl lg:text-5xl font-bold tracking-tight text-stone-800 capitalize leading-snug lg:leading-tight ">
+        <h1 className="text-3xl sm:text-5xl lg:text-5xl text-[#3D2B1F] capitalize font-oakes-grostek font-[700]">
           Pure taste timeless nutrition
         </h1>
-        <p className="text-md sm:text-xl lg:text-3xl text-stone-600 mt-0 lg:mt-2 max-w-md sm:max-w-2xl lg:max-w-3xl mx-auto">
+        <p className="text-md sm:text-xl lg:text-[25px] text-[#3D2B1F] mt-0 lg:mt-2 max-w-md sm:max-w-2xl lg:max-w-3xl mx-auto font-oakes-grostek">
           Premium Organic Cereals, Granolas & Nuts
         </p>
       </div>
