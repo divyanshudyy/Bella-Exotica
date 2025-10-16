@@ -1,100 +1,98 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import { motion } from "motion/react";
 
 const storyItemsData = [
   {
-    title: "ADVANCED TECHNOLOGY",
+    title: "Advanced Technology",
     description:
-      "We use advanced freeze-drying and dehydration systems that gently remove moisture while preserving nutrients, flavor, and aroma — keeping food as close to fresh as possible.\n\nOur precision technology works under low temperatures and vacuum conditions, protecting vitamins, antioxidants, and bioactive compounds often lost in conventional methods. With real-time monitoring, automated quality checks, and sustainable energy practices, we deliver lighter, crisper, nutrient-rich products that last longer while retaining natural taste, color, and texture.",
+      "We use advanced freeze-drying and dehydration systems that gently remove moisture while preserving nutrients, flavor, and aroma — keeping food as close to fresh as possible.\n\nOur precision technology works under low temperatures and vacuum conditions, protecting vitamins, antioxidants, and bioactive compounds often lost in conventional methods.\n\n With real-time monitoring, automated quality checks, and sustainable energy practices, we deliver lighter, crisper, nutrient-rich products that last longer while retaining natural taste, color, and texture.",
     imageUrl: "/images/about/Morning Vibe_2.png",
     imageAlt: "Advanced freeze-drying technology system",
   },
   {
-    title: "NUTRIENT RETENTION",
+    title: "Nutrient Retention",
     description:
-      "Our process locks in vitamins, minerals, and antioxidants, retaining up to 95% of nutritional value and offering food as wholesome as its natural form.\n\nBy combining low temperatures with vacuum dehydration, we gently remove moisture while safeguarding Vitamin C, polyphenols, and natural enzymes. This ensures food retains its health benefits, offering consumers a nutrient-dense and wholesome experience as close to fresh as possible.",
+      "Our process locks in vitamins, minerals, and antioxidants, retaining up to 95% of nutritional value and offering food as wholesome as its natural form.\n\nBy combining low temperatures with vacuum dehydration, we gently remove moisture while safeguarding Vitamin C, polyphenols, and natural enzymes.\n\n This ensures food retains its health benefits, offering consumers a nutrient-dense and wholesome experience as close to fresh as possible.",
     imageUrl: "/images/about/Almonds.png",
     imageAlt: "Fresh fruits preserved through freeze-drying",
   },
   {
-    title: "GLOBAL STANDARDS",
+    title: "Global Standards",
     description:
-      "We comply with FSSAI, ISO, HACCP, and Codex standards, ensuring safe, consistent, and export-ready products trusted worldwide.\n\nEvery step — from sourcing to packaging — complies with FSSAI, ISO 22000, HACCP, and Codex Alimentarius guidelines. With certified machinery, hygienic handling, and strict quality checks, we guarantee trust, transparency, and global competitiveness for our products.",
+      "We comply with FSSAI, ISO, HACCP, and Codex standards, ensuring safe, consistent, and export-ready products trusted worldwide.\n\nEvery step from sourcing to packaging complies with FSSAI, ISO 22000, HACCP, and Codex Alimentarius guidelines. \n\nWith certified machinery, hygienic handling, and strict quality checks, we guarantee trust, transparency, and global competitiveness for our products.",
     imageUrl: "/images/about/Dark_2.png",
     imageAlt: "Global food safety and quality certifications",
   },
 ];
 
 const AboutProcess = () => {
-  const [isIntersecting, setIntersecting] = useState(false);
   const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIntersecting(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const currentRef = sectionRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) observer.unobserve(currentRef);
-    };
-  }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="bg-white py-24 sm:py-32 overflow-hidden"
+      className="bg-white pt-10 sm:pt-10 md:pt-20 lg:pt-20 pb-10 mb-10 overflow-hidden shadow-lg sm:mx-5 mx-5 md:mx-5 lg:mx-30 my-0 rounded-2xl"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16 sm:mb-24">
-          <h2 className="text-5xl sm:text-6xl font-medium text-brand-dark-brown">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10">
+        <div className="text-center mb-10 sm:mb-20">
+          <h2 className="text-4xl sm:text-5xl font-bold font-oakes-grotesk text-[#3D2B1F]">
             Our Process &amp; Value
           </h2>
         </div>
-        <div className="space-y-40">
+
+        <div className="space-y-15 sm:space-y-20 md:space-y-20">
           {storyItemsData.map((item, index) => (
-            <div
+            <motion.div
               key={item.title + index}
-              className={`flex flex-col md:flex-row items-center gap-12 md:gap-24 transition-all duration-1000 ease-out ${
+              className={`flex flex-col sm:flex-col md:flex-row items-center gap-1 sm:gap-0 md:gap-0 lg:gap-0 ${
                 index % 2 !== 0 ? "md:flex-row-reverse" : ""
-              } ${
-                isIntersecting
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
               }`}
-              style={{ transitionDelay: `${index * 200}ms` }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.7,
+                delay: index * 0.2,
+                ease: "easeOut",
+              }}
+              viewport={{ once: true, amount: 0.2 }}
             >
-              <div className="md:w-1/2 flex justify-center">
+              {/* --- Image --- */}
+              <motion.div
+                className="md:w-1/2 flex justify-center mb-10 md:mb-0"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 + 0.1 }}
+                viewport={{ once: true }}
+              >
                 <img
                   src={item.imageUrl}
                   alt={item.imageAlt}
-                  className="w-[400px] h-[400px] object-cover rounded-full shadow-xl"
+                  className="w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] object-cover rounded-full shadow-xl"
                 />
-              </div>
-              <div className="md:w-1/2 text-center md:text-left mx-10">
-                <h3 className="text-xl font-medium tracking-[0.2em] text-brand-dark-brown uppercase mb-4">
+              </motion.div>
+
+              {/* --- Text --- */}
+              <motion.div
+                className="md:w-1/2 sm:text-center md:text-left sm:mx-20 "
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 + 0.2 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-2xl font-medium font-oakes-grotesk text-[#3D2B1F] mb-4 text-center md:text-left">
                   {item.title}
                 </h3>
 
                 {item.description.split("\n\n").map((para, i) => (
                   <p
                     key={i}
-                    className="text-gray-500 font-light text-base leading-relaxed mb-4"
+                    className="text-gray-500 text-md mb-4 text-center md:text-left"
                   >
                     {para}
                   </p>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
       </div>

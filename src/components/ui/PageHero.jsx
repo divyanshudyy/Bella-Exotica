@@ -6,12 +6,11 @@ const PageHero = ({ image, text }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"],
+    offset: ["start start", "end start"], // triggers immediately
   });
 
   const [device, setDevice] = useState("desktop");
 
-  // Detect device width
   useEffect(() => {
     const updateDevice = () => {
       if (window.innerWidth < 640) setDevice("mobile");
@@ -23,48 +22,39 @@ const PageHero = ({ image, text }) => {
     return () => window.removeEventListener("resize", updateDevice);
   }, []);
 
-  // Separate start/end heights per device
-  const heightMap = {
-    mobile: ["20vh", "40vh"],
-    tablet: ["45vh", "85vh"],
-    desktop: ["55vh", "100vh"],
-  };
-
-  // Scroll-based animations
-  const height = useTransform(scrollYProgress, [0, 0.3], heightMap[device]);
-  const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.94]);
+  // Immediate scroll-based transformations
   const borderRadius = useTransform(scrollYProgress, [0, 0.3], ["0px", "25px"]);
-
-  // Parallax effect for background image
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]); // moves slower than scroll
+  const width = useTransform(scrollYProgress, [0, 0.3], ["100%", "90%"]);
+  const height = useTransform(scrollYProgress, [0, 0.3], ["60vh", "54vh"]);
 
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1, ease: "easeOut" }}
       ref={ref}
-      style={{ scale, borderRadius, height }}
-      className="relative w-full overflow-hidden shadow-lg"
+      style={{ borderRadius, width, height }}
+      initial={{ opacity: 0, filter: "blur(5px)" }}
+      animate={{ opacity: 1, filter: "blur(0px)" }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className="relative mx-auto overflow-hidden shadow-lg"
     >
-      {/* Background Image with parallax */}
-      <motion.div
-        style={{ y: bgY }}
-        className="absolute inset-0 w-full h-full"
-      >
+      {/* Background Image */}
+      <div className="absolute inset-0 w-full h-full">
         <img
           src={image}
           alt={`${text} Banner`}
           className="w-full h-full object-cover object-center select-none"
         />
-      </motion.div>
+      </div>
 
-      {/* Overlay Content */}
+      {/* Overlay Content with subtle gradient */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute bottom-0 left-0 w-full flex flex-col justify-end px-4 sm:px-6 md:px-10 lg:px-14 pb-5 text-white bg-gradient-to-t from-black/70 via-transparent"
+        transition={{
+          delay: 0.8,
+          duration: 0.6,
+          ease: "easeOut",
+        }}
+        className="absolute bottom-0 left-0 w-full flex flex-col justify-end px-4 sm:px-6 md:px-10 lg:px-14 pb-5 text-white bg-gradient-to-t from-black/60 via-black/30 to-transparent"
       >
         <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-snug md:leading-tight drop-shadow-md text-center md:text-left font-oakes-grotesk">
           {text}

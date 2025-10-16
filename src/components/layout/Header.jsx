@@ -14,7 +14,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // NavLink hover underline class
   const navLinkClass = ({ isActive }) =>
     `relative py-1 transition-all duration-300 ${
       isActive
@@ -26,9 +25,9 @@ const Header = () => {
 
   return (
     <>
-      {/* Mobile Menu Section */}
+      {/* --- Mobile Menu Overlay --- */}
       <div
-        className={`fixed top-0 left-0 w-full bg-[#fff9f5] z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 w-full h-full bg-[#fff9f5] z-[9999] transition-all duration-300 ${
           menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
@@ -36,7 +35,7 @@ const Header = () => {
           {/* Close Button */}
           <button
             onClick={() => setMenuOpen(false)}
-            className="absolute top-2 right-4 p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition"
+            className="absolute top-4 right-5 p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition z-[10000]"
           >
             <X size={28} className="text-[#3D2B1F]" />
           </button>
@@ -70,15 +69,15 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Main Header */}
+      {/* --- Main Header --- */}
       <header
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 w-full z-[9998] transition-all duration-300 ${
           isScrolled
             ? "bg-[#fff9f5]/80 backdrop-blur-lg shadow-md"
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto flex justify-between items-center h-16 px-5 md:px-0">
+        <div className="max-w-7xl mx-auto flex justify-between items-center h-16 px-5 sm:px-10 md:px-10">
           {/* Logo */}
           <NavLink
             to="/"
@@ -121,7 +120,7 @@ const Header = () => {
           {/* Mobile Menu Icon */}
           <button
             onClick={() => setMenuOpen(true)}
-            className="lg:hidden p-2 bg-white rounded-full shadow hover:bg-gray-100 transition"
+            className="lg:hidden p-2 bg-white rounded-full shadow hover:bg-gray-100 transition z-[9999]"
           >
             <Menu size={24} className="text-[#3D2B1F]" />
           </button>

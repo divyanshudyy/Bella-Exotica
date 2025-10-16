@@ -1,6 +1,15 @@
 @import "tailwindcss";
 
 @font-face {
+  font-family: "Playfair Display";
+  src: url("/src/assets/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf")
+    format("truetype");
+  font-weight: 400; /* Regular */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Oakes Grotesk";
   src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Light.ttf") format("truetype");
   font-weight: 300; /* Light */
@@ -92,8 +101,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
-
 }
 
 .canvas-wrapper {
@@ -101,9 +108,9 @@ body {
   height: 100vh; 
   max-width: 1200px;
   max-height: 600px;
-  border-radius: 1.5rem;
+  border-radius: 1.2rem;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background: transparent;
 }
 
 @media (max-width: 1024px) {
@@ -114,7 +121,7 @@ body {
 
 @media (max-width: 640px) {
   .canvas-wrapper {
-    height: 20vh; /* smaller height on mobile */
-    width: 95vw;  /* slightly wider for landscape feel */
+    height: 25vh; /* smaller height on mobile */
+    width: 85vw;  /* slightly wider for landscape feel */
   }
 }

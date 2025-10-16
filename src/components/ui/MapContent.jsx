@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react";
 import Map from "./Map";
 
 const MapContent = ({ heading, para }) => {

@@ -116,17 +116,21 @@ const Map = () => {
   }, [map]);
 
   return (
-    <div className="w-full h-full relative ">
+    <div className="w-full h-full relative">
+      {/* Map */}
       <MapContainer
         center={GANDHIDHAM_COORDINATES}
         zoom={INITIAL_ZOOM_LEVEL}
         zoomControl={false}
         attributionControl={false}
         scrollWheelZoom={false}
+        className="w-full h-full relative z-0"
+        dragging={window.innerWidth >= 640} // disable dragging on mobile
+        doubleClickZoom={window.innerWidth >= 640} // optional
+        touchZoom={window.innerWidth >= 640} // optional
       >
         <MapController onMapReady={setMap} />
         <TileLayer url={TILE_LAYER_URL} />
-
         {allLocations.map((location) => (
           <Marker
             key={location.id}
@@ -136,20 +140,17 @@ const Map = () => {
         ))}
       </MapContainer>
 
-      {/* Map Controls */}
-      <div className="absolute top-0 left-0 right-0 p-4  pointer-events-none">
-        <div className="flex justify-between items-start w-full max-w-7xl mx-auto">
-          {/* Left Controls */}
-          <div className="pointer-events-auto">
-            <header className="absolute top-0 left-0  p-4 sm:p-6 lg:p-2 ">
-              <h1 className="text-xl sm:text-2xl font-semibold text-gray-800 backdrop-blur-sm px-4 py-2 rounded-full shadow">
-                Ajapar, Kutch, Gujarat
-              </h1>
-            </header>
-          </div>
+      {/* Controls Overlay */}
+      <div className="absolute inset-0 z-50 pointer-events-none">
+        <div className="flex justify-between items-start w-full max-w-7xl mx-auto p-4 pointer-events-auto">
+          {/* Left Header */}
+          <header className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow text-gray-800 text-xl sm:text-2xl font-semibold">
+            Ajapar, Kutch, Gujarat
+          </header>
 
           {/* Right Controls */}
-          <div className="flex flex-col space-y-2 pointer-events-auto">
+          <div className="flex flex-col space-y-2">
+            {/* Zoom Buttons */}
             <div className="flex flex-col bg-gray-900 text-white rounded-lg shadow-lg overflow-hidden">
               <button
                 onClick={handleZoomIn}
@@ -167,6 +168,8 @@ const Map = () => {
                 <Minus className="w-6 h-6" />
               </button>
             </div>
+
+            {/* Recenter */}
             <button
               onClick={handleRecenter}
               title="Recenter Map"
@@ -179,7 +182,7 @@ const Map = () => {
       </div>
 
       {/* Attribution */}
-      <div className="absolute bottom-1 right-2  bg-white/70 backdrop-blur-sm px-2 py-0.5 rounded text-xs text-gray-700">
+      <div className="absolute bottom-1 right-2 bg-white/70 backdrop-blur-sm px-2 py-0.5 rounded text-xs text-gray-700 z-50">
         {TILE_LAYER_ATTRIBUTION.replace(/<a[^>]*>|<\/a>/g, "")}
       </div>
     </div>
