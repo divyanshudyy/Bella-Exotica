@@ -4,6 +4,7 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import "leaflet/dist/leaflet.css";
 import LoadingScreen from "./components/ui/LoadingScreen";
+import RestoreScroll from "./components/utils/RestoreScroll";
 
 // Lazy imports
 const HomePage = lazy(() => import("./components/pages/HomePage"));
@@ -12,14 +13,7 @@ const TechnologyPage = lazy(() => import("./components/pages/TechnologyPage"));
 const AboutPage = lazy(() => import("./components/pages/AboutPage"));
 const ContactPage = lazy(() => import("./components/pages/ContactPage"));
 const B2BPage = lazy(() => import("./components/pages/B2BPage"));
-const NotFound = lazy(() => import("./components/pages/NotFound"));
-
-// Scroll restoration
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  useEffect(() => window.scrollTo(0, 0), [pathname]);
-  return null;
-};
+const NotFound = lazy(() => import("./components/ui/NotFound"));
 
 const App = () => {
   const location = useLocation();
@@ -28,19 +22,18 @@ const App = () => {
   // Reset loading state on route change
   useEffect(() => {
     setLoading(true);
-
-    // Hide loader once page is ready
     const minDuration = 500; // minimum time to show loader
     const timer = setTimeout(() => setLoading(false), minDuration);
-
     return () => clearTimeout(timer);
   }, [location.pathname]);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
 
       <main className="flex-grow w-full">
-        <ScrollToTop />
+        {/* Scroll to top after loading finishes */}
+        <RestoreScroll loading={loading} />
 
         <Suspense fallback={<LoadingScreen />}>
           {loading ? (
@@ -54,7 +47,6 @@ const App = () => {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/b2b" element={<B2BPage />} />
               <Route path="*" element={<NotFound />} />
-              <Route path="/loading" element={<LoadingScreen />} />
             </Routes>
           )}
         </Suspense>
