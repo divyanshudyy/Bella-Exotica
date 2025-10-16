@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import ProductSlider from "../../ui/ProductSlider";
 import { CATEGORIES, PRODUCTS } from "../../../data/content";
 

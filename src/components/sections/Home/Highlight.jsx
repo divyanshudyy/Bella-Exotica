@@ -15,7 +15,7 @@ const Highlight = () => {
       {/* Background Image */}
       <img
         src="/images/highlight/tldrawFile (4).png"
-        alt="Healthy Organic Breakfast"
+        alt="Premium freeze-dried products from Bella Exotica"
         className="w-full h-auto"
       />
 

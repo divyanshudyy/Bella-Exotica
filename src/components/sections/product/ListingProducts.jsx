@@ -229,7 +229,7 @@ const ListingProducts = () => {
 
           {/* Search Bar */}
           <div className="relative w-full md:col-span-3 order-2 md:order-none">
-            <div className="relative w-full transition-transform duration-300 ease-out focus-within:scale-105">
+            <div className="relative w-full transition-transform duration-300 ease-out focus-within:scale-102">
               {/* Left icon */}
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Search />
@@ -241,7 +241,7 @@ const ListingProducts = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search products..."
-                className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-full bg-white text-[#3D2B1F] focus:outline-none focus:ring-0 transition-colors duration-300 ease-out"
+                className="w-full pl-10 pr-10 py-2 border border-[#3D2B1F]/20 rounded-full hover:border-[#3D2B1F]/50  bg-white text-[#3D2B1F] focus:outline-[#3D2B1F]/60 focus:ring-0 transition-colors duration-300 ease-out"
               />
 
               {/* Clear button */}

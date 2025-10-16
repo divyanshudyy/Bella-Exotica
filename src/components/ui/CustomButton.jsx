@@ -11,11 +11,13 @@ const CustomButton = ({
   font = "font-semibold font-oakes-grostek",
   margin = "my-10",
   type = "button",
+  hover = "hover:scale-100",
 }) => {
   return (
     <button
       type={type}
       className={`
+        ${hover}
         ${padding} 
         border ${rounded} ${borderColor} 
         ${textColor} ${bgColor} ${textSize} ${font}

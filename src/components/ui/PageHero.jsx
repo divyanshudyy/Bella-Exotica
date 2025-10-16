@@ -22,10 +22,17 @@ const PageHero = ({ image, text }) => {
     return () => window.removeEventListener("resize", updateDevice);
   }, []);
 
-  // Immediate scroll-based transformations
-  const borderRadius = useTransform(scrollYProgress, [0, 0.3], ["0px", "25px"]);
+  // Responsive height per device
+  const heightMap = {
+    mobile: ["25vh", "20vh"], // smaller height for mobile
+    tablet: ["30vh", "25vh"], // smaller height for tablet
+    desktop: ["60vh", "50vh"], // default for desktop
+  };
+
+  // Scroll-based transformations
+  const borderRadius = useTransform(scrollYProgress, [0, 0.3], ["0px", "15px"]);
   const width = useTransform(scrollYProgress, [0, 0.3], ["100%", "90%"]);
-  const height = useTransform(scrollYProgress, [0, 0.3], ["60vh", "54vh"]);
+  const height = useTransform(scrollYProgress, [0, 0.3], heightMap[device]);
 
   return (
     <motion.section

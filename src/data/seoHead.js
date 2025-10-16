@@ -1,9 +1,10 @@
-const siteUrl = "https://www.bellaexotica.com";
+const siteUrl =
+  "https://bella-exotica-glb9qryhd-divyanshu-divys-projects.vercel.app";
 const imgUrl = `${siteUrl}/images/og/og-default.png`;
 
 export const seoData = {
   home: {
-    title: "Bella Exotica – Premium freeze-dried and dehydrated foods",
+    title: "Bella Exotica – Premium Freeze-Dried & Dehydrated Foods",
     description:
       "Bella Exotica Foods, based in Gandhidham, Gujarat, produces premium freeze-dried and dehydrated fruits, vegetables, herbs, and spices that are nutritious, long-lasting, and full of flavor.",
     url: siteUrl,
@@ -35,6 +36,14 @@ export const seoData = {
     description:
       "Explore the wide range of premium freeze-dried and dehydrated fruits, vegetables, herbs, and spices offered by Bella Exotica, crafted for nutrition, longevity, and taste.",
     url: `${siteUrl}/products`,
+    image: imgUrl,
+  },
+  b2b: {
+    title:
+      "B2B Solutions – Bella Exotica Premium Freeze-Dried & Dehydrated Foods",
+    description:
+      "Discover Bella Exotica’s B2B offerings for businesses. Partner with us for high-quality freeze-dried and dehydrated fruits, vegetables, herbs, and spices that are nutritious, long-lasting, and full of flavor.",
+    url: `${siteUrl}/b2b`,
     image: imgUrl,
   },
 };

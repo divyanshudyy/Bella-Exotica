@@ -101,7 +101,7 @@ const Header = () => {
               About
             </NavLink>
             <NavLink to="/contact" className={navLinkClass}>
-              Contact
+              Contact 
             </NavLink>
           </nav>
 
@@ -109,10 +109,12 @@ const Header = () => {
           <div className="hidden lg:block">
             <NavLink to="/b2b">
               <CustomButton
+
                 text="Let's Collaborate"
                 padding="px-4 py-1.5"
                 bgColor="bg-[#3D2B1F]"
                 textColor="text-white"
+                hover="hover:scale-104"
               />
             </NavLink>
           </div>

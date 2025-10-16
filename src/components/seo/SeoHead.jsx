@@ -4,6 +4,50 @@ import { seoData } from "../../data/seoHead.js";
 export default function SeoHead({ page }) {
   const data = seoData[page] || seoData.home;
 
+  // Clean site root URL
+  const siteRoot = new URL("/", data.url).href;
+
+  // Map page names for breadcrumbs
+  const pageNames = {
+    home: "Home",
+    about: "About",
+    contact: "Contact",
+    products: "Products",
+    technology: "Technology",
+    b2b: "B2B",
+  };
+
+  // Organization JSON-LD
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Bella Exotica",
+    url: data.url,
+    logo: `${data.url}/images/logo/logo.jpg`,
+    sameAs: [
+      "https://www.facebook.com/yourpage",
+      "https://www.instagram.com/yourpage",
+    ],
+  };
+
+  // Breadcrumb JSON-LD
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteRoot },
+      page !== "home"
+        ? {
+            "@type": "ListItem",
+            position: 2,
+            name:
+              pageNames[page] || page.charAt(0).toUpperCase() + page.slice(1),
+            item: data.url,
+          }
+        : null,
+    ].filter(Boolean),
+  };
+
   return (
     <>
       {/* Title */}
@@ -27,6 +71,14 @@ export default function SeoHead({ page }) {
       <Meta name="twitter:title" content={data.title} />
       <Meta name="twitter:description" content={data.description} />
       <Meta name="twitter:image" content={data.image} />
+
+      {/* JSON-LD Structured Data */}
+      <script type="application/ld+json">
+        {JSON.stringify(organizationSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(breadcrumbSchema)}
+      </script>
     </>
   );
 }

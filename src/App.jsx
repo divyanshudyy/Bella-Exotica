@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { Suspense, lazy, useEffect, useState } from "react";
+import { Suspense, lazy, useState, useEffect } from "react";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import "leaflet/dist/leaflet.css";
@@ -21,30 +21,32 @@ const ScrollToTop = () => {
   return null;
 };
 
-// Route loader for showing loading screen on every route change
-const RouteLoader = ({ children }) => {
+const App = () => {
   const location = useLocation();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
+  // Reset loading state on route change
   useEffect(() => {
     setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 300); // fade duration
+
+    // Hide loader once page is ready
+    const minDuration = 500; // minimum time to show loader
+    const timer = setTimeout(() => setLoading(false), minDuration);
+
     return () => clearTimeout(timer);
   }, [location.pathname]);
-
-  return loading ? <LoadingScreen /> : children;
-};
-
-const App = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
 
       <main className="flex-grow w-full">
         <ScrollToTop />
-        <RouteLoader>
-          <Suspense fallback={<LoadingScreen />}>
-            <Routes>
+
+        <Suspense fallback={<LoadingScreen />}>
+          {loading ? (
+            <LoadingScreen onAnimationComplete={() => setLoading(false)} />
+          ) : (
+            <Routes location={location} key={location.pathname}>
               <Route path="/" element={<HomePage />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/technology" element={<TechnologyPage />} />
@@ -54,8 +56,8 @@ const App = () => {
               <Route path="*" element={<NotFound />} />
               <Route path="/loading" element={<LoadingScreen />} />
             </Routes>
-          </Suspense>
-        </RouteLoader>
+          )}
+        </Suspense>
       </main>
 
       <Footer />
