@@ -1,4 +1,4 @@
-import SeoHead from "../seo/SeoHead";
+import Seo from "../seo/SeoScript";
 import PageHero from "../ui/PageHero";
 import ProcessContent from "../sections/process/ProcessContent";
 import { motion } from "motion/react";
@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 const TechnologyPage = () => {
   return (
     <>
-      <SeoHead page="technology" />
+      <Seo page="technology" />
       <main className="py-16 flex flex-col gap-10 overflow-hidden">
         <PageHero
           image={"/images/contact/contact-banner.png"}

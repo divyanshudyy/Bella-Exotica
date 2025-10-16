@@ -1,4 +1,4 @@
-import ScrollVelocity from "../../ui/ScrollVelocity";
+import ScrollVelocity from "../../ui/home/ScrollVelocity";
 
 const Certification = () => {
   return (

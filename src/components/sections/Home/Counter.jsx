@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import CountUp from "../../ui/CountUp";
+import CountUp from "../../ui/home/CountUp";
 import CustomButton from "../../ui/CustomButton";
 import { Link } from "react-router-dom";
 

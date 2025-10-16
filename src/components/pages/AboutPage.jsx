@@ -1,4 +1,4 @@
-import SeoHead from "../seo/SeoHead";
+import Seo from "../seo/SeoScript";
 import PageHero from "../ui/PageHero";
 import AboutProcess from "../sections/about/AboutProcess";
 import MapContent from "../ui/MapContent";
@@ -8,7 +8,7 @@ import IntroContent from "../ui/IntroContent";
 const AboutPage = () => {
   return (
     <>
-      <SeoHead page="about" />
+      <Seo page="about" />
       <main className="py-16 flex flex-col gap-10 overflow-hidden">
         <PageHero image={"/images/about/about-banner.png"} text={"About"} />
         <motion.div

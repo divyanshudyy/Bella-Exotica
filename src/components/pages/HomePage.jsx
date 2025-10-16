@@ -1,8 +1,5 @@
-import SeoHead from "../seo/SeoHead";
-// import Schema from "../seo/Schema";
-
+import Seo from "../seo/SeoScript";
 import Hero from "../sections/Home/Hero";
-// import Products from "../sections/Products";
 import Showcase from "../sections/Home/Bowl";
 import Quote from "../sections/Home/Quote";
 import Highlight from "../sections/Home/Highlight";
@@ -16,7 +13,7 @@ import { REVIEWS } from "../../data/content";
 const HomePage = () => {
   return (
     <>
-      <SeoHead page="home" />
+      <Seo page="home" />
       {/* <Schema /> */}
       <main className="overflow-hidden">
         <Hero />

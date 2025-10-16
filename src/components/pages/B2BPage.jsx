@@ -5,13 +5,12 @@ import Form from "../ui/Form";
 import B2bContent from "../sections/b2b/B2bContent";
 import { motion } from "motion/react";
 import IntroContent from "../ui/IntroContent";
-import SeoHead from "../seo/SeoHead";
+import Seo from "../seo/SeoScript";
 
 const B2BPage = () => {
   return (
     <>
-      {" "}
-      <SeoHead page="b2b" />{" "}
+      <Seo page="b2b" />
       <main className="py-16 flex flex-col gap-12 overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

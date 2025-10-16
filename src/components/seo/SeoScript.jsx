@@ -1,7 +1,7 @@
 import { Title, Meta, Link } from "react-head";
-import { seoData } from "../../data/seoHead.js";
+import { seoData } from "../../data/seoData.js";
 
-export default function SeoHead({ page }) {
+export default function Seo({ page }) {
   const data = seoData[page] || seoData.home;
 
   // Clean site root URL
@@ -48,6 +48,19 @@ export default function SeoHead({ page }) {
     ].filter(Boolean),
   };
 
+  // WebSite JSON-LD (extra for sitelinks & search relevance)
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Bella Exotica",
+    url: siteRoot,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${siteRoot}search?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <>
       {/* Title */}
@@ -78,6 +91,9 @@ export default function SeoHead({ page }) {
       </script>
       <script type="application/ld+json">
         {JSON.stringify(breadcrumbSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(websiteSchema)}
       </script>
     </>
   );

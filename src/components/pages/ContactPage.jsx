@@ -2,13 +2,13 @@ import Form from "../ui/Form";
 import ContactInfo from "../sections/contact/ContactInfo";
 import PageHero from "../ui/PageHero";
 import MapContent from "../ui/MapContent";
-import SeoHead from "../seo/SeoHead";
 import { motion } from "motion/react";
+import Seo from "../seo/SeoScript";
 
 const ContactPage = () => {
   return (
     <>
-      <SeoHead page="contact" />
+      <Seo page="contact" />
       <main className="py-16 flex flex-col gap-10 overflow-hidden">
         <PageHero
           image={"/images/contact/contact-banner.png"}

@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import ProductSlider from "../../ui/ProductSlider";
+import ProductSlider from "../../ui/home/ProductSlider";
 import { CATEGORIES, PRODUCTS } from "../../../data/content";
 
 const Products = () => {

@@ -1,12 +1,12 @@
 import { motion } from "motion/react";
 import PageHero from "../ui/PageHero";
 import ListingProducts from "../sections/product/ListingProducts";
-import SeoHead from "../seo/SeoHead";
+import Seo from "../seo/SeoScript";
 
 const ProductsPage = () => {
   return (
     <>
-      <SeoHead page="products" />
+      <Seo page="products" />
       <main className="py-16 flex flex-col gap-10 overflow-hidden">
         {/* Hero Section with fade + upward motion */}
 
