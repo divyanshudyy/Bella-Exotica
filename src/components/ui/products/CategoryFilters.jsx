@@ -1,6 +1,14 @@
-const CategoryFilters = ({ categories, activeCategory, setActiveCategory }) => {
+const CategoryFilters = ({
+  categories,
+  activeCategory,
+  setActiveCategory,
+  bgColor = "white",
+  mt = "mt-6",
+}) => {
   return (
-    <div className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-2 sm:gap-3  font-oakes-grostek">
+    <div
+      className={`${mt} sm:mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 font-oakes-grostek`}
+    >
       {categories.map((category) => (
         <button
           key={category}
@@ -9,7 +17,7 @@ const CategoryFilters = ({ categories, activeCategory, setActiveCategory }) => {
             ${
               activeCategory === category
                 ? "bg-[#3D2B1F] text-white shadow-lg scale-105"
-                : "bg-white text-gray-600 border border-gray-300 hover:bg-[#3D2B1F] hover:text-white hover:border-[#3D2B1F]"
+                : "${bgColor} text-gray-600 border border-gray-300 hover:bg-[#3D2B1F] hover:text-white hover:border-[#3D2B1F]"
             }`}
         >
           {category}

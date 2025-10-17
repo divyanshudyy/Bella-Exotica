@@ -100,11 +100,14 @@ const ProductSlider = ({ products }) => {
       <div
         ref={sliderRef}
         className="w-full flex-grow overflow-hidden md:hidden"
-        style={{ cursor: isDragging ? "grabbing" : "grab" }}
+        style={{
+          cursor: isDragging ? "grabbing" : "grab",
+          height: "clamp(200px, 50vw, 400px)",
+        }}
         {...dragHandlers}
       >
         <div
-          className="h-full flex"
+          className="flex h-full"
           style={{
             width: `${products.length * 100}%`,
             transform: `translateX(calc(-${
@@ -116,8 +119,8 @@ const ProductSlider = ({ products }) => {
           {products.map((product) => (
             <div
               key={product.id}
-              className="w-full h-full"
-              style={{ width: `${100 / products.length}%` }}
+              className="flex items-center justify-center"
+              style={{ width: `${100 / products.length}%`, height: "100%" }}
             >
               <ProductCard product={product} />
             </div>
@@ -147,7 +150,7 @@ const ProductSlider = ({ products }) => {
             }
             const absOffset = Math.abs(offset);
 
-            const centerScale = 1.05,
+            const centerScale = 1,
               sideScale = 0.75;
             const centerZ = 0,
               sideZ = -500;

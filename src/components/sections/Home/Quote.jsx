@@ -1,8 +1,7 @@
-import { useRef } from "react";
-import { motion } from "motion/react";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 
-import { useState, useEffect } from "react";
-
+// Intersection Observer for text animation
 function useIntersectionObserver(
   elementRef,
   { threshold = 0.1, root = null, rootMargin = "0%", triggerOnce = false } = {}
@@ -17,20 +16,15 @@ function useIntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIntersecting(true);
-          if (triggerOnce) {
-            observer.unobserve(node);
-          }
+          if (triggerOnce) observer.unobserve(node);
         } else {
-          if (!triggerOnce) {
-            setIntersecting(false);
-          }
+          if (!triggerOnce) setIntersecting(false);
         }
       },
       { threshold, root, rootMargin }
     );
 
     observer.observe(node);
-
     return () => observer.disconnect();
   }, [elementRef, threshold, root, rootMargin, triggerOnce]);
 
@@ -41,134 +35,189 @@ const quoteLines = [
   "Elevate your breakfast",
   "with a masterful blend offering",
   "natural radiance and wellness",
-  "in every single spoonful. ",
+  "in every single spoonful.",
 ];
 
 const containerVariants = {
   hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.25,
-    },
-  },
+  visible: { transition: { staggerChildren: 0.25 } },
 };
-
 const lineVariants = {
   hidden: { opacity: 0, y: "100%" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut",
-    },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
-
 const quoteMarkVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      delay: 0.8,
-      duration: 0.5,
-      ease: "easeOut",
-    },
+    transition: { delay: 0.8, duration: 0.5, ease: "easeOut" },
   },
 };
 
 const Quote = () => {
   const sectionRef = useRef(null);
-  const isVisible = useIntersectionObserver(sectionRef, {
+  const textRef = useRef(null);
+
+  const isTextVisible = useIntersectionObserver(textRef, {
     threshold: 0.5,
     triggerOnce: true,
   });
 
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // 🔹 Smooth proportional section scaling (entire section shrinks slightly)
+  const sectionScale = useTransform(scrollYProgress, [0, 1], [1, 1]);
+  // inside your Quote component
+  const [yStartJar1, setYStartJar1] = useState(300);
+  const [yStartJar2, setYStartJar2] = useState(500);
+  const [yStartJar3, setYStartJar3] = useState(500);
+
+  const scaleJar1 = useTransform(scrollYProgress, [0, 0.8], [0.6, 0.9]);
+  const scaleJar2 = useTransform(scrollYProgress, [0.2, 0.9], [0.8, 1.4]);
+  const scaleJar3 = useTransform(scrollYProgress, [0, 1], [1.2, 1.0]);
+
+  const rotateJar1 = useTransform(scrollYProgress, [0, 0.8], [50, 0]);
+  const rotateJar2 = useTransform(scrollYProgress, [0.2, 0.9], [-25, 10]);
+  const rotateJar3 = useTransform(scrollYProgress, [0, 1], [20, -20]);
+
+  useEffect(() => {
+    const updateYValues = () => {
+      const width = window.innerWidth;
+
+      if (width < 640) {
+        // small screens
+        setYStartJar1(150);
+        setYStartJar2(250);
+        setYStartJar3(300);
+      } else if (width < 1024) {
+        // medium screens
+        setYStartJar1(250);
+        setYStartJar2(400);
+        setYStartJar3(450);
+      } else {
+        // large screens
+        setYStartJar1(300);
+        setYStartJar2(500);
+        setYStartJar3(500);
+      }
+    };
+
+    updateYValues();
+    window.addEventListener("resize", updateYValues);
+    return () => window.removeEventListener("resize", updateYValues);
+  }, []);
+
+  // Then use these in your useTransform
+  const yJar1 = useTransform(scrollYProgress, [0, 0.8], [yStartJar1, -50]);
+  const yJar2 = useTransform(scrollYProgress, [0, 0.8], [yStartJar2, -80]);
+  const yJar3 = useTransform(scrollYProgress, [0, 1], [yStartJar3, -100]);
+
   return (
-    <section
+    <motion.section
       ref={sectionRef}
-      className="relative flex md:items-center justify-center h-96 sm:min-h-[80vh] md:min-h-screen w-full py-12 sm:py-16 md:py-20 px-4 overflow-hidden"
+      className="relative flex md:items-start justify-center w-full px-4 pt-12 pb-55" // changed from fixed height to padding
       aria-label="Quote section"
+      style={{ scale: sectionScale }}
     >
-      {/* Quote figure */}
+      {/* Text */}
       <motion.figure
+        ref={textRef}
         className="max-w-5xl mx-auto relative z-10"
         initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
+        animate={isTextVisible ? "visible" : "hidden"}
       >
+        {/* Opening Quote */}
         <motion.span
           variants={quoteMarkVariants}
-          className="absolute -top-3 md:-top-6 -left-3 sm:-left-10 font-playfair text-6xl sm:text-8xl md:text-9xl text-[#3D2B1F]"
+          className="absolute font-playfair text-[#3D2B1F]"
+          style={{
+            top: 0,
+            left: "-1rem",
+            fontSize: "clamp(2.5rem, 5vw, 9rem)",
+            lineHeight: 1,
+          }}
         >
           “
         </motion.span>
+
+        {/* Quote Lines */}
         <motion.blockquote
-          className="space-y-2 text-center"
+          className="text-center space-y-[clamp(0.3rem, 1vw, 1rem)] relative"
           variants={containerVariants}
         >
           {quoteLines.map((line, index) => (
             <div key={index} className="overflow-hidden">
               <motion.p
                 variants={lineVariants}
-                className="text-2xl sm:text-3xl md:text-[3.2rem] font-playfair font-semibold  italic text-[#3D2B1F] leading-snug sm:leading-[1.35]"
+                className="font-playfair font-semibold italic text-[#3D2B1F]"
+                style={{
+                  fontSize: "clamp(1.5rem, 3vw, 3.2rem)",
+                  lineHeight: "clamp(1.2, 2vw, 1.35)",
+                }}
               >
                 {line}
               </motion.p>
             </div>
           ))}
         </motion.blockquote>
+
+        {/* Closing Quote */}
         <motion.span
           variants={quoteMarkVariants}
-          className="absolute bottom-30 md:-bottom-8 -right-3 sm:-right-20 font-playfair text-6xl sm:text-8xl md:text-9xl text-[#3D2B1F]"
+          className="absolute font-playfair text-[#3D2B1F]"
+          style={{
+            bottom: 0,
+            right: "-1rem",
+            fontSize: "clamp(2.5rem, 5vw, 9rem)",
+            lineHeight: 1,
+          }}
         >
           ”
         </motion.span>
       </motion.figure>
 
-      {/* Images overlay */}
+      {/* Jar images */}
       <div className="inset-0 flex items-center justify-center z-0 pointer-events-none">
         <motion.img
           src="/images/highlight/Muesli-Jar3.png"
-          alt="Bella Exotica product highlights"
-          className="absolute left-0 sm:left-20 bottom-26 sm:bottom-10 h-32 sm:h-44 md:h-60 scale-60 sm:scale-70 md:scale-70 md:bottom-3"
-          initial={{ y: 500, filter: "blur(0rem)" }}
-          animate={
-            isVisible
-              ? { y: [500, -100, 0], filter: "blur(.15rem)" }
-              : { y: 500 }
-          }
-          transition={{ duration: 1.2, ease: "easeInOut", times: [0, 0.6, 1] }}
+          alt="Jar 3"
+          className="absolute left-0 sm:left-5 bottom-26 sm:bottom-10 md:bottom-10"
+          style={{
+            y: yJar1,
+            scale: scaleJar1,
+            rotate: rotateJar1,
+            width: "clamp(6rem, 15vw, 12rem)",
+          }}
         />
 
         <motion.img
           src="/images/highlight/Muesli-Jar2.png"
-          alt="Bella Exotica product highlights"
-          className="absolute left-24 sm:left-36 bottom-32 sm:bottom-40 h-32 sm:h-44 md:h-60 scale-0 sm:scale-90 md:scale-90 blur-[.06rem] md:left-50"
-          initial={{ y: 900 }}
-          animate={isVisible ? { y: [900, -50, 0], opacity: 1 } : { y: 600 }}
-          transition={{
-            duration: 1.2,
-            ease: "easeInOut",
-            times: [0, 0.6, 1],
-            delay: 0.1,
+          alt="Jar 2"
+          className="absolute left-24 sm:left-36 bottom-32 sm:bottom-120 md:left-25"
+          style={{
+            y: yJar2,
+            scale: scaleJar2,
+            rotate: rotateJar2,
+            width: "clamp(6rem, 18vw, 14rem)",
           }}
         />
 
         <motion.img
           src="/images/highlight/Muesli-Jar1.png"
-          alt="Bella Exotica product highlights"
-          className="absolute right-16 sm:right-20 bottom-35 sm:bottom-20 h-32 sm:h-44 md:h-60 scale-[140%] sm:scale-[130%] md:scale-[160%] blur-[.09rem] md:blur-[0rem]"
-          initial={{ y: 500 }}
-          animate={isVisible ? { y: [500, -100, 0], opacity: 1 } : { y: 500 }}
-          transition={{
-            duration: 1.2,
-            ease: "easeInOut",
-            times: [0, 0.6, 1],
-            delay: 0.3,
+          alt="Jar 1"
+          className="absolute right-16 sm:right-20 bottom-35 sm:bottom-60 sm:scale-120"
+          style={{
+            y: yJar3,
+            scale: scaleJar3,
+            rotate: rotateJar3,
+            width: "clamp(6rem, 20vw, 16rem)",
           }}
         />
       </div>
-    </section>
+    </motion.section>
   );
 };
 

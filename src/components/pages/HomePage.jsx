@@ -9,6 +9,7 @@ import Counter from "../sections/Home/Counter";
 import Review from "../sections/Home/Review";
 import Products from "../sections/Home/Products";
 import { REVIEWS } from "../../data/content";
+import { motion } from "motion/react";
 
 const HomePage = () => {
   return (
@@ -16,11 +17,26 @@ const HomePage = () => {
       <Seo page="home" />
       {/* <Schema /> */}
       <main className="overflow-hidden">
-        <Hero />
+        {/* <Hero />
         <Showcase />
         <Quote />
-        <Products />
-        <Counter />
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="w-full"
+        >
+          <Products />
+        </motion.div>*/}
+        <motion.div
+          initial={{ opacity: 0, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          <Counter />
+        </motion.div>
         <Highlight />
         <Certification />
         <ChooseUs />
@@ -31,7 +47,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-// <div className="h-screen w-full flex flex-col items-center justify-center font-sans overflow-hidden py-4 sm:py-8">
-//           <Review reviews={REVIEWS} />
-//         </div>

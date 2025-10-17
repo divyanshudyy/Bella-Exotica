@@ -140,55 +140,55 @@ export const REVIEWS = [
 
 // constants.js
 
-export const CATEGORIES = ["ALL", "OATS", "NUTS", "MUSELI", "BERRIES"];
+export const CATEGORIES = ["All", "Oats", "Nuts", "Museli", "Berries"];
 
 export const PRODUCTS = [
   {
     id: 1,
     name: "ALMONDS",
     image: "/images/products/alm1.png",
-    category: "NUTS",
+    category: "Nuts",
   },
   {
     id: 2,
     name: "MUESLI",
     image: "/images/products/muesli2.png",
-    category: "MUSELI",
+    category: "Museli",
   },
   {
     id: 3,
     name: "GRANOLA",
     image: "/images/products/granola2.png",
-    category: "MUSELI",
+    category: "Museli",
   },
   {
     id: 4,
     name: "OATMEAL",
     image: "/images/products/alm1.png",
-    category: "OATS",
+    category: "Oats",
   },
   {
     id: 5,
     name: "WALNUTS",
     image: "/images/products/muesli2.png",
-    category: "NUTS",
+    category: "Nuts",
   },
   {
     id: 6,
     name: "CASHEWS",
     image: "/images/products/granola2.png",
-    category: "NUTS",
+    category: "Nuts",
   },
   {
     id: 7,
     name: "BERRY MIX",
     image: "/images/products/alm1.png",
-    category: "BERRIES",
+    category: "Berries",
   },
   {
     id: 8,
     name: "STEEL CUT OATS",
     image: "/images/products/muesli2.png",
-    category: "OATS",
+    category: "Oats",
   },
 ];

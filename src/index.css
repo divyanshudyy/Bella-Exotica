@@ -1,15 +1,6 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Playfair Display";
-  src: url("/src/assets/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf")
-    format("truetype");
-  font-weight: 400; /* Regular */
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Oakes Grotesk";
   src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Light.ttf") format("truetype");
   font-weight: 300; /* Light */
@@ -39,6 +30,20 @@
   font-weight: 600; /* SemiBold */
   font-style: normal;
   font-display: swap;
+}
+
+@font-face {
+  font-family: "Oakes Grotesk";
+  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Bold.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Oakes Grotesk";
+  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Bold Italic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
 }
 
 /* Example of how to define it as a theme variable */

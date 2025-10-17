@@ -32,10 +32,10 @@ const ContactForm = () => {
       <h3 className="text-3xl font-bold mb-2 text-[#3D2B1F] font-oakes-grotesk">
         Get in Touch
       </h3>
-        <p className="text-[#3D2B1F] mb-8 max-w-md">
-          We welcome all your questions and inquiries. Our team will be in touch
-          with you shortly.
-        </p>
+      <p className="text-[#3D2B1F] mb-8 max-w-md">
+        We welcome all your questions and inquiries. Our team will be in touch
+        with you shortly.
+      </p>
 
       <form onSubmit={handleSubmit(submitHandler)} className="space-y-6">
         {/* First + Last Name */}
@@ -49,6 +49,8 @@ const ContactForm = () => {
             </label>
             <input
               id="firstName"
+              name="firstName"
+              autoComplete="given-name"
               {...register("firstName", { required: "First name is required" })}
               placeholder="Enter your first name"
               className={`mt-1 block w-full bg-transparent border-b py-2 px-2 focus:outline-none focus:border-b-2 sm:text-sm transition-colors ${
@@ -73,6 +75,8 @@ const ContactForm = () => {
             </label>
             <input
               id="lastName"
+              name="lastName"
+              autoComplete="family-name"
               placeholder="Enter your last name"
               {...register("lastName", { required: "Last name is required" })}
               className={`mt-1 block w-full bg-transparent border-b py-2 px-2 focus:outline-none focus:border-b-2 sm:text-sm transition-colors ${
@@ -101,6 +105,8 @@ const ContactForm = () => {
             <input
               type="email"
               id="email"
+              name="email"
+              autoComplete="email"
               {...register("email", {
                 required: "Email is required",
                 pattern: {
@@ -132,6 +138,8 @@ const ContactForm = () => {
             <input
               type="tel"
               id="contact"
+              name="contact"
+              autoComplete="tel"
               {...register("contact", {
                 required: "Contact number is required",
                 pattern: {
@@ -165,6 +173,8 @@ const ContactForm = () => {
             </label>
             <input
               id="subject"
+              name="subject"
+              autoComplete="off"
               {...register("subject", { required: "Subject is required" })}
               placeholder="What’s your message about?"
               className={`mt-1 block w-full bg-transparent border-b py-2 px-2 focus:outline-none focus:border-b-2 sm:text-sm transition-colors ${
@@ -188,7 +198,9 @@ const ContactForm = () => {
               Company / Organization
             </label>
             <input
+              name="orgName"
               id="company"
+              autoComplete="organization"
               {...register("orgName")}
               placeholder="Your company or team name"
               className="mt-1 block w-full bg-transparent border-b border-gray-300 py-2 px-2 focus:outline-none focus:border-b-2 focus:border-[#3D2B1F]/50 sm:text-sm transition-colors"
@@ -206,6 +218,8 @@ const ContactForm = () => {
           </label>
           <textarea
             id="message"
+            name="message"
+            autoComplete="off"
             rows="3"
             {...register("message", { required: "Message cannot be empty" })}
             placeholder="Write your message here..."

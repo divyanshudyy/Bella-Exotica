@@ -27,12 +27,12 @@ const CountUp = ({ endValue, duration = 1.5, label, suffix = "" }) => {
   }, [isInView, endValue, duration]);
 
   return (
-    <div ref={ref} className="flex flex-col items-center justify-center p-4">
-      <span className="text-4xl sm:text-5xl font-bold text-[#3D2B1F] ">
+    <div ref={ref} className="flex flex-col items-center justify-center p-5">
+      <span className="text-4xl sm:text-5xl font-bold text-[#3D2B1F]/90">
         <span ref={countRef}>0</span>
         {suffix}
       </span>
-      <p className="mt-2 text-base text-gray-500">{label}</p>
+      <p className="mt-2 text-base text-gray-600 ">{label}</p>
     </div>
   );
 };
