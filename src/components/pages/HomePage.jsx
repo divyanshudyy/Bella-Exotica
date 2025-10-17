@@ -15,9 +15,8 @@ const HomePage = () => {
   return (
     <>
       <Seo page="home" />
-      {/* <Schema /> */}
       <main className="overflow-hidden">
-        {/* <Hero />
+        <Hero />
         <Showcase />
         <Quote />
         <motion.div
@@ -28,7 +27,7 @@ const HomePage = () => {
           className="w-full"
         >
           <Products />
-        </motion.div>*/}
+        </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 70 }}
           whileInView={{ opacity: 1, y: 0 }}
