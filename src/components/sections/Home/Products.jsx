@@ -20,7 +20,7 @@ const Products = () => {
         <h1 className="relative z-10 text-3xl md:text-5xl font-bold font-oakes-grostek text-[#3D2B1F] mb-5 text-center ">
           Healthy Food Future Ready
         </h1>
-        <p className="relative z-10 text-center text-sm sm:text-base text-[#3D2B1F] mb-8 max-w-md ">
+        <p className="relative z-10 text-center text-sm sm:text-base text-gray-600 mb-8 max-w-md px-9 md:px-0">
           Discover our premium selection of natural and wholesome products,
           crafted to nourish your body and delight your senses.
         </p>

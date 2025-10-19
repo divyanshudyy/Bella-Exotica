@@ -10,10 +10,7 @@ const ContactPage = () => {
     <>
       <Seo page="contact" />
       <main className="py-16 flex flex-col gap-10 overflow-hidden">
-        <PageHero
-          image={"/images/contact/contact-banner.png"}
-          text={"Contact"}
-        />
+        <PageHero image={"/images/hero/contact-hero.webp"} text={"Contact"} />
 
         {/* Contact Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 items-start gap-10 sm:gap-14 md:gap-16 lg:gap-24 px-4 sm:px-8 md:px-12 lg:px-20 pb-8 sm:pb-10 md:pb-12">

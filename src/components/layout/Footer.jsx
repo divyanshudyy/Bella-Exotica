@@ -33,7 +33,8 @@ const Footer = () => {
 
   return (
     <footer
-      className="bg-[#34241d] text-zinc-300 mx-5 rounded-t-2xl"
+      style={{ boxShadow: " 0 -5px 10px -4px rgba(0,0,0,0.4)" }}
+      className="bg-[#34241d] text-zinc-300 mx-5 rounded-t-2xl "
       aria-labelledby="footer-heading"
     >
       <h2 id="footer-heading" className="sr-only">
@@ -173,7 +174,7 @@ const Footer = () => {
       {/* Back to Top Button */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-6 right-7 bg-white text-[#3D2B1F] p-3 rounded-full shadow-md  hover:bg-[#3D2B1F] hover:text-white transition-all duration-300 ease-in-out ${
+        className={`fixed z-100 bottom-6 right-7 bg-white text-[#3D2B1F] p-3 rounded-full shadow-md  hover:bg-[#3D2B1F] hover:text-white transition-all duration-300 ease-in-out ${
           isVisible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-4 pointer-events-none"

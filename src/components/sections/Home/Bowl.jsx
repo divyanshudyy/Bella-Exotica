@@ -6,17 +6,17 @@ import CategoryFilters from "../../ui/products/CategoryFilters";
 const categoryData = [
   {
     id: 1,
-    imageUrl: "/images/bowl/ingredients/Oats Bowl.png",
+    imageUrl: "/images/gallery/showcase/bowls/oats-bowl.webp",
     name: "Oats",
   },
   {
     id: 2,
-    imageUrl: "/images/bowl/ingredients/Museli Bowl.png",
+    imageUrl: "/images/gallery/showcase/bowls/museli-bowl.webp",
     name: "Museli",
   },
   {
     id: 3,
-    imageUrl: "/images/bowl/ingredients/CornFlakes Bowl.png",
+    imageUrl: "/images/gallery/showcase/bowls/cornFlakes-bowl.webp",
     name: "Flakes",
   },
 ];
@@ -59,12 +59,12 @@ const bowlVariants = {
 // Full image section
 const Bowl = ({ category }) => {
   const textImages = [
-    "Nutritious&Wholesome.webp",
-    "RichFiber.webp",
-    "RealFruits.webp",
-    "EnergizingStart.webp",
-    "NaturalSweetness.webp",
-    "Delicious.webp",
+    "nutritious-&-wholesome.webp",
+    "rich-fiber.webp",
+    "real-fruits.webp",
+    "energizing-start.webp",
+    "natural-sweetness.webp",
+    "delicious.webp",
   ];
 
   return (
@@ -94,7 +94,7 @@ const Bowl = ({ category }) => {
           {textImages.map((file, i) => (
             <motion.img
               key={i}
-              src={`/images/bowl/text img/${file}`}
+              src={`/images/gallery/showcase/texts/${file}`}
               className="absolute object-cover lg:w-[85%] w-full md:scale-100 scale-125"
               alt={`Text heading: ${file.replace(".webp", "")}`}
               variants={zoomVariants}

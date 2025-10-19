@@ -31,7 +31,7 @@ export const PRODUCTS = [
     description:
       "A curated collection of our finest oats, perfect for a healthy and hearty breakfast. Includes a variety of textures and flavors to start your day right.",
     price: 450,
-    imageUrl: "/images/productspage/Almonds.png",
+    imageUrl: "/images/gallery/products/Almonds.webp",
     category: "Oats",
     ingredients: ["Rolled Oats", "Steel-Cut Oats", "Quick Oats", "Oat Bran"],
     nutritionalInfo:
@@ -56,7 +56,7 @@ export const PRODUCTS = [
     description:
       "A delightful mix of crunchy granola, sweet berries, and creamy yogurt. A refreshing and nutritious meal to energize your morning.",
     price: 520,
-    imageUrl: "/images/productspage/Oats.png",
+    imageUrl: "/images/gallery/products/Oats.webp",
     category: "Nuts",
     ingredients: [
       "Whole grain oats",
@@ -94,7 +94,7 @@ export const PRODUCTS = [
     description:
       "Packed with tropical fruits, toasted nuts, and our signature granola. This bowl is a vibrant and flavorful escape to paradise.",
     price: 380,
-    imageUrl: "/images/productspage/Corn Flakes.png",
+    imageUrl: "/images/gallery/products/Corn Flakes.webp",
     category: "Oats",
     ingredients: [
       "Granola",
@@ -117,7 +117,7 @@ export const PRODUCTS = [
       "Simple, pure, and wholesome whole grain oats. A versatile pantry staple for oatmeal, baking, or adding texture to your favorite recipes.",
     price: 250,
     originalPrice: 300,
-    imageUrl: "images/productspage/Granola.png",
+    imageUrl: "images/gallery/products/Granola.webp",
     category: "Snacks",
     ingredients: ["100% Whole Grain Rolled Oats"],
     nutritionalInfo:
@@ -142,7 +142,7 @@ export const PRODUCTS = [
       "Our best-selling classic rolled oats provide a chewy texture and nutty flavor. Ideal for a traditional oatmeal breakfast or homemade granola bars.",
     price: 280,
     originalPrice: 320,
-    imageUrl: "/images/productspage/Muesli.png",
+    imageUrl: "/images/gallery/products/Muesli.webp",
     category: "Berries",
     ingredients: ["Organic Rolled Oats"],
     nutritionalInfo:
@@ -159,7 +159,7 @@ export const PRODUCTS = [
       "Our best-selling classic rolled oats provide a chewy texture and nutty flavor. Ideal for a traditional oatmeal breakfast or homemade granola bars.",
     price: 300,
     originalPrice: 350,
-    imageUrl: "/images/productspage/Almonds.png",
+    imageUrl: "/images/gallery/products/Almonds.webp",
     category: "Museli",
     ingredients: ["Premium Rolled Oats"],
     nutritionalInfo:
@@ -175,7 +175,7 @@ export const PRODUCTS = [
     description:
       "Fuel your day with this protein-packed granola, featuring a blend of nuts, seeds, and whole grains for sustained energy and muscle support.",
     price: 850,
-    imageUrl: "/images/productspage/Corn Flakes.png",
+    imageUrl: "/images/gallery/products/Corn Flakes.webp",
     category: "Museli",
     ingredients: [
       "Rolled Oats",
@@ -213,7 +213,7 @@ export const PRODUCTS = [
     description:
       "A tropical delight with golden-toasted coconut flakes, crunchy almonds, and a hint of vanilla. Perfect for snacking or topping your favorite yogurt.",
     price: 650,
-    imageUrl: "/images/productspage/Granola.png",
+    imageUrl: "/images/gallery/products/Granola.webp",
     category: "Berries",
     ingredients: [
       "Rolled Oats",
@@ -235,7 +235,7 @@ export const PRODUCTS = [
     description:
       "Naturally sweetened with dates and packed with nutritious nuts and seeds, these energy balls are the perfect on-the-go snack to beat the afternoon slump.",
     price: 480,
-    imageUrl: "/images/productspage/Oats.png",
+    imageUrl: "/images/gallery/products/Oats.webp",
     category: "Nuts",
     ingredients: ["Dates", "Almonds", "Walnuts", "Chia Seeds", "Cocoa Powder"],
     nutritionalInfo:
@@ -253,49 +253,49 @@ export const TIMELINE_DATA = [
     title: "Harvest & Selection",
     description:
       "Carefully source fresh, high-quality fruits and vegetables. Inspect all produce to meet strict quality standards.",
-    imageUrl: "/images/process/Dark_2.png",
+    imageUrl: "/images/gallery/thumbnails/thumbnail-1.webp",
   },
   {
     step: "Step 2",
     title: "Cleaning & Preparation",
     description:
       "Thoroughly wash, peel, and trim all produce. Cut into uniform sizes for even processing.",
-    imageUrl: "/images/process/Freshness.png",
+    imageUrl: "/images/gallery/thumbnails/thumbnail-2.webp",
   },
   {
     step: "Step 3",
     title: "Blanching & Pre-Treatment",
     description:
       "Blanch with steam or hot water to lock in color, texture, and nutrients. Use optional natural dips (e.g., lemon solution) to prevent browning.",
-    imageUrl: "/images/process/Morning Vibe_2.png",
+    imageUrl: "/images/gallery/thumbnails/thumbnail-3.webp",
   },
   {
     step: "Step 4",
     title: "Drying Process",
     description:
       "Moisture is removed either through dehydration, which uses warm air to gently preserve flavor, or through freeze-drying, where produce is frozen and placed under vacuum so ice turns directly into vapor, keeping the structure intact.",
-    imageUrl: "/images/process/Dark.png",
+    imageUrl: "/images/gallery/thumbnails/thumbnail-4.webp",
   },
   {
     step: "Step 5",
     title: "Quality Check",
     description:
       "Test moisture levels, taste, color, and texture. Ensure the product is safe, consistent, and delicious.",
-    imageUrl: "/images/process/Morning Vibe.png",
+    imageUrl: "/images/gallery/thumbnails/thumbnail-5.webp",
   },
   {
     step: "Step 6",
     title: "Packaging",
     description:
       "Seal products in air-tight, moisture-proof packaging. Lock in freshness and extend shelf life.",
-    imageUrl: "/images/process/Freshness.png",
+    imageUrl: "/images/gallery/thumbnails/thumbnail-1.webp",
   },
   {
     step: "Step 7",
     title: "Ready to Enjoy",
     description:
       "Produce lightweight, shelf-stable, and nutrient-rich foods. Ready for consumers to enjoy worldwide.",
-    imageUrl: "/images/process/Dark_2.png",
+    imageUrl: "/images/gallery/thumbnails/thumbnail-2.webp",
   },
 ];
 

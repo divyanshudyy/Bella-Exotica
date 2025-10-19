@@ -10,7 +10,7 @@ const AboutPage = () => {
     <>
       <Seo page="about" />
       <main className="py-16 flex flex-col gap-10 overflow-hidden">
-        <PageHero image={"/images/about/about-banner.png"} text={"About"} />
+        <PageHero image={"/images/hero/about-hero.webp"} text={"About"} />
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

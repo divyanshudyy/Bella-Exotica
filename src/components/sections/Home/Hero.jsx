@@ -38,7 +38,7 @@ const Hero = () => {
 
       {/* Background Image */}
       <img
-        src="/images/hero/HeroBanner.png"
+        src="/images/hero/home-hero.webp"
         alt="Bella Exotica organic products including oats, muesli, granola, cereals, and almonds"
         className="absolute inset-0 z-[-1] md:h-full md:w-full object-cover w-full h-full select-none pointer-events-none"
       />

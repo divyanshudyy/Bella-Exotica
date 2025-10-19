@@ -19,7 +19,7 @@ const B2BPage = () => {
           viewport={{ once: true }}
         >
           <PageHero
-            image={"/images/contact/contact-banner.png"}
+            image={"/images/hero/b2b-hero.webp"}
             text={"Collaboration"}
           />
         </motion.div>

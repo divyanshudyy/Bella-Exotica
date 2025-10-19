@@ -47,7 +47,7 @@ export const products = [
   { id: 5, name: "Product 5", image: "/images/71IhSmiyXAL._SL1500_.png" },
 ];
 
-export const REVIEWS = [
+export const reviews = [
   {
     id: 1,
     category: "TRAVEL PACKS",
@@ -145,50 +145,50 @@ export const CATEGORIES = ["All", "Oats", "Nuts", "Museli", "Berries"];
 export const PRODUCTS = [
   {
     id: 1,
-    name: "ALMONDS",
-    image: "/images/products/alm1.png",
+    name: "Almonds",
+    image: "/images/gallery/thumbnails/almonds.webp",
     category: "Nuts",
   },
   {
     id: 2,
-    name: "MUESLI",
-    image: "/images/products/muesli2.png",
+    name: "Muesli",
+    image: "/images/gallery/thumbnails/muesli.webp",
     category: "Museli",
   },
   {
     id: 3,
-    name: "GRANOLA",
-    image: "/images/products/granola2.png",
+    name: "Granola",
+    image: "/images/gallery/thumbnails/granola.webp",
     category: "Museli",
   },
   {
     id: 4,
-    name: "OATMEAL",
-    image: "/images/products/alm1.png",
+    name: "Oatmeals",
+    image: "/images/gallery/thumbnails/almonds.webp",
     category: "Oats",
   },
   {
     id: 5,
-    name: "WALNUTS",
-    image: "/images/products/muesli2.png",
+    name: "Walnuts",
+    image: "/images/gallery/thumbnails/muesli.webp",
     category: "Nuts",
   },
   {
     id: 6,
-    name: "CASHEWS",
-    image: "/images/products/granola2.png",
+    name: "Cashew",
+    image: "/images/gallery/thumbnails/granola.webp",
     category: "Nuts",
   },
   {
     id: 7,
-    name: "BERRY MIX",
-    image: "/images/products/alm1.png",
+    name: "Berry Mix",
+    image: "/images/gallery/thumbnails/almonds.webp",
     category: "Berries",
   },
   {
     id: 8,
     name: "STEEL CUT OATS",
-    image: "/images/products/muesli2.png",
+    image: "/images/gallery/thumbnails/muesli.webp",
     category: "Oats",
   },
 ];

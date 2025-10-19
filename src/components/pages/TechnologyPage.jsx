@@ -9,7 +9,7 @@ const TechnologyPage = () => {
       <Seo page="technology" />
       <main className="py-16 flex flex-col gap-10 overflow-hidden">
         <PageHero
-          image={"/images/contact/contact-banner.png"}
+          image={"/images/hero/technology-hero.webp"}
           text={"Technology"}
         />
         <motion.div

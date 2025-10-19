@@ -1,6 +1,6 @@
 const siteUrl =
   "https://bella-exotica-glb9qryhd-divyanshu-divys-projects.vercel.app";
-const imgUrl = `${siteUrl}/images/og/og-default.png`;
+const imgUrl = `${siteUrl}/images/og/og-default.webp`;
 
 export const seoData = {
   home: {

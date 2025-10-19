@@ -62,7 +62,7 @@ const Dots = ({ color }) => (
 const WhyChooseUs = () => {
   return (
     <section className="relative min-h-full w-full flex justify-center items-center py-20">
-      <div className="relative w-full max-w-7xl py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-white rounded-3xl md:rounded-full shadow-lg mx-10">
+      <div className="relative w-full max-w-7xl py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-white rounded-3xl md:rounded-5xl shadow-lg mx-10">
         {/* Heading */}
         <motion.div
           initial="hidden"
@@ -73,7 +73,7 @@ const WhyChooseUs = () => {
           }}
           className="text-center mb-16 z-10 relative"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#3D2B1F] font-oakes-grotesk">
+          <h2 className="text-3xl md:text-5xl font-bold text-[#3D2B1F] font-oakes-grotesk">
             Why <br /> Choose Us?
           </h2>
         </motion.div>

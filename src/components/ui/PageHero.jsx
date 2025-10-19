@@ -30,7 +30,7 @@ const PageHero = ({ image, text }) => {
   };
 
   // Scroll-based transformations
-  const borderRadius = useTransform(scrollYProgress, [0, 0.3], ["0px", "15px"]);
+  const borderRadius = useTransform(scrollYProgress, [0, 0.3], ["0px", "25px"]);
   const width = useTransform(scrollYProgress, [0, 0.3], ["100%", "90%"]);
   const height = useTransform(scrollYProgress, [0, 0.3], heightMap[device]);
 

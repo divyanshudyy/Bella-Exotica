@@ -53,12 +53,12 @@ const Highlight = () => {
     <section className="relative h-auto w-full flex items-center justify-center">
       {/* Background Image */}
       <motion.img
-        src="/images/highlight/tldrawFile (4).png"
+        src="/images/gallery/banner/highlight-banner.webp"
         alt="Premium freeze-dried products from Bella Exotica"
         className="w-full h-auto"
-        initial={{ filter: "blur(14px)", opacity: 0.7 }}
+        initial={{ filter: "blur(8px)", opacity: 0.7 }}
         whileInView={{ filter: "blur(0px)", opacity: 1 }}
-        transition={{ duration: 2.2, ease: "easeOut" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
       />
 

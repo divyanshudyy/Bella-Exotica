@@ -11,7 +11,7 @@ const ProductsPage = () => {
         {/* Hero Section with fade + upward motion */}
 
         <PageHero
-          image={"/images/productspage/product-banner.png"}
+          image={"/images/hero/product-hero.webp"}
           text={"Products"}
         />
 

@@ -6,21 +6,21 @@ const storyItemsData = [
     title: "Advanced Technology",
     description:
       "We use advanced freeze-drying and dehydration systems that gently remove moisture while preserving nutrients, flavor, and aroma — keeping food as close to fresh as possible.\n\nOur precision technology works under low temperatures and vacuum conditions, protecting vitamins, antioxidants, and bioactive compounds often lost in conventional methods.\n\n With real-time monitoring, automated quality checks, and sustainable energy practices, we deliver lighter, crisper, nutrient-rich products that last longer while retaining natural taste, color, and texture.",
-    imageUrl: "/images/about/Morning Vibe_2.png",
+    imageUrl: "/images/gallery/thumbnails/thumbnail-3.webp",
     imageAlt: "Advanced freeze-drying technology system",
   },
   {
     title: "Nutrient Retention",
     description:
       "Our process locks in vitamins, minerals, and antioxidants, retaining up to 95% of nutritional value and offering food as wholesome as its natural form.\n\nBy combining low temperatures with vacuum dehydration, we gently remove moisture while safeguarding Vitamin C, polyphenols, and natural enzymes.\n\n This ensures food retains its health benefits, offering consumers a nutrient-dense and wholesome experience as close to fresh as possible.",
-    imageUrl: "/images/about/Almonds.png",
+    imageUrl: "/images/gallery/thumbnails/thumbnail-4.webp",
     imageAlt: "Fresh fruits preserved through freeze-drying",
   },
   {
     title: "Global Standards",
     description:
       "We comply with FSSAI, ISO, HACCP, and Codex standards, ensuring safe, consistent, and export-ready products trusted worldwide.\n\nEvery step from sourcing to packaging complies with FSSAI, ISO 22000, HACCP, and Codex Alimentarius guidelines. \n\nWith certified machinery, hygienic handling, and strict quality checks, we guarantee trust, transparency, and global competitiveness for our products.",
-    imageUrl: "/images/about/Dark_2.png",
+    imageUrl: "/images/gallery/thumbnails/thumbnail-5.webp",
     imageAlt: "Global food safety and quality certifications",
   },
 ];

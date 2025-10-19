@@ -1,7 +1,11 @@
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+} from "motion/react";
 
-// Intersection Observer for text animation
 function useIntersectionObserver(
   elementRef,
   { threshold = 0.1, root = null, rootMargin = "0%", triggerOnce = false } = {}
@@ -68,59 +72,39 @@ const Quote = () => {
     offset: ["start end", "end start"],
   });
 
-  // 🔹 Smooth proportional section scaling (entire section shrinks slightly)
-  const sectionScale = useTransform(scrollYProgress, [0, 1], [1, 1]);
-  // inside your Quote component
-  const [yStartJar1, setYStartJar1] = useState(300);
-  const [yStartJar2, setYStartJar2] = useState(500);
-  const [yStartJar3, setYStartJar3] = useState(500);
-
-  const scaleJar1 = useTransform(scrollYProgress, [0, 0.8], [0.6, 0.9]);
-  const scaleJar2 = useTransform(scrollYProgress, [0.2, 0.9], [0.8, 1.4]);
-  const scaleJar3 = useTransform(scrollYProgress, [0, 1], [1.2, 1.0]);
-
-  const rotateJar1 = useTransform(scrollYProgress, [0, 0.8], [50, 0]);
-  const rotateJar2 = useTransform(scrollYProgress, [0.2, 0.9], [-25, 10]);
-  const rotateJar3 = useTransform(scrollYProgress, [0, 1], [20, -20]);
-
+  // Responsive Y start values
+  const [yStart, setYStart] = useState([300, 500, 500]);
   useEffect(() => {
-    const updateYValues = () => {
-      const width = window.innerWidth;
-
-      if (width < 640) {
-        // small screens
-        setYStartJar1(150);
-        setYStartJar2(250);
-        setYStartJar3(300);
-      } else if (width < 1024) {
-        // medium screens
-        setYStartJar1(250);
-        setYStartJar2(400);
-        setYStartJar3(450);
-      } else {
-        // large screens
-        setYStartJar1(300);
-        setYStartJar2(500);
-        setYStartJar3(500);
-      }
+    const updateYStart = () => {
+      const w = window.innerWidth;
+      if (w < 640) setYStart([150, 250, 300]);
+      else if (w < 1024) setYStart([250, 400, 450]);
+      else setYStart([300, 500, 500]);
     };
-
-    updateYValues();
-    window.addEventListener("resize", updateYValues);
-    return () => window.removeEventListener("resize", updateYValues);
+    updateYStart();
+    window.addEventListener("resize", updateYStart);
+    return () => window.removeEventListener("resize", updateYStart);
   }, []);
 
-  // Then use these in your useTransform
-  const yJar1 = useTransform(scrollYProgress, [0, 0.8], [yStartJar1, -50]);
-  const yJar2 = useTransform(scrollYProgress, [0, 0.8], [yStartJar2, -80]);
-  const yJar3 = useTransform(scrollYProgress, [0, 1], [yStartJar3, -100]);
+  // Individual transforms for each jar (no hook-in-loop)
+  const yTransform1 = useTransform(scrollYProgress, [0, 1], [yStart[0], -50]);
+  const rotateTransform1 = useTransform(scrollYProgress, [0, 1], [50, 0]);
+
+  const yTransform2 = useTransform(scrollYProgress, [0, 1], [yStart[1], -80]);
+  const rotateTransform2 = useTransform(scrollYProgress, [0, 1], [-25, 10]);
+
+  const yTransform3 = useTransform(scrollYProgress, [0, 1], [yStart[2], -100]);
+  const rotateTransform3 = useTransform(scrollYProgress, [0, 1], [20, -20]);
+
+  // Throttle scroll updates (optional)
+  useMotionValueEvent(scrollYProgress, "change", () => {
+    requestAnimationFrame(() => {});
+  });
 
   return (
     <motion.section
       ref={sectionRef}
-      className="relative flex md:items-start justify-center w-full px-4 pt-12 pb-55" // changed from fixed height to padding
-      aria-label="Quote section"
-      style={{ scale: sectionScale }}
+      className="relative flex md:items-start items-center justify-center w-full px-4 pt-12 pb-55"
     >
       {/* Text */}
       <motion.figure
@@ -129,7 +113,6 @@ const Quote = () => {
         initial="hidden"
         animate={isTextVisible ? "visible" : "hidden"}
       >
-        {/* Opening Quote */}
         <motion.span
           variants={quoteMarkVariants}
           className="absolute font-playfair text-[#3D2B1F]"
@@ -143,19 +126,19 @@ const Quote = () => {
           “
         </motion.span>
 
-        {/* Quote Lines */}
         <motion.blockquote
-          className="text-center space-y-[clamp(0.3rem, 1vw, 1rem)] relative"
+          className="text-center space-y-[clamp(0.3rem,1vw,1rem)]"
           variants={containerVariants}
         >
-          {quoteLines.map((line, index) => (
-            <div key={index} className="overflow-hidden">
+          {quoteLines.map((line, idx) => (
+            <div key={idx} className="overflow-hidden">
               <motion.p
                 variants={lineVariants}
                 className="font-playfair font-semibold italic text-[#3D2B1F]"
                 style={{
                   fontSize: "clamp(1.5rem, 3vw, 3.2rem)",
                   lineHeight: "clamp(1.2, 2vw, 1.35)",
+                  willChange: "transform, opacity",
                 }}
               >
                 {line}
@@ -164,7 +147,6 @@ const Quote = () => {
           ))}
         </motion.blockquote>
 
-        {/* Closing Quote */}
         <motion.span
           variants={quoteMarkVariants}
           className="absolute font-playfair text-[#3D2B1F]"
@@ -179,41 +161,39 @@ const Quote = () => {
         </motion.span>
       </motion.figure>
 
-      {/* Jar images */}
-      <div className="inset-0 flex items-center justify-center z-0 pointer-events-none">
+      {/* Jar Images */}
+      <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
         <motion.img
-          src="/images/highlight/Muesli-Jar3.png"
-          alt="Jar 3"
-          className="absolute left-0 sm:left-5 bottom-26 sm:bottom-10 md:bottom-10"
-          style={{
-            y: yJar1,
-            scale: scaleJar1,
-            rotate: rotateJar1,
-            width: "clamp(6rem, 15vw, 12rem)",
-          }}
-        />
-
-        <motion.img
-          src="/images/highlight/Muesli-Jar2.png"
-          alt="Jar 2"
-          className="absolute left-24 sm:left-36 bottom-32 sm:bottom-120 md:left-25"
-          style={{
-            y: yJar2,
-            scale: scaleJar2,
-            rotate: rotateJar2,
-            width: "clamp(6rem, 18vw, 14rem)",
-          }}
-        />
-
-        <motion.img
-          src="/images/highlight/Muesli-Jar1.png"
+          src="/images/gallery/thumbnails/muesli-jar.webp"
           alt="Jar 1"
-          className="absolute right-16 sm:right-20 bottom-35 sm:bottom-60 sm:scale-120"
+          className="absolute left-0 sm:left-5 bottom-6 sm:bottom-10 md:bottom-10"
           style={{
-            y: yJar3,
-            scale: scaleJar3,
-            rotate: rotateJar3,
-            width: "clamp(6rem, 20vw, 16rem)",
+            y: yTransform1,
+            rotate: rotateTransform1,
+            width: "clamp(6rem,15vw,12rem)",
+            willChange: "transform",
+          }}
+        />
+        <motion.img
+          src="/images/gallery/thumbnails/muesli-jar.webp"
+          alt="Jar 2"
+          className="absolute left-24 sm:left-36 md:left-25 bottom-32 sm:bottom-120"
+          style={{
+            y: yTransform2,
+            rotate: rotateTransform2,
+            width: "clamp(6rem,18vw,14rem)",
+            willChange: "transform",
+          }}
+        />
+        <motion.img
+          src="/images/gallery/thumbnails/muesli-jar.webp"
+          alt="Jar 3"
+          className="absolute right-16 sm:right-20 bottom-80 sm:bottom-60 md:block"
+          style={{
+            y: yTransform3,
+            rotate: rotateTransform3,
+            width: "clamp(6rem,20vw,16rem)",
+            willChange: "transform",
           }}
         />
       </div>

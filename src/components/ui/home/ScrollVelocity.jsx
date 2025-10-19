@@ -72,12 +72,12 @@ export const ScrollVelocity = ({
       baseX.set(baseX.get() + moveBy);
     });
 
-    // Duplicate the entire block for seamless loop
+    // Equal space between all copies, including ends
     const copies = Array.from({ length: numCopies }).map((_, idx) => (
       <div
         key={idx}
-        ref={idx === 0 ? copyRef : null} // measure only the first copy
-        className="flex items-center space-x-8 flex-shrink-0"
+        ref={idx === 0 ? copyRef : null}
+        className="flex items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-24 flex-shrink-0"
       >
         {children}
       </div>
@@ -85,7 +85,10 @@ export const ScrollVelocity = ({
 
     return (
       <div className="relative overflow-hidden w-full">
-        <motion.div className="flex whitespace-nowrap" style={{ x }}>
+        <motion.div
+          className="flex whitespace-nowrap justify-between"
+          style={{ x }}
+        >
           {copies}
         </motion.div>
       </div>
@@ -93,34 +96,47 @@ export const ScrollVelocity = ({
   }
 
   return (
-    <section className="w-full overflow-hidden py-5 relative">
-      {/* Fade overlay on the left */}
+    <section className="w-full overflow-hidden py-0 relative">
+      {/* Fade overlays */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 left-0 w-24 sm:w-32 z-10"
+        className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-24 md:w-32 z-10"
         style={{
           background: "linear-gradient(to right, #F2F2F2, rgba(242,242,242,0))",
         }}
       />
-      {/* Fade overlay on the right */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 w-24 sm:w-32 z-10"
+        className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-24 md:w-32 z-10"
         style={{
           background: "linear-gradient(to left, #F2F2F2, rgba(242,242,242,0))",
         }}
       />
 
       <VelocityText baseVelocity={50}>
-        {texts.map((text, idx) => (
-          <div key={idx} className="flex items-center px-10">
+        <div
+          className="
+          bg-white
+          py-8  
+      flex items-ce nter justify-start gap-18  lg:gap-28
+      px-10 sm:px-10 lg:px-18
+    "
+        >
+          {texts.map((text, idx) => (
             <img
-              src={`/images/logo/certificates/${text}.png`}
+              key={idx}
+              src={`/images/gallery/certificates/${text}.webp`}
               alt={text}
-              className="w-auto object-contain sm:h-30 md:h-15 h-20 opacity-20"
+              className="
+          object-contain 
+          opacity-30
+          h-15 sm:h-14 md:h-10 lg:h-18 
+          w-auto
+          transition-all duration-300 ease-in-out
+        "
             />
-          </div>
-        ))}
+          ))}
+        </div>
       </VelocityText>
     </section>
   );

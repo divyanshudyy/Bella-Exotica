@@ -8,8 +8,14 @@ import ChooseUs from "../sections/Home/ChooseUs";
 import Counter from "../sections/Home/Counter";
 import Review from "../sections/Home/Review";
 import Products from "../sections/Home/Products";
-import { REVIEWS } from "../../data/content";
 import { motion } from "motion/react";
+
+const fadeUp = (y = 50, delay = 0.5, duration = 0.8) => ({
+  initial: { opacity: 0, y },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration, delay, ease: "easeOut" },
+  viewport: { once: true },
+});
 
 const HomePage = () => {
   return (
@@ -19,27 +25,23 @@ const HomePage = () => {
         <Hero />
         <Showcase />
         <Quote />
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="w-full"
-        >
+
+        <motion.div {...fadeUp(50)}>
           <Products />
         </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 70 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
+
+        <motion.div {...fadeUp(30)}>
           <Counter />
         </motion.div>
+
         <Highlight />
         <Certification />
-        <ChooseUs />
-        <Review reviews={REVIEWS} />
+
+        <motion.div {...fadeUp(70)}>
+          <ChooseUs />
+        </motion.div>
+
+        <Review />
       </main>
     </>
   );
