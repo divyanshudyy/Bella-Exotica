@@ -3,9 +3,15 @@ import ProductSlider from "../../ui/home/ProductSlider";
 import CategoryFilters from "../../ui/products/CategoryFilters";
 import {
   EX_PRODUCTS,
+<<<<<<< HEAD
   CATEGORIES,
   EX_PRODUCTS_SECTION,
 } from "../../../data/homeData";
+=======
+  EX_CATEGORIES,
+  EX_PRODUCTS_SECTION,
+} from "../../../data/constants";
+>>>>>>> d3079487d04fc123756121e879343432c5672005
 
 const Products = () => {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -29,7 +35,7 @@ const Products = () => {
 
         {/* Category Filters */}
         <CategoryFilters
-          categories={CATEGORIES}
+          categories={EX_CATEGORIES}
           activeCategory={activeCategory}
           setActiveCategory={setActiveCategory}
           bgColor="bg-transparent"
