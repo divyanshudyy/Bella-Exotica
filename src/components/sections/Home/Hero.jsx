@@ -1,8 +1,8 @@
-"use client";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import CustomButton from "../../ui/CustomButton";
 import { Link } from "react-router-dom";
+import { HERO } from "../../../data/constants";
 
 const Hero = () => {
   const ref = useRef(null);
@@ -29,28 +29,24 @@ const Hero = () => {
       {/* Text Content */}
       <div className="mt-30 sm:mt-24 lg:mt-25 text-center">
         <h1 className="text-4xl sm:text-5xl lg:text-5xl text-[#3D2B1F] capitalize font-oakes-grotesk font-bold">
-          Pure taste timeless nutrition
+          {HERO.title}
         </h1>
         <p className="text-md sm:text-xl lg:text-[25px] text-[#3D2B1F] mt-3 lg:mt-2 max-w-lg sm:max-w-2xl lg:max-w-3xl mx-auto font-oakes-grotesk">
-          Premium Organic Cereals, Granolas & Nuts
+          {HERO.subtitle}
         </p>
       </div>
 
       {/* Background Image */}
       <img
         src="/images/hero/home-hero.webp"
-        alt="Bella Exotica organic products including oats, muesli, granola, cereals, and almonds"
+        alt={HERO.imgAlt}
         className="absolute inset-0 z-[-1] md:h-full md:w-full object-cover w-full h-full select-none pointer-events-none"
       />
 
       {/* CTA Button */}
       <div>
         <Link to="/products">
-          <CustomButton
-            text="Explore Collection"
-            margin="mb-5"
-            textSize="text-md"
-          />
+          <CustomButton text={HERO.cta} margin="mb-5" textSize="text-md" />
         </Link>
       </div>
     </motion.section>

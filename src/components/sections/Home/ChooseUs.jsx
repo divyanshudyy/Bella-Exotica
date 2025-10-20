@@ -1,39 +1,8 @@
 import { motion } from "motion/react";
 import { Leaf, Salad, Recycle, CircleSlash } from "lucide-react";
+import { WHY_CHOOSE_US_SECTION } from "../../../data/constants";
 
-// --- Feature Data ---
-const features = [
-  {
-    icon: Leaf,
-    title: "High quality ingredients",
-    description: "from the best farms",
-    color: "#3D2B1F",
-    textPosition: "top",
-  },
-  {
-    icon: Salad,
-    title: "Delicious and healthy meals",
-    description: "Where Health and Taste Align",
-    color: "#3D2B1F",
-    textPosition: "bottom",
-  },
-  {
-    icon: Recycle,
-    title: "Eco-friendly food",
-    description: "packaging for delivery",
-    color: "#3D2B1F",
-    textPosition: "top",
-  },
-  {
-    icon: CircleSlash,
-    title: "Purity and Freshness",
-    description: "With 0% Artificial Additives",
-    color: "#3D2B1F",
-    textPosition: "bottom",
-  },
-];
-
-// --- Animation Variants ---
+// Animation Variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -50,6 +19,8 @@ const cardVariants = {
     transition: { type: "spring", stiffness: 100, damping: 10 },
   },
 };
+
+const ICONS = [Leaf, Salad, Recycle, CircleSlash];
 
 const Dots = ({ color }) => (
   <div className="flex flex-col items-center my-3" style={{ color }}>
@@ -74,7 +45,7 @@ const WhyChooseUs = () => {
           className="text-center mb-16 z-10 relative"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-[#3D2B1F] font-oakes-grotesk">
-            Why <br /> Choose Us?
+            {WHY_CHOOSE_US_SECTION.heading}
           </h2>
         </motion.div>
 
@@ -86,8 +57,8 @@ const WhyChooseUs = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
         >
-          {features.map((feature, index) => {
-            const IconComponent = feature.icon;
+          {WHY_CHOOSE_US_SECTION.features.map((feature, index) => {
+            const IconComponent = ICONS[index];
 
             const TitleAndDescription = () => (
               <div className="text-center">

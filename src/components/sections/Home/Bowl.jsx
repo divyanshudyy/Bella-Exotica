@@ -1,25 +1,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import CategoryFilters from "../../ui/products/CategoryFilters";
-
-// Category data
-const categoryData = [
-  {
-    id: 1,
-    imageUrl: "/images/gallery/showcase/bowls/oats-bowl.webp",
-    name: "Oats",
-  },
-  {
-    id: 2,
-    imageUrl: "/images/gallery/showcase/bowls/museli-bowl.webp",
-    name: "Museli",
-  },
-  {
-    id: 3,
-    imageUrl: "/images/gallery/showcase/bowls/cornFlakes-bowl.webp",
-    name: "Flakes",
-  },
-];
+import { SHOWCASE } from "../../../data/constants";
 
 // Container only for text images (stagger control)
 const textContainerVariants = {
@@ -45,6 +27,7 @@ const zoomVariants = {
     },
   },
 };
+
 // Bowl animation
 const bowlVariants = {
   hidden: { y: 800, opacity: 0 },
@@ -58,15 +41,6 @@ const bowlVariants = {
 
 // Full image section
 const Bowl = ({ category }) => {
-  const textImages = [
-    "nutritious-&-wholesome.webp",
-    "rich-fiber.webp",
-    "real-fruits.webp",
-    "energizing-start.webp",
-    "natural-sweetness.webp",
-    "delicious.webp",
-  ];
-
   return (
     <section className="w-full overflow-hidden">
       <motion.div
@@ -78,20 +52,28 @@ const Bowl = ({ category }) => {
       >
         {/* Bowl image wrapper */}
         <div className="w-full flex justify-center my-6 md:my-10">
-          <motion.img
-            src={category.imageUrl}
-            alt={`${category.name} with milk`}
-            className="w-[100%] md:w-[70%] object-contain"
-            variants={bowlVariants}
-          />
+          {(() => {
+            const selectedBowl = SHOWCASE.bowls.find(
+              (bowl) => bowl.id === category.id
+            );
+            return (
+              <motion.img
+                key={selectedBowl.id}
+                src={selectedBowl.imageUrl}
+                alt={selectedBowl.alt}
+                className="w-[100%] md:w-[70%] object-contain"
+                variants={bowlVariants}
+              />
+            );
+          })()}
         </div>
 
         {/* Text images overlay */}
         <motion.div
           variants={textContainerVariants}
-          className="absolute inset-0 flex items-center justify-center w-full  mt-25 md:my-10"
+          className="absolute inset-0 flex items-center justify-center w-full mt-25 md:my-10"
         >
-          {textImages.map((file, i) => (
+          {SHOWCASE.textImages.map((file, i) => (
             <motion.img
               key={i}
               src={`/images/gallery/showcase/texts/${file}`}
@@ -134,13 +116,15 @@ const Header = ({ categories, selectedCategory, onSelectCategory }) => {
 
 // Main Showcase Component
 const Showcase = () => {
-  const [selectedCategory, setSelectedCategory] = useState(categoryData[1]);
+  const [selectedCategory, setSelectedCategory] = useState(
+    SHOWCASE.categories[1]
+  );
 
   return (
     <div className="relative">
       {/* Header overlay */}
       <Header
-        categories={categoryData}
+        categories={SHOWCASE.categories}
         selectedCategory={selectedCategory}
         onSelectCategory={setSelectedCategory}
       />

@@ -3,7 +3,7 @@ import ScrollVelocity from "../../ui/home/ScrollVelocity";
 const Certification = () => {
   return (
     <section className=" flex justify-center items-center flex-col">
-      <div className=" bg-white  max-w-7xl">
+      <div className=" bg-white max-w-sm sm:w-full md:max-w-7xl">
         <ScrollVelocity
           texts={["gmp", "haccp", "fssai", "iso"]}
           velocity={10}

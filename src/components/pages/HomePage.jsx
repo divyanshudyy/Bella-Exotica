@@ -6,7 +6,7 @@ import Highlight from "../sections/Home/Highlight";
 import Certification from "../sections/Home/Certification";
 import ChooseUs from "../sections/Home/ChooseUs";
 import Counter from "../sections/Home/Counter";
-import Review from "../sections/Home/Review";
+import Testimonials from "../sections/Home/Testimonials";
 import Products from "../sections/Home/Products";
 import { motion } from "motion/react";
 
@@ -41,7 +41,7 @@ const HomePage = () => {
           <ChooseUs />
         </motion.div>
 
-        <Review />
+        <Testimonials />
       </main>
     </>
   );

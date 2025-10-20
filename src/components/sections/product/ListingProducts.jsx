@@ -238,12 +238,13 @@ const ListingProducts = () => {
               {/* Input */}
               <input
                 type="text"
+                id="product-search" // unique ID
+                name="productSearch" // form field name
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search products..."
-                className="w-full pl-10 pr-10 py-2 border border-[#3D2B1F]/20 rounded-full hover:border-[#3D2B1F]/50  bg-white text-[#3D2B1F] focus:outline-[#3D2B1F]/60 focus:ring-0 transition-colors duration-300 ease-out"
+                className="w-full pl-10 pr-10 py-2 border border-[#3D2B1F]/20 rounded-full hover:border-[#3D2B1F]/50 bg-white text-[#3D2B1F] focus:outline-[#3D2B1F]/60 focus:ring-0 transition-colors duration-300 ease-out"
               />
-
               {/* Clear button */}
               {searchTerm && (
                 <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
