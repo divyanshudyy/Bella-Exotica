@@ -5,6 +5,7 @@ import {
   useTransform,
   useMotionValueEvent,
 } from "motion/react";
+import { QUOTE } from "../../../data/constants";
 
 function useIntersectionObserver(
   elementRef,
@@ -34,13 +35,6 @@ function useIntersectionObserver(
 
   return isIntersecting;
 }
-
-const quoteLines = [
-  "Elevate your breakfast",
-  "with a masterful blend offering",
-  "natural radiance and wellness",
-  "in every single spoonful.",
-];
 
 const containerVariants = {
   hidden: {},
@@ -73,28 +67,40 @@ const Quote = () => {
   });
 
   // Responsive Y start values
-  const [yStart, setYStart] = useState([300, 500, 500]);
+  const [yStart, setYStart] = useState(QUOTE.yStartValues.default);
   useEffect(() => {
     const updateYStart = () => {
       const w = window.innerWidth;
-      if (w < 640) setYStart([150, 250, 300]);
-      else if (w < 1024) setYStart([250, 400, 450]);
-      else setYStart([300, 500, 500]);
+      if (w < 640) setYStart(QUOTE.yStartValues.sm);
+      else if (w < 1024) setYStart(QUOTE.yStartValues.md);
+      else setYStart(QUOTE.yStartValues.lg);
     };
     updateYStart();
     window.addEventListener("resize", updateYStart);
     return () => window.removeEventListener("resize", updateYStart);
   }, []);
 
-  // Individual transforms for each jar (no hook-in-loop)
+  // Individual transforms for each jar
   const yTransform1 = useTransform(scrollYProgress, [0, 1], [yStart[0], -50]);
-  const rotateTransform1 = useTransform(scrollYProgress, [0, 1], [50, 0]);
+  const rotateTransform1 = useTransform(
+    scrollYProgress,
+    [0, 1],
+    QUOTE.jars[0].rotateTransform
+  );
 
   const yTransform2 = useTransform(scrollYProgress, [0, 1], [yStart[1], -80]);
-  const rotateTransform2 = useTransform(scrollYProgress, [0, 1], [-25, 10]);
+  const rotateTransform2 = useTransform(
+    scrollYProgress,
+    [0, 1],
+    QUOTE.jars[1].rotateTransform
+  );
 
   const yTransform3 = useTransform(scrollYProgress, [0, 1], [yStart[2], -100]);
-  const rotateTransform3 = useTransform(scrollYProgress, [0, 1], [20, -20]);
+  const rotateTransform3 = useTransform(
+    scrollYProgress,
+    [0, 1],
+    QUOTE.jars[2].rotateTransform
+  );
 
   // Throttle scroll updates (optional)
   useMotionValueEvent(scrollYProgress, "change", () => {
@@ -102,102 +108,94 @@ const Quote = () => {
   });
 
   return (
-    <motion.section
-      ref={sectionRef}
-      className="relative flex md:items-start items-center justify-center w-full px-4 pt-12 pb-55"
-    >
-      {/* Text */}
-      <motion.figure
-        ref={textRef}
-        className="max-w-5xl mx-auto relative z-10"
-        initial="hidden"
-        animate={isTextVisible ? "visible" : "hidden"}
+    <section className="relative">
+      <motion.div
+        ref={sectionRef}
+        className=" flex md:items-start items-center justify-center w-full px-4 pt-12 pb-55"
       >
-        <motion.span
-          variants={quoteMarkVariants}
-          className="absolute font-playfair text-[#3D2B1F]"
-          style={{
-            top: 0,
-            left: "-1rem",
-            fontSize: "clamp(2.5rem, 5vw, 9rem)",
-            lineHeight: 1,
-          }}
+        {/* Text */}
+        <motion.figure
+          ref={textRef}
+          className="max-w-5xl mx-auto relative z-10"
+          initial="hidden"
+          animate={isTextVisible ? "visible" : "hidden"}
         >
-          “
-        </motion.span>
+          <motion.span
+            variants={quoteMarkVariants}
+            className="absolute font-playfair text-[#3D2B1F]"
+            style={QUOTE.quoteMarkStyles.topLeft}
+          >
+            “
+          </motion.span>
 
-        <motion.blockquote
-          className="text-center space-y-[clamp(0.3rem,1vw,1rem)]"
-          variants={containerVariants}
-        >
-          {quoteLines.map((line, idx) => (
-            <div key={idx} className="overflow-hidden">
-              <motion.p
-                variants={lineVariants}
-                className="font-playfair font-semibold italic text-[#3D2B1F]"
+          <motion.blockquote
+            className="text-center space-y-[clamp(0.3rem,1vw,1rem)]"
+            variants={containerVariants}
+          >
+            {QUOTE.quoteLines.map((line, idx) => (
+              <div key={idx} className="overflow-hidden">
+                <motion.p
+                  variants={lineVariants}
+                  className={QUOTE.textStyle.className}
+                  style={{
+                    fontSize: QUOTE.textStyle.fontSize,
+                    lineHeight: QUOTE.textStyle.lineHeight,
+                    willChange: QUOTE.textStyle.willChange,
+                  }}
+                >
+                  {line}
+                </motion.p>
+              </div>
+            ))}
+          </motion.blockquote>
+
+          <motion.span
+            variants={quoteMarkVariants}
+            className="absolute font-playfair text-[#3D2B1F]"
+            style={QUOTE.quoteMarkStyles.bottomRight}
+          >
+            ”
+          </motion.span>
+        </motion.figure>
+
+        {/* Jar Images */}
+        <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
+          {QUOTE.jars.map((jar, i) => {
+            const yTransforms = [yTransform1, yTransform2, yTransform3];
+            const rotateTransforms = [
+              rotateTransform1,
+              rotateTransform2,
+              rotateTransform3,
+            ];
+
+            return (
+              <motion.img
+                key={jar.id}
+                src={jar.src}
+                alt={jar.alt}
+                className={`absolute ${
+                  jar.position.left
+                    ? `left-${jar.position.left} sm:left-${jar.position.smLeft} md:left-${jar.position.mdLeft}`
+                    : ""
+                } ${
+                  jar.position.right
+                    ? `right-${jar.position.right} sm:right-${jar.position.smRight}`
+                    : ""
+                } bottom-${jar.position.bottom} sm:bottom-${
+                  jar.position.smBottom
+                } md:block`}
                 style={{
-                  fontSize: "clamp(1.5rem, 3vw, 3.2rem)",
-                  lineHeight: "clamp(1.2, 2vw, 1.35)",
-                  willChange: "transform, opacity",
+                  y: yTransforms[i],
+                  rotate: rotateTransforms[i],
+                  width: jar.width,
+                  willChange: "transform",
                 }}
-              >
-                {line}
-              </motion.p>
-            </div>
-          ))}
-        </motion.blockquote>
-
-        <motion.span
-          variants={quoteMarkVariants}
-          className="absolute font-playfair text-[#3D2B1F]"
-          style={{
-            bottom: 0,
-            right: "-1rem",
-            fontSize: "clamp(2.5rem, 5vw, 9rem)",
-            lineHeight: 1,
-          }}
-        >
-          ”
-        </motion.span>
-      </motion.figure>
-
-      {/* Jar Images */}
-      <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
-        <motion.img
-          src="/images/gallery/thumbnails/muesli-jar.webp"
-          alt="Jar 1"
-          className="absolute left-0 sm:left-5 bottom-6 sm:bottom-10 md:bottom-10"
-          style={{
-            y: yTransform1,
-            rotate: rotateTransform1,
-            width: "clamp(6rem,15vw,12rem)",
-            willChange: "transform",
-          }}
-        />
-        <motion.img
-          src="/images/gallery/thumbnails/muesli-jar.webp"
-          alt="Jar 2"
-          className="absolute left-24 sm:left-36 md:left-25 bottom-32 sm:bottom-120"
-          style={{
-            y: yTransform2,
-            rotate: rotateTransform2,
-            width: "clamp(6rem,18vw,14rem)",
-            willChange: "transform",
-          }}
-        />
-        <motion.img
-          src="/images/gallery/thumbnails/muesli-jar.webp"
-          alt="Jar 3"
-          className="absolute right-16 sm:right-20 bottom-80 sm:bottom-60 md:block"
-          style={{
-            y: yTransform3,
-            rotate: rotateTransform3,
-            width: "clamp(6rem,20vw,16rem)",
-            willChange: "transform",
-          }}
-        />
-      </div>
-    </motion.section>
+              />
+            );
+          })}
+        </div>
+      </motion.div>
+    </section>
   );
 };
 

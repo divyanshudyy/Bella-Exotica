@@ -8,6 +8,7 @@ import {
   useVelocity,
   useAnimationFrame,
 } from "motion/react";
+import { CERTIFICATES_SECTION } from "../../../data/constants";
 
 function useElementWidth(ref) {
   const [width, setWidth] = useState(0);
@@ -116,24 +117,24 @@ export const ScrollVelocity = ({
       <VelocityText baseVelocity={50}>
         <div
           className="
-          bg-white
-          py-8  
+       
+          py-4 
       flex items-ce nter justify-start gap-18  lg:gap-28
       px-10 sm:px-10 lg:px-18
     "
         >
-          {texts.map((text, idx) => (
+          {CERTIFICATES_SECTION.map((cert, idx) => (
             <img
               key={idx}
-              src={`/images/gallery/certificates/${text}.webp`}
-              alt={text}
+              src={cert.image}
+              alt={cert.name}
               className="
-          object-contain 
-          opacity-30
-          h-15 sm:h-14 md:h-10 lg:h-18 
-          w-auto
-          transition-all duration-300 ease-in-out
-        "
+      object-contain
+      opacity-20
+      h-10 sm:h-12 md:h-10 lg:h-14
+      w-auto
+      transition-all duration-300 ease-in-out
+    "
             />
           ))}
         </div>
