@@ -2,7 +2,7 @@ import Seo from "../seo/SeoScript";
 import PageHero from "../ui/PageHero";
 import ProcessContent from "../sections/process/ProcessContent";
 import { motion } from "motion/react";
-import { HERO } from "../../data/technologyData";
+import { HERO } from "../../data/technologyData.js";
 
 const TechnologyPage = () => {
   return (
