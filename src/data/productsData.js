@@ -1,4 +1,3 @@
-import { sampleReviews } from "./globalConstants";
 
 export const HERO = {
   imgUrl: "/images/hero/product-hero.webp",
