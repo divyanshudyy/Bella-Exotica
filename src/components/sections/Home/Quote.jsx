@@ -5,7 +5,7 @@ import {
   useTransform,
   useMotionValueEvent,
 } from "motion/react";
-import { QUOTE } from "../../../data/constants";
+import { QUOTE } from "../../../data/homeData";
 
 function useIntersectionObserver(
   elementRef,

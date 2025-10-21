@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Leaf, Salad, Recycle, CircleSlash } from "lucide-react";
-import { WHY_CHOOSE_US_SECTION } from "../../../data/constants";
+import { WHY_CHOOSE_US_SECTION } from "../../../data/homeData";
 
 // Animation Variants
 const containerVariants = {

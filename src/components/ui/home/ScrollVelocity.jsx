@@ -8,7 +8,7 @@ import {
   useVelocity,
   useAnimationFrame,
 } from "motion/react";
-import { CERTIFICATES_SECTION } from "../../../data/constants";
+import { CERTIFICATES_SECTION } from "../../../data/homeData";
 
 function useElementWidth(ref) {
   const [width, setWidth] = useState(0);

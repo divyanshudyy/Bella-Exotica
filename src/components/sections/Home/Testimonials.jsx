@@ -2,11 +2,11 @@ import { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
-import ReviewCard from "../../ui/home/ReviewCard"; // ✅ import the component
+import ReviewCard from "../../ui/home/ReviewCard";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { TESTIMONIALS, TESTIMONIAL_SECTION } from "../../../data/constants";
+import { TESTIMONIALS, TESTIMONIAL_SECTION } from "../../../data/homeData";
 
 const Testimonials = () => {
   const swiperRef = useRef(null);

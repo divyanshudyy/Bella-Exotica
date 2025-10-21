@@ -1,7 +1,7 @@
 import CountUp from "../../ui/home/CountUp";
 import CustomButton from "../../ui/CustomButton";
 import { Link } from "react-router-dom";
-import { COUNTER_SECTION } from "../../../data/constants";
+import { COUNTER_SECTION } from "../../../data/homeData";
 
 const Counter = () => {
   return (

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import CategoryFilters from "../../ui/products/CategoryFilters";
-import { SHOWCASE } from "../../../data/constants";
+import { SHOWCASE } from "../../../data/homeData";
 
 // Container only for text images (stagger control)
 const textContainerVariants = {

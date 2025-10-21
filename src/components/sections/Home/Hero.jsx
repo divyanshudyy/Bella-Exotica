@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import CustomButton from "../../ui/CustomButton";
 import { Link } from "react-router-dom";
-import { HERO } from "../../../data/constants";
+import { HERO } from "../../../data/homeData";
 
 const Hero = () => {
   const ref = useRef(null);

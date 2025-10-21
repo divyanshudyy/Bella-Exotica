@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { HIGHLIGHTS, HIGHLIGHT_SECTION } from "../../../data/constants";
+import { HIGHLIGHTS, HIGHLIGHT_SECTION } from "../../../data/homeData";
 
 const fadeInVariant = {
   hidden: { opacity: 0, y: 40 },
