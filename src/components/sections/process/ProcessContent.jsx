@@ -1,5 +1,5 @@
 import ProcessSteps from "./ProcessSteps";
-import { HERO } from "../../../data/technologyData";
+import { HERO } from "../../../data/processData";
 
 function ProcessContent() {
   return (

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { PROCESS_STEPS } from "../../../data/technologyData";
+import { PROCESS_STEPS } from "../../../data/processData";
 
 const TextComponent = ({
   step,
