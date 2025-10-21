@@ -1,11 +1,8 @@
 import { useState, useMemo } from "react";
 import ProductSlider from "../../ui/home/ProductSlider";
 import CategoryFilters from "../../ui/products/CategoryFilters";
-import {
-  EX_PRODUCTS,
-  CATEGORIES,
-  EX_PRODUCTS_SECTION,
-} from "../../../data/homeData";
+import { EX_PRODUCTS, EX_PRODUCTS_SECTION } from "../../../data/homeData";
+import { CATEGORIES } from "../../../data/globalConstants";
 
 const Products = () => {
   const [activeCategory, setActiveCategory] = useState("All");

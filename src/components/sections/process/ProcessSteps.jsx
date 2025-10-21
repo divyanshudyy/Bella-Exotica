@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { TIMELINE_DATA } from "../../../data/constants";
+import { PROCESS_STEPS } from "../../../data/technologyData";
 
 const TextComponent = ({
   step,
@@ -172,7 +172,7 @@ const ProcessSteps = () => {
 
       {/* Timeline Items */}
       <div role="list" className="relative flex flex-col gap-y-6 md:gap-y-4">
-        {TIMELINE_DATA.map((item, index) => (
+        {PROCESS_STEPS.map((item, index) => (
           <div key={index} role="listitem" className="relative">
             <TimelineItem item={item} index={index} />
             <div className="absolute top-14 left-2 md:top-1/2 md:left-1/2 -translate-y-1/2 -translate-x-1/2">

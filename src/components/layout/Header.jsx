@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import CustomButton from "../ui/CustomButton";
+import { HEADER } from "../../data//globalConstants";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,23 +48,17 @@ const Header = () => {
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="flex flex-col gap-6 text-center text-2xl font-medium text-[#3D2B1F]"
           >
-            <NavLink to="/" onClick={() => setMenuOpen(false)}>
-              Home
-            </NavLink>
-            <NavLink to="/products" onClick={() => setMenuOpen(false)}>
-              Products
-            </NavLink>
-            <NavLink to="/technology" onClick={() => setMenuOpen(false)}>
-              Technology
-            </NavLink>
-            <NavLink to="/about" onClick={() => setMenuOpen(false)}>
-              About
-            </NavLink>
-            <NavLink to="/contact" onClick={() => setMenuOpen(false)}>
-              Contact
-            </NavLink>
+            {HEADER.navLinks.map((link) => (
+              <NavLink
+                key={link.name}
+                to={link.path}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.name}
+              </NavLink>
+            ))}
             <NavLink to="/b2b" onClick={() => setMenuOpen(false)}>
-              <CustomButton text="Let's Collaborate" padding="px-6 py-3" />
+              <CustomButton text={HEADER.b2bButtonText} padding="px-6 py-3" />
             </NavLink>
           </motion.nav>
         </div>
@@ -83,33 +78,23 @@ const Header = () => {
             to="/"
             className="text-2xl text-[#3D2B1F] font-oakes-grotesk font-medium"
           >
-            Bella Exotica
+            {HEADER.logoText}
           </NavLink>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8 font-medium font-oakes-grotesk">
-            <NavLink to="/" className={navLinkClass}>
-              Home
-            </NavLink>
-            <NavLink to="/products" className={navLinkClass}>
-              Products
-            </NavLink>
-            <NavLink to="/technology" className={navLinkClass}>
-              Technology
-            </NavLink>
-            <NavLink to="/about" className={navLinkClass}>
-              About
-            </NavLink>
-            <NavLink to="/contact" className={navLinkClass}>
-              Contact
-            </NavLink>
+            {HEADER.navLinks.map((link) => (
+              <NavLink key={link.name} to={link.path} className={navLinkClass}>
+                {link.name}
+              </NavLink>
+            ))}
           </nav>
 
           {/* Desktop Button */}
           <div className="hidden lg:block">
             <NavLink to="/b2b">
               <CustomButton
-                text="Let's Collaborate"
+                text={HEADER.b2bButtonText}
                 padding="px-4 py-1.5"
                 bgColor="bg-[#3D2B1F]"
                 textColor="text-white"

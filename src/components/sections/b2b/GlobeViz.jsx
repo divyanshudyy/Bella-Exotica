@@ -1,23 +1,10 @@
-import React, { useRef, useMemo, useState, useEffect } from "react";
+import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Html, Line } from "@react-three/drei";
 import * as THREE from "three";
+import { GLOBE } from "../../../data/b2bData";
 
-const INDIA_COORDS = { lat: 23.0769, lng: 70.1337 };
-const EXPORT_DATA = [
-  { lat: 38.5, lng: -98.0, country: "USA" },
-  { lat: 53.483959, lng: -2.244644, country: "UK" },
-  { lat: 35.652832, lng: 139.839478, country: "Japan" },
-  { lat: -23.700552, lng: 133.882675, country: "Australia" },
-  { lat: -1.2921, lng: 36.8219, country: "Kenya" },
-  { lat: 56.1304, lng: -106.3468, country: "Canada" },
-  { lat: 61.524, lng: 105.3188, country: "Russia" },
-  { lat: -30.5595, lng: 22.9375, country: "South Africa" },
-  { lat: 39.0742, lng: 21.8243, country: "Greece" },
-  { lat: 23.4241, lng: 53.8478, country: "UAE" },
-];
-
-// 🌐 Converts lat/lng to XYZ coordinates
+// Converts lat/lng to XYZ coordinates
 function latLngToXYZ(lat, lng, radius = 4) {
   const phi = (90 - lat) * (Math.PI / 180);
   const theta = (lng + 180) * (Math.PI / 180);
@@ -94,7 +81,7 @@ function AnimatedArc({ points, active, duration = 2, delay = 0 }) {
   );
 }
 
-// 🪟 Hook for responsive text scaling
+// Hook for responsive text scaling
 function useWindowSize() {
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
@@ -123,11 +110,9 @@ function GlobeGroup({ active, preActive, arcs, markers }) {
       <mesh>
         <sphereGeometry args={[4, 128, 128]} />
         <meshStandardMaterial
-          map={new THREE.TextureLoader().load(
-            "https://unpkg.com/three-globe/example/img/earth-night.jpg"
-          )}
+          map={new THREE.TextureLoader().load(`${GLOBE.globeTextures.map}`)}
           bumpMap={new THREE.TextureLoader().load(
-            "https://unpkg.com/three-globe/example/img/earth-topology.png"
+            `${GLOBE.globeTextures.bumpMap}`
           )}
           bumpScale={2.5}
           metalness={0.4}
@@ -136,7 +121,13 @@ function GlobeGroup({ active, preActive, arcs, markers }) {
       </mesh>
 
       {/* India marker */}
-      <mesh position={latLngToXYZ(INDIA_COORDS.lat, INDIA_COORDS.lng, 4.05)}>
+      <mesh
+        position={latLngToXYZ(
+          GLOBE.indiaCoords.lat,
+          GLOBE.indiaCoords.lng,
+          4.05
+        )}
+      >
         <sphereGeometry args={[0.07, 10, 10]} />
         <meshStandardMaterial color="red" />
         <Html distanceFactor={20}>
@@ -190,14 +181,14 @@ function GlobeGroup({ active, preActive, arcs, markers }) {
   );
 }
 
-export default function GlobeViz() {
+export default function Globe() {
   const [active, setActive] = useState(false);
   const [preActive, setPreActive] = useState(false);
   const sectionRef = useRef();
 
   const markers = useMemo(
     () =>
-      EXPORT_DATA.map((d) => {
+      GLOBE.exportData.map((d) => {
         const [x, y, z] = latLngToXYZ(d.lat, d.lng, 4.05);
         return { ...d, position: [x, y, z] };
       }),
@@ -205,8 +196,12 @@ export default function GlobeViz() {
   );
 
   const arcs = useMemo(() => {
-    const indiaPos = latLngToXYZ(INDIA_COORDS.lat, INDIA_COORDS.lng, 4.05);
-    return EXPORT_DATA.map((d) => {
+    const indiaPos = latLngToXYZ(
+      GLOBE.indiaCoords.lat,
+      GLOBE.indiaCoords.lng,
+      4.05
+    );
+    return GLOBE.exportData.map((d) => {
       const destPos = latLngToXYZ(d.lat, d.lng, 4.05);
       return { color: d.color, points: getCurvePoints(indiaPos, destPos) };
     });
@@ -232,7 +227,11 @@ export default function GlobeViz() {
     return () => observer.disconnect();
   }, []);
 
-  const indiaPos = latLngToXYZ(INDIA_COORDS.lat, INDIA_COORDS.lng, 5.05);
+  const indiaPos = latLngToXYZ(
+    GLOBE.indiaCoords.lat,
+    GLOBE.indiaCoords.lng,
+    5.05
+  );
 
   return (
     <section ref={sectionRef} className="wrapper-section">

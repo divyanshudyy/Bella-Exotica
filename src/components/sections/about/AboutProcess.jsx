@@ -1,29 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
-
-const storyItemsData = [
-  {
-    title: "Advanced Technology",
-    description:
-      "We use advanced freeze-drying and dehydration systems that gently remove moisture while preserving nutrients, flavor, and aroma — keeping food as close to fresh as possible.\n\nOur precision technology works under low temperatures and vacuum conditions, protecting vitamins, antioxidants, and bioactive compounds often lost in conventional methods.\n\n With real-time monitoring, automated quality checks, and sustainable energy practices, we deliver lighter, crisper, nutrient-rich products that last longer while retaining natural taste, color, and texture.",
-    imageUrl: "/images/gallery/thumbnails/thumbnail-3.webp",
-    imageAlt: "Advanced freeze-drying technology system",
-  },
-  {
-    title: "Nutrient Retention",
-    description:
-      "Our process locks in vitamins, minerals, and antioxidants, retaining up to 95% of nutritional value and offering food as wholesome as its natural form.\n\nBy combining low temperatures with vacuum dehydration, we gently remove moisture while safeguarding Vitamin C, polyphenols, and natural enzymes.\n\n This ensures food retains its health benefits, offering consumers a nutrient-dense and wholesome experience as close to fresh as possible.",
-    imageUrl: "/images/gallery/thumbnails/thumbnail-4.webp",
-    imageAlt: "Fresh fruits preserved through freeze-drying",
-  },
-  {
-    title: "Global Standards",
-    description:
-      "We comply with FSSAI, ISO, HACCP, and Codex standards, ensuring safe, consistent, and export-ready products trusted worldwide.\n\nEvery step from sourcing to packaging complies with FSSAI, ISO 22000, HACCP, and Codex Alimentarius guidelines. \n\nWith certified machinery, hygienic handling, and strict quality checks, we guarantee trust, transparency, and global competitiveness for our products.",
-    imageUrl: "/images/gallery/thumbnails/thumbnail-5.webp",
-    imageAlt: "Global food safety and quality certifications",
-  },
-];
+import {HERO, KEY_FEATURES } from "../../../data/aboutData";
 
 const AboutProcess = () => {
   const sectionRef = useRef(null);
@@ -36,12 +13,12 @@ const AboutProcess = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-10">
         <div className="text-center mb-10 sm:mb-20">
           <h2 className="text-4xl sm:text-5xl font-bold font-oakes-grotesk text-[#3D2B1F]">
-            Our Process &amp; Value
+          {HERO.subtitle_4}
           </h2>
         </div>
 
         <div className="space-y-15 sm:space-y-20 md:space-y-20">
-          {storyItemsData.map((item, index) => (
+          {KEY_FEATURES.map((item, index) => (
             <motion.div
               key={item.title + index}
               className={`flex flex-col sm:flex-col md:flex-row items-center gap-1 sm:gap-0 md:gap-0 lg:gap-0 ${

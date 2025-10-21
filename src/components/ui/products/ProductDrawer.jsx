@@ -4,7 +4,7 @@ import { formatPrice } from "../../utils/utils";
 import AccordionItem from "./AccordionItem";
 import RelatedProductCard from "./RelatedProductCard";
 import ReviewCard from "./ReviewCard";
-import { PRODUCTS } from "../../../data/constants";
+import { PRODUCTS, PRODUCT_DRAWER } from "../../../data/productsData";
 
 const ProductDrawer = ({
   product,
@@ -139,7 +139,6 @@ const ProductDrawer = ({
       setReviewRating(0);
       setReviewAuthor("");
       setReviewComment("");
-      alert("Thank you for your review!");
     }
   };
 
@@ -203,12 +202,12 @@ const ProductDrawer = ({
                 />
                 {isSoldOut && (
                   <div className="absolute top-2 right-2 bg-gray-500 text-white text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">
-                    Out of Stock
+                    {PRODUCT_DRAWER.labels.outOfStock}
                   </div>
                 )}
                 {!isSoldOut && activeProduct.originalPrice && (
                   <div className="absolute top-2 right-2 bg-red-500 text-white text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">
-                    Sale
+                    {PRODUCT_DRAWER.labels.sale}
                   </div>
                 )}
               </div>
@@ -249,7 +248,7 @@ const ProductDrawer = ({
                         {formatPrice(activeProduct.originalPrice)}
                       </p>
                       <span className="text-xs font-semibold bg-red-100 text-red-700 px-2 py-0.5 rounded-md">
-                        Sale
+                        {PRODUCT_DRAWER.labels.sale}
                       </span>
                     </div>
                   ) : (
@@ -298,7 +297,7 @@ const ProductDrawer = ({
               className="mt-6 pt-5 sm:mt-8 sm:pt-6 border-t border-gray-200"
             >
               <h3 className="text-base sm:text-lg font-semibold text-[#3D2B1F] mb-3.5">
-                Ratings & Reviews
+                {PRODUCT_DRAWER.labels.reviewsSection}
               </h3>
               {totalReviews > 0 ? (
                 <div>
@@ -324,7 +323,7 @@ const ProductDrawer = ({
                         ))}
                       </div>
                       <p className="text-xs text-gray-600 mt-1">
-                        Based on {totalReviews} reviews
+                        {PRODUCT_DRAWER.labels.basedOnReviews}
                       </p>
                     </div>
                   </div>
@@ -336,7 +335,7 @@ const ProductDrawer = ({
                 </div>
               ) : (
                 <p className="text-sm text-gray-500">
-                  No reviews yet. Be the first to write one!
+                  {PRODUCT_DRAWER.labels.noReviews}
                 </p>
               )}
             </div>
@@ -344,13 +343,13 @@ const ProductDrawer = ({
             {/* Write Review Section */}
             {/* <div className="mt-6 pt-5 sm:mt-8 sm:pt-6">
               <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-3.5">
-                Write a Review
+                {PRODUCT_DRAWER.labels.writeReview}
               </h3>
               <div className="bg-gray-50 p-5 rounded-md border border-gray-300">
                 <form onSubmit={handleReviewSubmit} className="space-y-3.5">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Your Rating
+                     {PRODUCT_DRAWER.labels.yourRating}}
                     </label>
                     <div className="flex items-center gap-1">
                       {[...Array(5)].map((_, index) => {
@@ -385,7 +384,7 @@ const ProductDrawer = ({
                       htmlFor="reviewAuthor"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Your Name
+                    {PRODUCT_DRAWER.labels.yourName}}
                     </label>
                     <input
                       type="text"
@@ -393,7 +392,7 @@ const ProductDrawer = ({
                       value={reviewAuthor}
                       onChange={(e) => setReviewAuthor(e.target.value)}
                       required
-                      placeholder="e.g., Jane Doe"
+                      placeholder={PRODUCT_DRAWER.placeholders.name}
                       className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-1.5 px-2.5 bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-300 text-sm"
                     />
                   </div>
@@ -402,7 +401,7 @@ const ProductDrawer = ({
                       htmlFor="reviewComment"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Your Review
+                    {PRODUCT_DRAWER.labels.yourReview}
                     </label>
                     <textarea
                       id="reviewComment"
@@ -410,7 +409,7 @@ const ProductDrawer = ({
                       onChange={(e) => setReviewComment(e.target.value)}
                       required
                       rows={3}
-                      placeholder="What did you like or dislike?"
+                      placeholder={PRODUCT_DRAWER.placeholders.review}
                       className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-1.5 px-2.5 bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-300 text-sm"
                     ></textarea>
                   </div>
@@ -418,7 +417,7 @@ const ProductDrawer = ({
                     type="submit"
                     className="inline-flex justify-center py-2 px-3.5 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-[#3D2B1F]  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                   >
-                    Submit Review
+                  {PRODUCT_DRAWER.buttons.submitReview}}
                   </button>
                 </form>
               </div>
@@ -428,7 +427,7 @@ const ProductDrawer = ({
             {relatedProducts.length > 0 && (
               <div className="mt-0-pt-0 sm:mt-5 sm:pt-0">
                 <h3 className="text-sm sm:text-lg font-semibold text-[#3D2B1F] mb-3.5">
-                  You Might Also Like
+                  {PRODUCT_DRAWER.labels.relatedProducts}
                 </h3>
                 <div className="flex overflow-x-auto space-x-3.5 pb-3 no-scrollbar">
                   {relatedProducts.map((relatedProduct) => (
@@ -485,14 +484,15 @@ const ProductDrawer = ({
                 className="flex-1 bg-[#3D2B1F] text-white font-semibold py-2.5 px-3.5 rounded-md flex items-center justify-center gap-1.5 transition-all duration-300 hover:bg-[#2e1f17] active:scale-95 focus:outline-none disabled:bg-gray-400 disabled:cursor-not-allowed font-oakes-grotesk"
                 disabled={isAddToCartDisabled}
               >
-                <span className="text-white">Visit Amazon</span>
+                <span className="text-white">
+                  {PRODUCT_DRAWER.buttons.visitAmazon}
+                </span>
               </button>
-
               <button
                 className="flex-1 bg-white text-[#3D2F1F] border border-gray-300 font-semibold py-2.5 px-3.5 rounded-md flex items-center justify-center hover:bg-gray-50 transition-all duration-300 focus:outline-none disabled:bg-gray-200 disabled:text-gray-400 disabled:border-gray-300 disabled:cursor-not-allowed font-oakes-grotesk"
                 disabled={isAddToCartDisabled}
               >
-                <span>Visit Flipkart</span>
+                <span>{PRODUCT_DRAWER.buttons.visitFlipkart}</span>
               </button>
             </div>
           </div>

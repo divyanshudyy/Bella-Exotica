@@ -4,7 +4,8 @@ import ProductGrid from "../../ui/products/ProductGrid";
 import ProductDrawer from "../../ui/products/ProductDrawer";
 import CartDrawer from "../../ui/products/CartDrawer";
 import SortDropdown from "../../ui/products/SortDropdown";
-import { PRODUCTS, CATEGORIES } from "../../../data/constants";
+import { HERO, PRODUCTS } from "../../../data/productsData";
+import { CATEGORIES } from "../../../data/globalConstants";
 import { ShoppingCart, Search, X } from "lucide-react";
 
 const ListingProducts = () => {
@@ -205,7 +206,7 @@ const ListingProducts = () => {
         }`}
       >
         <h1 className="text-4xl sm:text-5xl font-bold text-[#3D2B1F] text-center font-oakes-grotesk ">
-          Our Collection
+          {HERO.subtitle}
         </h1>
         <CategoryFilters
           categories={CATEGORIES}

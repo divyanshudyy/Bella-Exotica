@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import CustomButton from "../ui/CustomButton";
 import emailjs from "@emailjs/browser";
+import { CONTACT_FORM } from "../../data/contactData";
 
 const ContactForm = () => {
   const {
@@ -12,7 +13,12 @@ const ContactForm = () => {
 
   const submitHandler = (data) => {
     emailjs
-      .send("service_mzxhcn5", "template_7qloudg", data, "cGJh2G9qi5tH5Nx8i")
+      .send(
+        CONTACT_FORM.emailJs.service1,
+        CONTACT_FORM.emailJs.template1,
+        data,
+        CONTACT_FORM.emailJs.publicKey
+      )
       .then(() => {
         alert("Message sent!");
         reset();
@@ -20,7 +26,12 @@ const ContactForm = () => {
       .catch((err) => console.error("Error:", err));
 
     emailjs
-      .send("service_mzxhcn5", "template_ozli29j", data, "cGJh2G9qi5tH5Nx8i")
+      .send(
+        CONTACT_FORM.emailJs.service1,
+        CONTACT_FORM.emailJs.template2,
+        data,
+        CONTACT_FORM.emailJs.publicKey
+      )
       .catch((err) => console.error("Error:", err));
   };
 
@@ -30,182 +41,97 @@ const ContactForm = () => {
       style={{ animationDelay: "0.5s" }}
     >
       <h3 className="text-3xl font-bold mb-2 text-[#3D2B1F] font-oakes-grotesk">
-        Get in Touch
+        {CONTACT_FORM.title}
       </h3>
-      <p className="text-[#3D2B1F] mb-8 max-w-md">
-        We welcome all your questions and inquiries. Our team will be in touch
-        with you shortly.
-      </p>
+      <p className="text-[#3D2B1F] mb-8 max-w-md">{CONTACT_FORM.description}</p>
 
       <form onSubmit={handleSubmit(submitHandler)} className="space-y-6">
         {/* First + Last Name */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div>
-            <label
-              htmlFor="firstName"
-              className="block text-sm font-medium text-[#3D2B1F]"
-            >
-              First name
-            </label>
-            <input
-              id="firstName"
-              name="firstName"
-              autoComplete="given-name"
-              {...register("firstName", { required: "First name is required" })}
-              placeholder="Enter your first name"
-              className={`mt-1 block w-full bg-transparent border-b py-2 px-2 focus:outline-none focus:border-b-2 sm:text-sm transition-colors ${
-                errors.firstName
-                  ? "border-red-400 focus:border-red-500"
-                  : "border-gray-300 focus:border-[#3D2B1F]/50"
-              }`}
-            />
-            {errors.firstName && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.firstName.message}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <label
-              htmlFor="lastName"
-              className="block text-sm font-medium text-[#3D2B1F]"
-            >
-              Last name
-            </label>
-            <input
-              id="lastName"
-              name="lastName"
-              autoComplete="family-name"
-              placeholder="Enter your last name"
-              {...register("lastName", { required: "Last name is required" })}
-              className={`mt-1 block w-full bg-transparent border-b py-2 px-2 focus:outline-none focus:border-b-2 sm:text-sm transition-colors ${
-                errors.lastName
-                  ? "border-red-400 focus:border-red-500"
-                  : "border-gray-300 focus:border-[#3D2B1F]/50"
-              }`}
-            />
-            {errors.lastName && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.lastName.message}
-              </p>
-            )}
-          </div>
+          {["firstName", "lastName"].map((field) => (
+            <div key={field}>
+              <label
+                htmlFor={field}
+                className="block text-sm font-medium text-[#3D2B1F]"
+              >
+                {CONTACT_FORM.fields[field].label}
+              </label>
+              <input
+                id={field}
+                {...register(field, CONTACT_FORM.fields[field].validation)}
+                placeholder={CONTACT_FORM.fields[field].placeholder}
+                className={`mt-1 block w-full bg-transparent border-b py-2 px-2 focus:outline-none focus:border-b-2 sm:text-sm transition-colors ${
+                  errors[field]
+                    ? "border-red-400 focus:border-red-500"
+                    : "border-gray-300 focus:border-[#3D2B1F]/50"
+                }`}
+              />
+              {errors[field] && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors[field].message}
+                </p>
+              )}
+            </div>
+          ))}
         </div>
 
         {/* Email + Contact */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-[#3D2B1F]"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              autoComplete="email"
-              {...register("email", {
-                required: "Email is required",
-                pattern: {
-                  value: /^\S+@\S+$/i,
-                  message: "Enter a valid email address",
-                },
-              })}
-              placeholder="Your email address"
-              className={`mt-1 block w-full bg-transparent border-b py-2 px-2 focus:outline-none focus:border-b-2 sm:text-sm transition-colors ${
-                errors.email
-                  ? "border-red-400 focus:border-red-500"
-                  : "border-gray-300 focus:border-[#3D2B1F]/50"
-              }`}
-            />
-            {errors.email && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.email.message}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <label
-              htmlFor="contact"
-              className="block text-sm font-medium text-[#3D2B1F]"
-            >
-              Contact number
-            </label>
-            <input
-              type="tel"
-              id="contact"
-              name="contact"
-              autoComplete="tel"
-              {...register("contact", {
-                required: "Contact number is required",
-                pattern: {
-                  value: /^[0-9]{10,15}$/,
-                  message: "Enter a valid phone number",
-                },
-              })}
-              placeholder="Your phone number"
-              className={`mt-1 block w-full bg-transparent border-b py-2 px-2 focus:outline-none focus:border-b-2 sm:text-sm transition-colors ${
-                errors.contact
-                  ? "border-red-400 focus:border-red-500"
-                  : "border-gray-300 focus:border-[#3D2B1F]/50"
-              }`}
-            />
-            {errors.contact && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.contact.message}
-              </p>
-            )}
-          </div>
+          {["email", "contact"].map((field) => (
+            <div key={field}>
+              <label
+                htmlFor={field}
+                className="block text-sm font-medium text-[#3D2B1F]"
+              >
+                {CONTACT_FORM.fields[field].label}
+              </label>
+              <input
+                type={field === "email" ? "email" : "tel"}
+                id={field}
+                {...register(field, CONTACT_FORM.fields[field].validation)}
+                placeholder={CONTACT_FORM.fields[field].placeholder}
+                className={`mt-1 block w-full bg-transparent border-b py-2 px-2 focus:outline-none focus:border-b-2 sm:text-sm transition-colors ${
+                  errors[field]
+                    ? "border-red-400 focus:border-red-500"
+                    : "border-gray-300 focus:border-[#3D2B1F]/50"
+                }`}
+              />
+              {errors[field] && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors[field].message}
+                </p>
+              )}
+            </div>
+          ))}
         </div>
 
         {/* Subject + Company */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div>
-            <label
-              htmlFor="subject"
-              className="block text-sm font-medium text-[#3D2B1F]"
-            >
-              Subject
-            </label>
-            <input
-              id="subject"
-              name="subject"
-              autoComplete="off"
-              {...register("subject", { required: "Subject is required" })}
-              placeholder="What’s your message about?"
-              className={`mt-1 block w-full bg-transparent border-b py-2 px-2 focus:outline-none focus:border-b-2 sm:text-sm transition-colors ${
-                errors.subject
-                  ? "border-red-400 focus:border-red-500"
-                  : "border-gray-300 focus:border-[#3D2B1F]/50"
-              }`}
-            />
-            {errors.subject && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.subject.message}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <label
-              htmlFor="company"
-              className="block text-sm font-medium text-[#3D2B1F]"
-            >
-              Company / Organization
-            </label>
-            <input
-              name="orgName"
-              id="company"
-              autoComplete="organization"
-              {...register("orgName")}
-              placeholder="Your company or team name"
-              className="mt-1 block w-full bg-transparent border-b border-gray-300 py-2 px-2 focus:outline-none focus:border-b-2 focus:border-[#3D2B1F]/50 sm:text-sm transition-colors"
-            />
-          </div>
+          {["subject", "orgName"].map((field) => (
+            <div key={field}>
+              <label
+                htmlFor={field}
+                className="block text-sm font-medium text-[#3D2B1F]"
+              >
+                {CONTACT_FORM.fields[field].label}
+              </label>
+              <input
+                id={field}
+                {...register(field, CONTACT_FORM.fields[field].validation)}
+                placeholder={CONTACT_FORM.fields[field].placeholder}
+                className={`mt-1 block w-full bg-transparent border-b py-2 px-2 focus:outline-none focus:border-b-2 sm:text-sm transition-colors ${
+                  errors[field]
+                    ? "border-red-400 focus:border-red-500"
+                    : "border-gray-300 focus:border-[#3D2B1F]/50"
+                }`}
+              />
+              {errors[field] && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors[field].message}
+                </p>
+              )}
+            </div>
+          ))}
         </div>
 
         {/* Message */}
@@ -214,21 +140,19 @@ const ContactForm = () => {
             htmlFor="message"
             className="block text-sm font-medium text-[#3D2B1F]"
           >
-            Message
+            {CONTACT_FORM.fields.message.label}
           </label>
           <textarea
             id="message"
-            name="message"
-            autoComplete="off"
             rows="3"
-            {...register("message", { required: "Message cannot be empty" })}
-            placeholder="Write your message here..."
+            {...register("message", CONTACT_FORM.fields.message.validation)}
+            placeholder={CONTACT_FORM.fields.message.placeholder}
             className={`mt-1 block w-full bg-transparent border-b py-2 px-2 focus:outline-none focus:border-b-2 sm:text-sm resize-none transition-colors ${
               errors.message
                 ? "border-red-400 focus:border-red-500"
                 : "border-gray-300 focus:border-[#3D2B1F]/50"
             }`}
-          ></textarea>
+          />
           {errors.message && (
             <p className="text-red-500 text-xs mt-1">
               {errors.message.message}
@@ -237,7 +161,11 @@ const ContactForm = () => {
         </div>
 
         {/* Submit Button */}
-        <CustomButton text="Send a message" type="submit" margin="my-0" />
+        <CustomButton
+          text={CONTACT_FORM.buttonText}
+          type="submit"
+          margin="my-0"
+        />
       </form>
     </div>
   );
