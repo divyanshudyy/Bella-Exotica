@@ -1,47 +1,13 @@
 import { motion } from "motion/react";
-import { Leaf, Truck, Recycle, MessageSquareText } from "lucide-react";
+import { Leaf, Salad, Recycle, CircleSlash } from "lucide-react";
+import { WHY_CHOOSE_US_SECTION } from "../../../data/homeData";
 
-// --- Feature Data ---
-const features = [
-  {
-    icon: Leaf,
-    title: "High quality ingredients",
-    description: "from the best farms",
-    color: "#14b8a6", // teal-500
-    textPosition: "top",
-  },
-  {
-    icon: Truck,
-    title: "Delicious and healthy meals",
-    description: "are delivered three times a day",
-    color: "#ec4899", // pink-500
-    textPosition: "bottom",
-  },
-  {
-    icon: Recycle,
-    title: "Eco-friendly food",
-    description: "packaging for delivery",
-    color: "#14b8a6", // teal-500
-    textPosition: "top",
-  },
-  {
-    icon: MessageSquareText,
-    title: "Free consultation",
-    description: "with a dietitian",
-    color: "#ec4899", // pink-500
-    textPosition: "bottom",
-  },
-];
-
-// --- Animation Variants ---
+// Animation Variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
-    },
+    transition: { staggerChildren: 0.2, delayChildren: 0.3 },
   },
 };
 
@@ -50,15 +16,12 @@ const cardVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 10,
-    },
+    transition: { type: "spring", stiffness: 100, damping: 10 },
   },
 };
 
-// --- Helper Component ---
+const ICONS = [Leaf, Salad, Recycle, CircleSlash];
+
 const Dots = ({ color }) => (
   <div className="flex flex-col items-center my-3" style={{ color }}>
     <span className="block w-1.5 h-1.5 bg-current rounded-full"></span>
@@ -67,11 +30,11 @@ const Dots = ({ color }) => (
   </div>
 );
 
-// --- Main Component ---
 const WhyChooseUs = () => {
   return (
-    <section className="relative min-h-full w-full flex justify-center items-center">
-      <div className="relative w-full max-w-6xl py-20 px-4 sm:px-6 lg:px-8 md:my-30 overflow-hidden bg-white rounded-3xl shadow-md">
+    <section className="relative min-h-full w-full flex justify-center items-center py-20">
+      <div className="relative w-full max-w-7xl py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-white rounded-3xl md:rounded-5xl shadow-lg mx-10">
+        {/* Heading */}
         <motion.div
           initial="hidden"
           animate="visible"
@@ -81,11 +44,12 @@ const WhyChooseUs = () => {
           }}
           className="text-center mb-16 z-10 relative"
         >
-          <h2 className="text-4xl font-semibold text-gray-800">
-            Why Good Food?
+          <h2 className="text-3xl md:text-5xl font-bold text-[#3D2B1F] font-oakes-grotesk">
+            {WHY_CHOOSE_US_SECTION.heading}
           </h2>
         </motion.div>
 
+        {/* Feature Grid */}
         <motion.div
           className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12"
           variants={containerVariants}
@@ -93,12 +57,15 @@ const WhyChooseUs = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
         >
-          {features.map((feature, index) => {
-            const IconComponent = feature.icon;
+          {WHY_CHOOSE_US_SECTION.features.map((feature, index) => {
+            const IconComponent = ICONS[index];
+
             const TitleAndDescription = () => (
               <div className="text-center">
-                <h3 className="font-semibold text-gray-700">{feature.title}</h3>
-                <p className="text-sm text-gray-500">{feature.description}</p>
+                <h3 className="font-semibold text-[#3D2B1F]">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-gray-600">{feature.description}</p>
               </div>
             );
 
@@ -111,17 +78,22 @@ const WhyChooseUs = () => {
                 {feature.textPosition === "top" && <TitleAndDescription />}
 
                 <div className="flex flex-col items-center">
-                  {feature.textPosition === "top" ? (
+                  {feature.textPosition === "top" && (
                     <Dots color={feature.color} />
-                  ) : null}
-                  <IconComponent
-                    size={40}
-                    color={feature.color}
-                    strokeWidth={1.5}
-                  />
-                  {feature.textPosition === "bottom" ? (
+                  )}
+
+                  {/* Filled Circle with White Icon */}
+                  <div className="flex items-center justify-center w-15 h-15 rounded-full bg-[#3D2B1F] shadow-md transition-transform duration-300 hover:scale-105">
+                    <IconComponent
+                      size={36}
+                      color="#FFFFFF"
+                      strokeWidth={1.5}
+                    />
+                  </div>
+
+                  {feature.textPosition === "bottom" && (
                     <Dots color={feature.color} />
-                  ) : null}
+                  )}
                 </div>
 
                 {feature.textPosition === "bottom" && <TitleAndDescription />}
@@ -130,15 +102,6 @@ const WhyChooseUs = () => {
           })}
         </motion.div>
       </div>
-
-      {/* <div className="absolute inset-0 flex items-center justify-between z-0 pointer-events-none">
-        <span className="font-cursive text-[18rem] font-bold text-pink-200 -translate-x-1/4 select-none opacity-50">
-          Good
-        </span>
-        <span className="font-cursive text-[18rem] font-bold text-teal-200 translate-x-1/4 select-none opacity-50">
-          Food
-        </span>
-      </div> */}
     </section>
   );
 };

@@ -1,97 +1,70 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
+import { HIGHLIGHTS, HIGHLIGHT_SECTION } from "../../../data/homeData";
 
-const fadeIn = {
-  hidden: { opacity: 0, y: 100 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
+const fadeInVariant = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeInOut", delay },
+  }),
 };
 
 const Highlight = () => {
   return (
     <section className="relative h-auto w-full flex items-center justify-center">
       {/* Background Image */}
-      <img
-        src="/images/highlight/tldrawFile (4).png"
-        alt="Healthy Organic Breakfast"
+      <motion.img
+        src={HIGHLIGHT_SECTION.bgImage}
+        alt={HIGHLIGHT_SECTION.altText}
         className="w-full h-auto"
+        initial={{ filter: "blur(8px)", opacity: 0.7 }}
+        whileInView={{ filter: "blur(0px)", opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
       />
 
-      {/* Almond Jar */}
-      <motion.div
-        className="absolute top-[37.5%] left-[24%] text-[#464A45]"
-        variants={fadeIn}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
-      >
-        <p className="uppercase tracking-normal text-4xl font-bold">
-          ALMOND JAR
-        </p>
-        <p className="text-3xl tracking-tighter font-semibold">
-          With Vitamin A
-        </p>
-      </motion.div>
-
-      {/* Muesli Bowl */}
-      <motion.div
-        className="absolute top-[32%] right-[8%] text-[#464A45]"
-        variants={fadeIn}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
-      >
-        <p className="uppercase tracking-normal text-4xl font-bold">
-          MUESLI BOWL
-        </p>
-        <p className="text-3xl tracking-tighter font-semibold text-end">
-          With Fibres
-        </p>
-      </motion.div>
-
-      {/* Corn Flakes */}
-      <motion.div
-        className="absolute top-[54.5%] right-[17%] text-[#464A45]"
-        variants={fadeIn}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
-      >
-        <p className="uppercase tracking-normal text-4xl font-bold">
-          CORN FLAKES
-        </p>
-        <p className="text-3xl tracking-tighter font-semibold text-end">
-          Morning Crunch
-        </p>
-      </motion.div>
-
-      {/* Tasty Oats */}
-      <motion.div
-        className="absolute bottom-[32%] left-[32%] text-[#464A45]"
-        variants={fadeIn}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
-      >
-        <p className="uppercase tracking-normal text-4xl font-bold">
-          TASTY OATS
-        </p>
-        <p className="text-3xl tracking-tighter font-semibold">High Protein</p>
-      </motion.div>
+      {/* Highlights */}
+      {HIGHLIGHTS.map((item) => (
+        <motion.div
+          key={item.id}
+          className={`absolute ${item.position} bg-[#F2F2F2] px-3 md:px-10 py-1 md:py-7 rounded-full shadow-md`}
+          variants={fadeInVariant}
+          initial="hidden"
+          whileInView="visible"
+          custom={item.delay}
+          viewport={{ once: true }}
+        >
+          <p
+            className={`capitalize font-bold font-oakes-grotesk ${item.titleAlign}`}
+            style={{ fontSize: `clamp(0.75rem, 2.2vw, 2rem)` }}
+          >
+            {item.title}
+          </p>
+          <p
+            className={`font-semibold font-oakes-grotesk ${item.subtitleAlign}`}
+            style={{ fontSize: `clamp(0.65rem, 1.8vw, 1.5rem)` }}
+          >
+            {item.subtitle}
+          </p>
+        </motion.div>
+      ))}
 
       {/* Center Title */}
-      <motion.div
-        className="absolute top-[46%] left-1/2 -translate-x-1/2 text-center w-full"
-        variants={fadeIn}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
-      >
-        <h2 className="text-[4.5rem] font-bold text-[#306211] tracking-tighter">
-          Healthy Organic Breakfast
+      <div className="absolute top-[45%] text-center px-10 py-5">
+        <h2
+          className="font-bold text-[#306211] font-oakes-grotesk"
+          style={{ fontSize: "clamp(1.2rem, 4.2vw, 4rem)" }}
+        >
+          {HIGHLIGHT_SECTION.centerTitle}
         </h2>
-        <p className="text-[#306211] text-5xl font-medium">
-          Fresh · Wholesome · Nutritious
+        <p
+          className="text-[#306211] font-normal font-oakes-grotesk"
+          style={{ fontSize: "clamp(0.85rem, 2.5vw, 3rem)" }}
+        >
+          {HIGHLIGHT_SECTION.centerSubtitle}
         </p>
-      </motion.div>
+      </div>
     </section>
   );
 };

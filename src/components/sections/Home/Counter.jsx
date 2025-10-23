@@ -1,89 +1,51 @@
-import { motion } from "motion/react";
-import CountUp from "../../ui/CountUp";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 50,
-      damping: 20,
-      delay: 0.5,
-    },
-  },
-};
+import CountUp from "../../ui/home/CountUp";
+import CustomButton from "../../ui/CustomButton";
+import { Link } from "react-router-dom";
+import { COUNTER_SECTION } from "../../../data/homeData";
 
 const Counter = () => {
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      className="container mx-auto px-4 py-8 md:py-16 text-center"
-    >
-      <motion.h1
-        variants={itemVariants}
-        className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight"
-      >
-        Goodness that Lasts, Naturally.
-      </motion.h1>
-      <motion.p
-        variants={itemVariants}
-        className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto"
-      >
-        We gently dehydrate the best seasonal produce to lock in flavor and
-        nutrients. Perfect for your pantry, your backpack, and a healthier
-        planet.
-      </motion.p>
+    <section className="px-8 sm:px-8 py-8 md:py-16">
+      <div className="mx-auto max-w-6xl text-center bg-white shadow-lg rounded-3xl md:rounded-5xl pt-10 md:pt-15 px-5 sm:px-20">
+        {/* Heading */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl text-[#3D2B1F] font-oakes-grostek font-bold capitalize">
+          {COUNTER_SECTION.heading}
+        </h1>
 
-      <motion.div
-        variants={itemVariants}
-        className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4"
-      >
-        <button className="bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-amber-700 transition-colors duration-300 w-full sm:w-auto">
-          Shop Our Snacks
-        </button>
-        <button className="bg-white text-gray-700 font-semibold py-3 px-6 rounded-lg shadow-md border border-gray-200 hover:bg-gray-50 transition-colors duration-300 w-full sm:w-auto">
-          Our Process
-        </button>
-      </motion.div>
+        {/* Description */}
+        <p className="mt-4 text-xs sm:text-sm md:text-base text-gray-600 max-w-xl sm:max-w-xl md:max-w-2xl mx-auto">
+          {COUNTER_SECTION.paragraph}
+        </p>
 
-      <motion.div
-        variants={cardVariants}
-        className="mt-12 md:mt-16 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 md:p-12 max-w-5xl mx-auto"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4">
-          <CountUp endValue={10500} label="Products Bought" suffix="+" />
-          <CountUp endValue={5500} label="Lbs of Food Saved" suffix="+" />
-          <CountUp endValue={300} label="Kg of Plastic Reduced" suffix="+" />
+        {/* Buttons */}
+        <div className="mt-6 sm:mt-7 flex justify-center items-center gap-4 sm:gap-10">
+          {COUNTER_SECTION.buttons.map((btn, idx) => (
+            <Link key={idx} to={btn.link}>
+              <CustomButton
+                text={btn.text}
+                margin={btn.margin}
+                bgColor={btn.bgColor}
+                textColor={btn.textColor}
+              />
+            </Link>
+          ))}
         </div>
-      </motion.div>
-    </motion.div>
+
+        {/* Stats Box */}
+        <div className="mt-6 sm:mt-8 md:mt-0 p-6 sm:p-8 md:p-12 max-w-full md:max-w-4xl mx-auto">
+          <div className="flex flex-col sm:flex-col md:flex-row justify-center items-center gap-0 sm:gap-8 md:gap-20 text-center">
+            {COUNTER_SECTION.stats.map((stat, idx) => (
+              <CountUp
+                key={idx}
+                endValue={stat.endValue}
+                label={stat.label}
+                suffix={stat.suffix}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

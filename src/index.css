@@ -1,37 +1,55 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Melodrama";
-  src: url("/src/assets/fonts/melodrama/Melodrama-Variable.ttf")
-    format("truetype");
-  font-weight: 100 900; /* 👈 tells browser it's a variable range */
+  font-family: "Oakes Grotesk";
+  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Light.ttf") format("truetype");
+  font-weight: 300; /* Light */
   font-style: normal;
   font-display: swap;
 }
-/* 1. Self-hosted font-face (if you have TTF/OTF/WOFF2 locally) */
+
 @font-face {
-  font-family: "PlayfairDisplay";
-  src: url("/src/assets/fonts/playfair/PlayfairDisplay-Italic.ttf")
-    format("truetype");
-  font-weight: 400; /* adjust if you have multiple weights */
+  font-family: "Oakes Grotesk";
+  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Regular.ttf") format("truetype");
+  font-weight: 400; /* Regular */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oakes Grotesk";
+  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Medium.ttf") format("truetype");
+  font-weight: 500; /* Medium */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oakes Grotesk";
+  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Semibold.ttf") format("truetype");
+  font-weight: 600; /* SemiBold */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oakes Grotesk";
+  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Bold.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Oakes Grotesk";
+  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Bold Italic.ttf") format("truetype");
+  font-weight: 700;
   font-style: italic;
-  font-display: swap;
 }
 
-@font-face {
-  font-family: "Playfair Display";
-  src: url("/src/assets/fonts/playFair/PlayfairDisplay-Italic-VariableFont_wght.ttf")
-    format("truetype-variations");
-  font-weight: 100 900; /* full variable range */
-  font-style: italic; /* italic axis */
-  font-display: swap;
-}
-
-/* 4. Tailwind v4 theme tokens */
+/* Example of how to define it as a theme variable */
 @theme {
+  --font-oakes-grotesk: "Oakes Grotesk", sans-serif;
   --font-playfair: "Playfair Display", serif;
-  --font-melodrama: "Melodrama", serif;
-  --font-boska: "Boska", serif;
 }
 
 * {
@@ -40,39 +58,31 @@
 
 ::selection {
   background-color: #3d2b1f;
-  color: #faf3e0;
+  color: #f2f2f2;
+}
+body {
+  background-color: #f2f2f2;
+
 }
 
 html,
 body {
   width: 100%;
   height: 100%;
-}
-/* Hide scrollbar for Chrome, Safari and Opera */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+  scrollbar-width:  none ;
+  scroll-behavior: smooth;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
+/* Modern browsers only */
+.no-scrollbar {
   scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Edge */
 }
 
-html.lenis {
-  height: auto;
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Brave, Edge Chromium */
 }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-body {
-  background-color: #f2f2f2;
-}
 
 .leaflet-container {
   height: 100%;
@@ -81,4 +91,33 @@ body {
 
 .leaflet-container:focus {
   outline: none;
+}
+
+.wrapper-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.canvas-wrapper {
+  width: 90vw;
+  height: 100vh; 
+  max-width: 1200px;
+  max-height: 600px;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  background: transparent;
+}
+
+@media (max-width: 1024px) {
+  .canvas-wrapper {
+    height: 50vh; /* smaller height on tablets */
+  }
+}
+
+@media (max-width: 640px) {
+  .canvas-wrapper {
+    height: 25vh; /* smaller height on mobile */
+    width: 85vw;  /* slightly wider for landscape feel */
+  }
 }
