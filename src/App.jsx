@@ -1,75 +1,55 @@
-import { Routes, Route } from "react-router-dom";
-import { Suspense, lazy } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { Suspense, lazy, useState, useEffect } from "react";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import "leaflet/dist/leaflet.css";
-import {
-  HomeSkeleton,
-  ProductsSkeleton,
-  TechnologySkeleton,
-  AboutSkeleton,
-  ContactSkeleton,
-} from "./components/ui/Skeleton";
-import B2BPage from "./components/pages/B2BPage";
+import LoadingScreen from "./components/ui/LoadingScreen";
+import RestoreScroll from "./components/utils/RestoreScroll";
 
+// Lazy imports
 const HomePage = lazy(() => import("./components/pages/HomePage"));
 const ProductsPage = lazy(() => import("./components/pages/ProductsPage"));
 const TechnologyPage = lazy(() => import("./components/pages/TechnologyPage"));
 const AboutPage = lazy(() => import("./components/pages/AboutPage"));
 const ContactPage = lazy(() => import("./components/pages/ContactPage"));
-const NotFound = lazy(() => import("./components/pages/NotFound"));
+const B2BPage = lazy(() => import("./components/pages/B2BPage"));
+const NotFound = lazy(() => import("./components/ui/NotFound"));
 
 const App = () => {
+  const location = useLocation();
+  const [loading, setLoading] = useState(true);
+
+  // Reset loading state on route change
+  useEffect(() => {
+    setLoading(true);
+    const minDuration = 500; // minimum time to show loader
+    const timer = setTimeout(() => setLoading(false), minDuration);
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      {/* Main content grows to fill available space */}
       <main className="flex-grow w-full">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Suspense fallback={<HomeSkeleton />}>
-                <HomePage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/products"
-            element={
-              <Suspense fallback={<ProductsSkeleton />}>
-                <ProductsPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/technology"
-            element={
-              <Suspense fallback={<TechnologySkeleton />}>
-                <TechnologyPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <Suspense fallback={<AboutSkeleton />}>
-                <AboutPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <Suspense fallback={<ContactSkeleton />}>
-                <ContactPage />
-              </Suspense>
-            }
-          />
-          <Route path="/b2b" element={<B2BPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        {/* Scroll to top after loading finishes */}
+        <RestoreScroll loading={loading} />
+
+        <Suspense fallback={<LoadingScreen />}>
+          {loading ? (
+            <LoadingScreen onAnimationComplete={() => setLoading(false)} />
+          ) : (
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/technology" element={<TechnologyPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/b2b" element={<B2BPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          )}
+        </Suspense>
       </main>
 
       <Footer />

@@ -1,5 +1,7 @@
+"use client";
 import { useState, useEffect, useRef } from "react";
-import { TIMELINE_DATA } from "../../../data/constants";
+import { motion } from "framer-motion";
+import { PROCESS_STEPS } from "../../../data/processData";
 
 const TextComponent = ({
   step,
@@ -9,10 +11,11 @@ const TextComponent = ({
   isVisible,
   index,
 }) => (
-  <div
-    className={`p-4 h-full flex items-center transition-opacity duration-500 ease-out ${
-      isVisible ? "opacity-100" : "opacity-0"
-    }`}
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+    transition={{ duration: 0.6, ease: "easeOut" }}
+    className="p-4 h-full flex items-center"
   >
     <div
       className={`max-w-md flex flex-col items-center text-center ${
@@ -22,35 +25,38 @@ const TextComponent = ({
       }`}
     >
       <p className="font-serif italic text-lg text-gray-500">{step}</p>
-      <div className="inline-block border-b-2 border-gray-800 w-12 my-1"></div>
+      <div className="inline-block border-b-2 border-gray-800 w-13 my-0"></div>
       <h3
         id={`timeline-item-title-${index}`}
-        className="text-2xl font-bold uppercase tracking-wider text-gray-800"
+        className="text-2xl font-extrabold capitalize text-[#3D2B1F] font-oakes-grotesk mt-2"
       >
         {title}
       </h3>
       <p
-        className="mt-4 text-gray-600 leading-relaxed whitespace-pre-line"
+        className="mt-4 text-md text-gray-600 lg:w-90"
         dangerouslySetInnerHTML={{
           __html: description.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>"),
         }}
       ></p>
     </div>
-  </div>
+  </motion.div>
 );
 
 const ImageComponent = ({ imageUrl, title, isImageLeft, isVisible }) => (
-  <div
-    className={`flex items-center justify-center p-4 h-full transition-opacity duration-500 ease-out ${
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+    transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+    className={`flex items-center justify-center p-4 h-full ${
       isImageLeft ? "md:justify-end" : "md:justify-start"
-    } ${isVisible ? "opacity-100" : "opacity-0"}`}
+    }`}
   >
     <img
       src={imageUrl}
       alt={title}
       className="w-64 h-64 md:w-full md:h-auto md:aspect-square rounded-full object-cover shadow-xl border-4 border-white max-w-sm"
     />
-  </div>
+  </motion.div>
 );
 
 const TimelineItem = ({ item, index }) => {
@@ -68,20 +74,16 @@ const TimelineItem = ({ item, index }) => {
           observer.unobserve(entry.target);
         }
       },
-      { root: null, rootMargin: "0px", threshold: 0.2 }
+      { root: null, threshold: 0.2 }
     );
 
-    const currentRef = itemRef.current;
-    if (currentRef) observer.observe(currentRef);
-
-    return () => {
-      if (currentRef) observer.unobserve(currentRef);
-    };
+    if (itemRef.current) observer.observe(itemRef.current);
+    return () => observer.disconnect();
   }, []);
 
   return (
     <div className="relative" ref={itemRef}>
-      {/* --- Mobile View --- */}
+      {/* Mobile */}
       <div className="md:hidden pl-10">
         <TextComponent
           {...item}
@@ -99,9 +101,9 @@ const TimelineItem = ({ item, index }) => {
         </div>
       </div>
 
-      {/* --- Desktop View --- */}
-      <div className="hidden md:flex flex-col md:flex-row items-center md:items-stretch justify-center w-full">
-        {/* Text Content */}
+      {/* Desktop */}
+      <div className="hidden md:flex flex-col md:flex-row items-center justify-center w-full">
+        {/* Text */}
         <div
           className={`w-full md:w-5/12 ${
             isEven ? "md:order-3" : "md:order-1"
@@ -115,10 +117,10 @@ const TimelineItem = ({ item, index }) => {
           />
         </div>
 
-        {/* Separator Placeholder */}
+        {/* Connector */}
         <div className="w-full md:w-2/12 order-2 flex justify-center items-center h-16 md:h-auto"></div>
 
-        {/* Image Content */}
+        {/* Image */}
         <div
           className={`w-full md:w-5/12 ${isEven ? "md:order-1" : "md:order-3"}`}
         >
@@ -137,38 +139,18 @@ const TimelineItem = ({ item, index }) => {
 const ProcessSteps = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const timelineRef = useRef(null);
-  const itemRefs = useRef([]);
-
-  useEffect(() => {
-    itemRefs.current = itemRefs.current.slice(0, TIMELINE_DATA.length);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       if (!timelineRef.current) return;
-
-      const element = timelineRef.current;
-      const rect = element.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      // distance from top of viewport to top of element
-      const elementTop = rect.top;
-      const elementBottom = rect.bottom;
-
-      // calculate progress as 0% at top and 100% at bottom
-      const totalHeight = elementBottom - elementTop;
-      let progress =
-        ((windowHeight - elementTop) / (windowHeight + element.offsetHeight)) *
+      const rect = timelineRef.current.getBoundingClientRect();
+      const progress =
+        ((window.innerHeight - rect.top) / (window.innerHeight + rect.height)) *
         100;
-
-      progress = Math.min(100, Math.max(1, progress));
-
-      setScrollProgress(progress);
+      setScrollProgress(Math.min(100, Math.max(0, progress)));
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -177,32 +159,24 @@ const ProcessSteps = () => {
       ref={timelineRef}
       className="container mx-auto px-4 sm:px-8 relative py-8"
     >
-      {/* Background Dashed Line */}
-      <div className="absolute top-0 left-6 md:left-1/2 transform -translate-x-1/2 h-full w-px">
-        <div className="h-full w-full border-l-2 border-dashed border-gray-400"></div>
+      {/* Background Line */}
+      <div className="absolute top-0 left-6 md:left-1/2 -translate-x-1/2 h-[92%] w-px">
+        <div className="h-full border-l-2 border-dashed border-gray-400"></div>
       </div>
 
       {/* Progress Line */}
       <div
-        className="absolute top-0 left-6 md:left-1/2 transform -translate-x-1/2 w-1 md:w-1.5 bg-amber-800 transition-all duration-300 ease-out"
+        className="absolute top-0 left-6 md:left-1/2 -translate-x-1/2 w-1 bg-[#3D2B1F] transition-all duration-300 ease-out"
         style={{ height: `${scrollProgress}%` }}
       ></div>
 
+      {/* Timeline Items */}
       <div role="list" className="relative flex flex-col gap-y-6 md:gap-y-4">
-        {TIMELINE_DATA.map((item, index) => (
-          <div
-            key={`${item.step}-${item.title}`}
-            ref={(el) => {
-              if (el) itemRefs.current[index] = el;
-            }}
-            className="relative"
-            role="listitem"
-            aria-labelledby={`timeline-item-title-${index}`}
-          >
+        {PROCESS_STEPS.map((item, index) => (
+          <div key={index} role="listitem" className="relative">
             <TimelineItem item={item} index={index} />
-            {/* Dot */}
             <div className="absolute top-14 left-2 md:top-1/2 md:left-1/2 -translate-y-1/2 -translate-x-1/2">
-              <div className="h-6 w-6 md:h-8 md:w-8 rounded-full bg-amber-800 border-2 md:border-4 border-white z-10 shadow-md"></div>
+              <div className="h-6 w-6 md:h-8 md:w-8 rounded-full bg-[#3D2B1F] border-4 border-white shadow-md"></div>
             </div>
           </div>
         ))}

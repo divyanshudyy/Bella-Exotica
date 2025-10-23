@@ -1,14 +1,11 @@
-import ScrollVelocity from "../../ui/ScrollVelocity";
+import ScrollVelocity from "../../ui/home/ScrollVelocity";
 
 const Certification = () => {
   return (
-    <section className="pt-10">
-      <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-stone-800 text-center capitalize mt-20">
-        Trusted by
-      </h1>
-      <div className="mt-5 bg-gray-200 ">
+    <section className=" flex justify-center items-center flex-col">
+      <div className=" bg-white max-w-sm sm:w-full md:max-w-7xl">
         <ScrollVelocity
-          texts={["GMP", "HACCP", "FSSAI", "ISO"]}
+          texts={["gmp", "haccp", "fssai", "iso"]}
           velocity={10}
           className="custom-scroll-text"
         />

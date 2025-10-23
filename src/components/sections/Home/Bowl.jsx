@@ -1,24 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "motion/react";
-
-// Category data
-const categoryData = [
-  {
-    id: 1,
-    imageUrl: "/images/bowl/ingredients/Oats Bowl.webp",
-    name: "Oats",
-  },
-  {
-    id: 2,
-    imageUrl: "/images/bowl/ingredients/Museli Bowl.webp",
-    name: "Museli",
-  },
-  {
-    id: 3,
-    imageUrl: "/images/bowl/ingredients/CornFlakes Bowl.webp",
-    name: "Flakes",
-  },
-];
+import CategoryFilters from "../../ui/products/CategoryFilters";
+import { SHOWCASE } from "../../../data/homeData";
 
 // Container only for text images (stagger control)
 const textContainerVariants = {
@@ -44,59 +27,57 @@ const zoomVariants = {
     },
   },
 };
+
 // Bowl animation
 const bowlVariants = {
-  hidden: { y: 1000 },
+  hidden: { y: 800, opacity: 0 },
   show: {
     y: 0,
+    opacity: 1,
+    scale: 1,
     transition: { duration: 0.8, ease: "easeOut" },
   },
 };
 
 // Full image section
 const Bowl = ({ category }) => {
-  const textImages = [
-    "Nutritious&Wholesome.webp",
-    "RichFiber.webp",
-    "RealFruits.webp",
-    "EnergizingStart.webp",
-    "NaturalSweetness.webp",
-    "Delicious.webp",
-  ];
-
   return (
-    <section className="w-full md:min-h-screen overflow-hidden">
+    <section className="w-full overflow-hidden">
       <motion.div
-        className="relative w-full h-120 sm:min-h-svh md:min-h-svh flex items-center justify-center "
+        className="relative w-full flex flex-col items-center justify-center pt-30 md:py-20"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
         key={category.id}
       >
-        {/* Background Spread */}
-        <motion.img
-          src="/images/bowl/ingredients/Spread.png"
-          className="absolute md:h-[80%] md:w-[80%] object-contain left-1/2 md:top-[53%] top-[60%]  -translate-x-1/2 -translate-y-1/2"
-          alt="Fruits and nuts spread behind the bowl"
-          variants={bowlVariants}
-        />
+        {/* Bowl image wrapper */}
+        <div className="w-full flex justify-center my-6 md:my-10">
+          {(() => {
+            const selectedBowl = SHOWCASE.bowls.find(
+              (bowl) => bowl.id === category.id
+            );
+            return (
+              <motion.img
+                key={selectedBowl.id}
+                src={selectedBowl.imageUrl}
+                alt={selectedBowl.alt}
+                className="w-[100%] md:w-[70%] object-contain"
+                variants={bowlVariants}
+              />
+            );
+          })()}
+        </div>
 
-        {/* Bowl image */}
-        <motion.img
-          src={category.imageUrl}
-          alt={` ${category.name} with milk`}
-          className="absolute z-1 md:w-[70%]  object-contain drop-shadow-[0_10px_9px_rgba(0,0,0,0.5)] left-1/2 top-[60%] md:top-[58%] -translate-x-1/2 -translate-y-1/2"
-          variants={bowlVariants}
-        />
+        {/* Text images overlay */}
         <motion.div
           variants={textContainerVariants}
-          className="absolute inset-0 flex items-center justify-center w-full md:h-full md:top-[7%] top-[25%]"
+          className="absolute inset-0 flex items-center justify-center w-full mt-25 md:my-10"
         >
-          {textImages.map((file, i) => (
+          {SHOWCASE.textImages.map((file, i) => (
             <motion.img
               key={i}
-              src={`/images/bowl/text img/${file}`}
-              className="absolute object-cover md:h-[85%] h-[75%]"
+              src={`/images/gallery/showcase/texts/${file}`}
+              className="absolute object-cover lg:w-[85%] w-full md:scale-100 scale-125"
               alt={`Text heading: ${file.replace(".webp", "")}`}
               variants={zoomVariants}
             />
@@ -111,34 +92,23 @@ const Bowl = ({ category }) => {
 const Header = ({ categories, selectedCategory, onSelectCategory }) => {
   return (
     <header className="absolute top-0 left-0 w-full  py-6 z-10">
-      <h1 className="text-4xl md:text-5xl font-bold  text-stone-800 text-center Capitalize mb-4 ">
+      <h1 className="text-3xl sm:text-5xl font-bold text-[#3D2B1F] text-center Capitalize mb-4  font-oakes-grostek">
         Unleash Your Morning.
       </h1>
-      <nav className="flex justify-center items-center space-x-6 md:space-x-10 px-4">
-        {categories.map((category) => (
-          <button
-            key={category.id}
-            onClick={() => onSelectCategory(category)}
-            className={`group relative text-xs md:text-sm tracking-widest font-semibold uppercase transition-colors duration-300 pb-1 
-              ${
-                selectedCategory.id === category.id
-                  ? "text-black scale-[1.2] transition-transform ease-in-out duration-500"
-                  : "text-gray-400 hover:text-gray-700"
-              }`}
-          >
-            {category.name}
-
-            {/* Animated underline */}
-            <span
-              className={`absolute bottom-0 left-0 h-[2px] bg-black transition-all duration-500 ease-in-out
-                ${
-                  selectedCategory.id === category.id
-                    ? "w-full"
-                    : "w-0 group-hover:w-full"
-                }`}
-            ></span>
-          </button>
-        ))}
+      <nav
+        className="relative z-10 flex flex-wrap items-center justify-center gap-2 md:gap-4 mb-2 animate-fadeInUp"
+        style={{ animationDelay: "300ms" }}
+      >
+        <CategoryFilters
+          mt={"mt-0 md:mt-0"}
+          bgColor="bg-[#F2F2F2]"
+          categories={categories.map((c) => c.name)} // pass only the names
+          activeCategory={selectedCategory.name} // pass active category name
+          setActiveCategory={(name) => {
+            const category = categories.find((c) => c.name === name);
+            if (category) onSelectCategory(category);
+          }}
+        />
       </nav>
     </header>
   );
@@ -146,13 +116,15 @@ const Header = ({ categories, selectedCategory, onSelectCategory }) => {
 
 // Main Showcase Component
 const Showcase = () => {
-  const [selectedCategory, setSelectedCategory] = useState(categoryData[1]);
+  const [selectedCategory, setSelectedCategory] = useState(
+    SHOWCASE.categories[1]
+  );
 
   return (
-    <div className="relative w-full sm:w-full md:h-screen">
+    <div className="relative">
       {/* Header overlay */}
       <Header
-        categories={categoryData}
+        categories={SHOWCASE.categories}
         selectedCategory={selectedCategory}
         onSelectCategory={setSelectedCategory}
       />
