@@ -88,11 +88,5 @@ export const CONTACT_FORM = {
       validation: { required: "Message cannot be empty" },
     },
   },
-  emailJs: {
-    service1: "service_mzxhcn5",
-    template1: "template_7qloudg",
-    template2: "template_ozli29j",
-    publicKey: "cGJh2G9qi5tH5Nx8i",
-  },
   buttonText: "Send a message",
 };

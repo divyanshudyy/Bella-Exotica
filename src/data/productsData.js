@@ -1,4 +1,3 @@
-
 export const HERO = {
   imgUrl: "/images/hero/product-hero.webp",
   title: "Products",

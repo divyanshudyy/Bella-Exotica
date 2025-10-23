@@ -1,4 +1,3 @@
-//Homepage
 //hero section
 export const HERO = {
   title: "Pure taste timeless nutrition",
@@ -63,13 +62,13 @@ export const QUOTE = {
       src: "/images/gallery/thumbnails/muesli-jar.webp",
       alt: "Muesli Jar",
       position: {
-        left: "0",
-        smLeft: "5",
-        bottom: "6",
-        smBottom: "10",
-        mdBottom: "10",
+        left: 0,
+        bottom: 24,
+        smLeft: 20,
+        smBottom: 40,
+        mdLeft: 20,
+        mdBottom: 40,
       },
-      yTransformIndex: 0,
       rotateTransform: [50, 0],
       width: "clamp(6rem,15vw,12rem)",
     },
@@ -78,13 +77,13 @@ export const QUOTE = {
       src: "/images/gallery/thumbnails/muesli-jar.webp",
       alt: "Muesli Jar",
       position: {
-        left: "24",
-        smLeft: "36",
-        mdLeft: "25",
-        bottom: "32",
-        smBottom: "120",
+        left: 96,
+        bottom: 128,
+        smLeft: 144,
+        smBottom: 480,
+        mdLeft: 10,
+        mdBottom: 128,
       },
-      yTransformIndex: 1,
       rotateTransform: [-25, 10],
       width: "clamp(6rem,18vw,14rem)",
     },
@@ -92,41 +91,17 @@ export const QUOTE = {
       id: 3,
       src: "/images/gallery/thumbnails/muesli-jar.webp",
       alt: "Muesli Jar",
-      position: { right: "16", smRight: "20", bottom: "80", smBottom: "60" },
-      yTransformIndex: 2,
+      position: {
+        right: 64,
+        bottom: 320,
+        smRight: 8,
+        mdRight: 40,
+        smBottom: 0,
+      },
       rotateTransform: [20, -20],
       width: "clamp(6rem,20vw,16rem)",
     },
   ],
-
-  yStartValues: {
-    default: [300, 500, 500],
-    sm: [150, 250, 300],
-    md: [250, 400, 450],
-    lg: [300, 500, 500],
-  },
-
-  quoteMarkStyles: {
-    topLeft: {
-      top: 0,
-      left: "-1rem",
-      fontSize: "clamp(2.5rem, 5vw, 9rem)",
-      lineHeight: 1,
-    },
-    bottomRight: {
-      bottom: 0,
-      right: "-1rem",
-      fontSize: "clamp(2.5rem, 5vw, 9rem)",
-      lineHeight: 1,
-    },
-  },
-
-  textStyle: {
-    fontSize: "clamp(1.5rem, 3vw, 3.2rem)",
-    lineHeight: "clamp(1.2, 2vw, 1.35)",
-    className: "font-playfair font-semibold italic text-[#3D2B1F]",
-    willChange: "transform, opacity",
-  },
 };
 
 //products section
