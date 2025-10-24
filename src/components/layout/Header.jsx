@@ -28,7 +28,7 @@ const Header = () => {
     <>
       {/* --- Mobile Menu Overlay --- */}
       <div
-        className={`fixed top-0 left-0 w-full h-full bg-[#fff9f5] z-[9999] transition-all duration-300 ${
+        className={`fixed top-0 left-0 w-full h-full bg-[#fff9f5] z-[9998] transition-all duration-300 ${
           menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
@@ -66,7 +66,7 @@ const Header = () => {
 
       {/* --- Main Header --- */}
       <header
-        className={`fixed top-0 left-0 w-full z-[9998] transition-all duration-300 ${
+        className={`fixed top-0 left-0 w-full z-[9997] transition-all duration-300 ${
           isScrolled
             ? "bg-[#fff9f5]/80 backdrop-blur-lg shadow-md"
             : "bg-transparent"
@@ -106,7 +106,7 @@ const Header = () => {
           {/* Mobile Menu Icon */}
           <button
             onClick={() => setMenuOpen(true)}
-            className="lg:hidden p-2 bg-white rounded-full shadow hover:bg-gray-100 transition z-[9999]"
+            className="lg:hidden p-2 bg-white rounded-full shadow hover:bg-gray-100 transition z-[9998]"
           >
             <Menu size={24} className="text-[#3D2B1F]" />
           </button>

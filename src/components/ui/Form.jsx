@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import CustomButton from "../ui/CustomButton";
 import emailjs from "@emailjs/browser";
 import { CONTACT_FORM } from "../../data/contactData";
 
 const ContactForm = () => {
+  const [alert, setAlert] = useState({ type: "", message: "", visible: false });
+
   const {
     register,
     handleSubmit,
@@ -12,26 +15,34 @@ const ContactForm = () => {
   } = useForm();
 
   const submitHandler = (data) => {
-    emailjs
-      .send(
-        CONTACT_FORM.emailJs.service1,
-        CONTACT_FORM.emailJs.template1,
-        data,
-        CONTACT_FORM.emailJs.publicKey
-      )
-      .then(() => {
-        alert("Message sent!");
-        reset();
-      })
-      .catch((err) => console.error("Error:", err));
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const template1ID = import.meta.env.VITE_EMAILJS_TEMPLATE1_ID;
+    const template2ID = import.meta.env.VITE_EMAILJS_TEMPLATE2_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     emailjs
-      .send(
-        CONTACT_FORM.emailJs.service1,
-        CONTACT_FORM.emailJs.template2,
-        data,
-        CONTACT_FORM.emailJs.publicKey
-      )
+      .send(serviceID, template1ID, data, publicKey)
+      .then(() => {
+        reset();
+        setAlert({
+          type: "success",
+          message: "Message sent successfully!",
+          visible: true,
+        });
+        setTimeout(() => setAlert({ ...alert, visible: false }), 4000);
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        setAlert({
+          type: "error",
+          message: "Failed to send message.",
+          visible: true,
+        });
+        setTimeout(() => setAlert({ ...alert, visible: false }), 4000);
+      });
+
+    emailjs
+      .send(serviceID, template2ID, data, publicKey)
       .catch((err) => console.error("Error:", err));
   };
 
@@ -40,6 +51,19 @@ const ContactForm = () => {
       className="bg-slate-50 p-5 md:p-10 rounded-xl animate-on-load shadow-lg"
       style={{ animationDelay: "0.5s" }}
     >
+      {/* ALERT BOX */}
+      {alert.visible && (
+        <div
+          className={`mb-4 p-4 rounded ${
+            alert.type === "success"
+              ? "bg-green-100 text-green-800"
+              : "bg-red-100 text-red-800"
+          }`}
+        >
+          {alert.message}
+        </div>
+      )}
+
       <h3 className="text-3xl font-bold mb-2 text-[#3D2B1F] font-oakes-grotesk">
         {CONTACT_FORM.title}
       </h3>

@@ -1,15 +1,10 @@
 import { useRef, useState, useEffect } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useMotionValueEvent,
-} from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { QUOTE } from "../../../data/homeData";
 
 function useIntersectionObserver(
   elementRef,
-  { threshold = 0.1, root = null, rootMargin = "0%", triggerOnce = false } = {}
+  { threshold = 0.1, triggerOnce = false } = {}
 ) {
   const [isIntersecting, setIntersecting] = useState(false);
 
@@ -22,16 +17,16 @@ function useIntersectionObserver(
         if (entry.isIntersecting) {
           setIntersecting(true);
           if (triggerOnce) observer.unobserve(node);
-        } else {
-          if (!triggerOnce) setIntersecting(false);
+        } else if (!triggerOnce) {
+          setIntersecting(false);
         }
       },
-      { threshold, root, rootMargin }
+      { threshold }
     );
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, [elementRef, threshold, root, rootMargin, triggerOnce]);
+  }, [elementRef, threshold, triggerOnce]);
 
   return isIntersecting;
 }
@@ -40,10 +35,12 @@ const containerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.25 } },
 };
+
 const lineVariants = {
   hidden: { opacity: 0, y: "100%" },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
+
 const quoteMarkVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -55,7 +52,6 @@ const quoteMarkVariants = {
 const Quote = () => {
   const sectionRef = useRef(null);
   const textRef = useRef(null);
-
   const isTextVisible = useIntersectionObserver(textRef, {
     threshold: 0.5,
     triggerOnce: true,
@@ -66,52 +62,72 @@ const Quote = () => {
     offset: ["start end", "end start"],
   });
 
-  // Responsive Y start values
-  const [yStart, setYStart] = useState(QUOTE.yStartValues.default);
-  useEffect(() => {
-    const updateYStart = () => {
-      const w = window.innerWidth;
-      if (w < 640) setYStart(QUOTE.yStartValues.sm);
-      else if (w < 1024) setYStart(QUOTE.yStartValues.md);
-      else setYStart(QUOTE.yStartValues.lg);
-    };
-    updateYStart();
-    window.addEventListener("resize", updateYStart);
-    return () => window.removeEventListener("resize", updateYStart);
-  }, []);
+  //  Floating animation
+  const floatTransition = {
+    y: [0, -15, 0],
+    transition: {
+      duration: 5,
+      ease: "easeInOut",
+      repeat: Infinity,
+    },
+  };
 
-  // Individual transforms for each jar
-  const yTransform1 = useTransform(scrollYProgress, [0, 1], [yStart[0], -50]);
-  const rotateTransform1 = useTransform(
-    scrollYProgress,
-    [0, 1],
-    QUOTE.jars[0].rotateTransform
-  );
+  // Fade + Blur + Rotate intro
+  const imageEntry1 = {
+    hidden: {
+      opacity: 0,
+      filter: "blur(3px)",
+      rotate: -10,
+    },
+    visible: {
+      opacity: 1,
+      filter: "blur(0px)",
+      rotate: 5,
+      transition: { duration: 1.3, ease: "easeOut" },
+    },
+  };
 
-  const yTransform2 = useTransform(scrollYProgress, [0, 1], [yStart[1], -80]);
-  const rotateTransform2 = useTransform(
-    scrollYProgress,
-    [0, 1],
-    QUOTE.jars[1].rotateTransform
-  );
+  const imageEntry2 = {
+    hidden: {
+      opacity: 0,
+      filter: "blur(3px)",
+      rotate: 10,
+    },
+    visible: {
+      opacity: 1,
+      filter: "blur(0px)",
+      rotate: -5,
+      transition: { duration: 1.3, ease: "easeOut" },
+    },
+  };
 
-  const yTransform3 = useTransform(scrollYProgress, [0, 1], [yStart[2], -100]);
-  const rotateTransform3 = useTransform(
-    scrollYProgress,
-    [0, 1],
-    QUOTE.jars[2].rotateTransform
-  );
+  const quoteMarkStyles = {
+    topLeft: {
+      top: 0,
+      left: "-1rem",
+      fontSize: "clamp(2.5rem,5vw,9rem)",
+      lineHeight: 1,
+    },
+    bottomRight: {
+      bottom: 0,
+      right: "-1rem",
+      fontSize: "clamp(2.5rem,5vw,9rem)",
+      lineHeight: 1,
+    },
+  };
 
-  // Throttle scroll updates (optional)
-  useMotionValueEvent(scrollYProgress, "change", () => {
-    requestAnimationFrame(() => {});
-  });
+  const textStyle = {
+    fontSize: "clamp(1.5rem,3vw,3.2rem)",
+    lineHeight: "clamp(1.2,2vw,1.35)",
+    className: "font-playfair font-semibold italic text-[#3D2B1F]",
+    willChange: "transform, opacity",
+  };
 
   return (
     <section className="relative">
       <motion.div
         ref={sectionRef}
-        className=" flex md:items-start items-center justify-center w-full px-4 pt-12 pb-55"
+        className="flex md:items-start items-center justify-center w-full px-4 pt-12 pb-25 md:pb-55"
       >
         {/* Text */}
         <motion.figure
@@ -123,7 +139,7 @@ const Quote = () => {
           <motion.span
             variants={quoteMarkVariants}
             className="absolute font-playfair text-[#3D2B1F]"
-            style={QUOTE.quoteMarkStyles.topLeft}
+            style={quoteMarkStyles.topLeft}
           >
             “
           </motion.span>
@@ -136,11 +152,11 @@ const Quote = () => {
               <div key={idx} className="overflow-hidden">
                 <motion.p
                   variants={lineVariants}
-                  className={QUOTE.textStyle.className}
+                  className={textStyle.className}
                   style={{
-                    fontSize: QUOTE.textStyle.fontSize,
-                    lineHeight: QUOTE.textStyle.lineHeight,
-                    willChange: QUOTE.textStyle.willChange,
+                    fontSize: textStyle.fontSize,
+                    lineHeight: textStyle.lineHeight,
+                    willChange: textStyle.willChange,
                   }}
                 >
                   {line}
@@ -152,7 +168,7 @@ const Quote = () => {
           <motion.span
             variants={quoteMarkVariants}
             className="absolute font-playfair text-[#3D2B1F]"
-            style={QUOTE.quoteMarkStyles.bottomRight}
+            style={quoteMarkStyles.bottomRight}
           >
             ”
           </motion.span>
@@ -160,39 +176,31 @@ const Quote = () => {
 
         {/* Jar Images */}
         <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
-          {QUOTE.jars.map((jar, i) => {
-            const yTransforms = [yTransform1, yTransform2, yTransform3];
-            const rotateTransforms = [
-              rotateTransform1,
-              rotateTransform2,
-              rotateTransform3,
-            ];
+          {/* Jar 1 */}
+          <motion.img
+            variants={imageEntry1}
+            initial="hidden"
+            animate={isTextVisible ? ["visible", floatTransition] : "hidden"}
+            src={QUOTE.jars[0].src}
+            alt={QUOTE.jars[0].alt}
+            className="absolute md:left-15 md:bottom-80  lg:left-25 lg:bottom-105 w-[clamp(6rem,15vw,12rem)] md:scale-105 hidden md:block -rotate-22"
+            style={{
+              willChange: "transform, opacity, filter",
+            }}
+          />
 
-            return (
-              <motion.img
-                key={jar.id}
-                src={jar.src}
-                alt={jar.alt}
-                className={`absolute ${
-                  jar.position.left
-                    ? `left-${jar.position.left} sm:left-${jar.position.smLeft} md:left-${jar.position.mdLeft}`
-                    : ""
-                } ${
-                  jar.position.right
-                    ? `right-${jar.position.right} sm:right-${jar.position.smRight}`
-                    : ""
-                } bottom-${jar.position.bottom} sm:bottom-${
-                  jar.position.smBottom
-                } md:block`}
-                style={{
-                  y: yTransforms[i],
-                  rotate: rotateTransforms[i],
-                  width: jar.width,
-                  willChange: "transform",
-                }}
-              />
-            );
-          })}
+          {/* Jar 2 */}
+          <motion.img
+            variants={imageEntry2}
+            initial="hidden"
+            animate={isTextVisible ? ["visible", floatTransition] : "hidden"}
+            src={QUOTE.jars[1].src}
+            alt={QUOTE.jars[1].alt}
+            className="absolute md:bottom-20 md:right-10 lg:bottom-25 lg:right-25 w-[clamp(6rem,20vw,16rem)] md:scale-120 rotate-25 md:block  hidden"
+            style={{
+              willChange: "transform, opacity, filter",
+            }}
+          />
         </div>
       </motion.div>
     </section>

@@ -1,5 +1,4 @@
-const siteUrl =
-  "https://bella-exotica-glb9qryhd-divyanshu-divys-projects.vercel.app";
+const siteUrl = "https://www.bellaexotica.com";
 const imgUrl = `${siteUrl}/images/og/og-default.webp`;
 
 export const seoData = {
