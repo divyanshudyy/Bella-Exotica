@@ -2,55 +2,8 @@ import React, { useState, useCallback, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import L from "leaflet";
 import ReactDOMServer from "react-dom/server";
-import { Search, Home, Plus, Minus } from "lucide-react";
-
-// --- Constants ---
-const GANDHIDHAM_COORDINATES = [23.0769, 70.1337];
-const INITIAL_ZOOM_LEVEL = 13;
-
-const TILE_LAYER_URL =
-  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png";
-const TILE_LAYER_ATTRIBUTION = "© OpenStreetMap contributors © CARTO";
-
-const HOME_LOCATION = {
-  id: "home-base",
-  name: "Our Headquarters",
-  position: { lat: 23.0769, lng: 70.1337 },
-  type: "home",
-};
-
-const STORE_LOCATIONS = [
-  {
-    id: "store-1",
-    name: "Gourmet Foods",
-    position: { lat: 23.085, lng: 70.135 },
-    type: "store",
-  },
-  {
-    id: "store-2",
-    name: "Fresh Produce Market",
-    position: { lat: 23.07, lng: 70.14 },
-    type: "store",
-  },
-  {
-    id: "store-3",
-    name: "Organic Origins",
-    position: { lat: 23.065, lng: 70.12 },
-    type: "store",
-  },
-  {
-    id: "store-4",
-    name: "Kandla Port Distributors",
-    position: { lat: 23.028, lng: 70.218 },
-    type: "store",
-  },
-  {
-    id: "store-5",
-    name: "Adipur Central Grocers",
-    position: { lat: 23.081, lng: 70.068 },
-    type: "store",
-  },
-];
+import { Home, Plus, Minus } from "lucide-react";
+import { MAP_LOCATIONS, MAP_CONFIG } from "../../data/globalConstants";
 
 // --- Map Controller ---
 const MapController = ({ onMapReady }) => {
@@ -91,19 +44,18 @@ const createCustomIcon = (location) => {
   return L.divIcon({
     html: iconHtml,
     className: "bg-transparent border-0",
-    iconSize: iconSize,
-    iconAnchor: iconAnchor,
+    iconSize,
+    iconAnchor,
   });
 };
 
 // --- Main Component ---
 const Map = () => {
   const [map, setMap] = useState(null);
-  const allLocations = [HOME_LOCATION, ...STORE_LOCATIONS];
 
   const handleRecenter = useCallback(() => {
     if (map) {
-      map.flyTo(GANDHIDHAM_COORDINATES, INITIAL_ZOOM_LEVEL);
+      map.flyTo(MAP_CONFIG.centerCoordinates, MAP_CONFIG.initialZoomLevel);
     }
   }, [map]);
 
@@ -119,19 +71,19 @@ const Map = () => {
     <div className="w-full h-full relative">
       {/* Map */}
       <MapContainer
-        center={GANDHIDHAM_COORDINATES}
-        zoom={INITIAL_ZOOM_LEVEL}
+        center={MAP_CONFIG.centerCoordinates}
+        zoom={MAP_CONFIG.initialZoomLevel}
         zoomControl={false}
         attributionControl={false}
         scrollWheelZoom={false}
         className="w-full h-full relative z-0"
         dragging={window.innerWidth >= 640} // disable dragging on mobile
-        doubleClickZoom={window.innerWidth >= 640} // optional
-        touchZoom={window.innerWidth >= 640} // optional
+        doubleClickZoom={window.innerWidth >= 640}
+        touchZoom={window.innerWidth >= 640}
       >
         <MapController onMapReady={setMap} />
-        <TileLayer url={TILE_LAYER_URL} />
-        {allLocations.map((location) => (
+        <TileLayer url={MAP_CONFIG.tileLayerUrl} />
+        {MAP_LOCATIONS.map((location) => (
           <Marker
             key={location.id}
             position={[location.position.lat, location.position.lng]}
@@ -144,27 +96,19 @@ const Map = () => {
       <div className="absolute inset-0 z-50 pointer-events-none">
         <div className="flex justify-between items-start w-full max-w-7xl mx-auto p-4 pointer-events-auto">
           {/* Left Header */}
-          <header className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow text-gray-800 text-xl sm:text-2xl font-semibold">
-            Ajapar, Kutch, Gujarat
+          <header className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow text-gray-800 text-md sm:text-xl font-semibold">
+            {MAP_CONFIG.headerText}
           </header>
 
           {/* Right Controls */}
           <div className="flex flex-col space-y-2">
             {/* Zoom Buttons */}
             <div className="flex flex-col bg-gray-900 text-white rounded-lg shadow-lg overflow-hidden">
-              <button
-                onClick={handleZoomIn}
-                title="Zoom In"
-                className="p-3 hover:bg-gray-700"
-              >
+              <button onClick={handleZoomIn} className="p-3 hover:bg-gray-700">
                 <Plus className="w-6 h-6" />
               </button>
               <div className="w-full h-px bg-gray-700"></div>
-              <button
-                onClick={handleZoomOut}
-                title="Zoom Out"
-                className="p-3 hover:bg-gray-700"
-              >
+              <button onClick={handleZoomOut} className="p-3 hover:bg-gray-700">
                 <Minus className="w-6 h-6" />
               </button>
             </div>
@@ -172,7 +116,6 @@ const Map = () => {
             {/* Recenter */}
             <button
               onClick={handleRecenter}
-              title="Recenter Map"
               className="w-12 h-12 bg-gray-900 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-700"
             >
               <Home className="w-6 h-6" />
@@ -183,7 +126,7 @@ const Map = () => {
 
       {/* Attribution */}
       <div className="absolute bottom-1 right-2 bg-white/70 backdrop-blur-sm px-2 py-0.5 rounded text-xs text-gray-700 z-50">
-        {TILE_LAYER_ATTRIBUTION.replace(/<a[^>]*>|<\/a>/g, "")}
+        {MAP_CONFIG.tileAttribution.replace(/<a[^>]*>|<\/a>/g, "")}
       </div>
     </div>
   );

@@ -51,7 +51,7 @@ const Bowl = ({ category }) => {
         key={category.id}
       >
         {/* Bowl image wrapper */}
-        <div className="w-full flex justify-center my-6 md:my-10">
+        <div className="w-full flex justify-center my-6 md:my-18">
           {(() => {
             const selectedBowl = SHOWCASE.bowls.find(
               (bowl) => bowl.id === category.id
