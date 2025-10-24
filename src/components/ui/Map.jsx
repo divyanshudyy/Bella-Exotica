@@ -96,7 +96,7 @@ const Map = () => {
       <div className="absolute inset-0 z-50 pointer-events-none">
         <div className="flex justify-between items-start w-full max-w-7xl mx-auto p-4 pointer-events-auto">
           {/* Left Header */}
-          <header className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow text-gray-800 text-xl sm:text-2xl font-semibold">
+          <header className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow text-gray-800 text-md sm:text-xl font-semibold">
             {MAP_CONFIG.headerText}
           </header>
 
