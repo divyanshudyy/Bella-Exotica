@@ -11,7 +11,7 @@ export const CONTACT_INFO = {
   sections: [
     {
       heading: "Call Center",
-      details: ["(+91) 97248 84985", "(+91) XXXXX XXXXX"],
+      details: ["+91 81091 12453", ""],
     },
     {
       heading: "Our Location",
@@ -22,7 +22,7 @@ export const CONTACT_INFO = {
     },
     {
       heading: "Email",
-      details: ["hello@bellaexotica.com"],
+      details: ["info@bellaexotica.com"],
     },
     {
       heading: "Social Network",
