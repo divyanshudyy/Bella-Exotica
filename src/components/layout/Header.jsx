@@ -76,13 +76,13 @@ const Header = () => {
           {/* Logo */}
           <NavLink
             to="/"
-            className="text-2xl text-[#3D2B1F] font-oakes-grotesk font-medium"
+            className="text-[1.6rem] text-[#3D2B1F] font-hanken-grotesk font-medium"
           >
             {HEADER.logoText}
           </NavLink>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8 font-medium font-oakes-grotesk">
+          <nav className="hidden lg:flex items-center gap-8 font-medium font-hanken-grotesk text-lg">
             {HEADER.navLinks.map((link) => (
               <NavLink key={link.name} to={link.path} className={navLinkClass}>
                 {link.name}

@@ -184,7 +184,7 @@ const ListingProducts = () => {
   const cartItemCount = cartItems.length;
 
   return (
-    <div className="min-h-screen bg-white shadow-md font-oakes-grostek rounded-2xl">
+    <div className="min-h-screen bg-white shadow-md font-hanken-grostek rounded-2xl">
       <ProductDrawer
         product={selectedProduct}
         isOpen={!!selectedProduct}
@@ -205,7 +205,7 @@ const ListingProducts = () => {
           isPageLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}
       >
-        <h1 className="text-4xl sm:text-5xl font-bold text-[#3D2B1F] text-center font-oakes-grotesk ">
+        <h1 className="text-4xl sm:text-[3.3rem] font-bold text-[#3D2B1F] text-center font-hanken-grotesk ">
           {HERO.subtitle}
         </h1>
         <CategoryFilters

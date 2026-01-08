@@ -44,7 +44,7 @@ const WhyChooseUs = () => {
           }}
           className="text-center mb-16 z-10 relative"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-[#3D2B1F] font-oakes-grotesk">
+          <h2 className="text-3xl md:text-[3.3rem] font-bold text-[#3D2B1F] font-hanken-grotesk">
             {WHY_CHOOSE_US_SECTION.heading}
           </h2>
         </motion.div>

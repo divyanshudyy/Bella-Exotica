@@ -12,7 +12,7 @@ const AboutProcess = () => {
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-10">
         <div className="text-center mb-10 sm:mb-20">
-          <h2 className="text-4xl sm:text-5xl font-bold font-oakes-grotesk text-[#3D2B1F]">
+          <h2 className="text-4xl sm:text-[3.3rem] font-bold font-hanken-grotesk text-[#3D2B1F]">
           {HERO.subtitle_4}
           </h2>
         </div>
@@ -56,7 +56,7 @@ const AboutProcess = () => {
                 transition={{ duration: 0.6, delay: index * 0.2 + 0.2 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-2xl font-medium font-oakes-grotesk text-[#3D2B1F] mb-4 text-center md:text-left">
+                <h3 className="text-[1.7rem] font-medium font-hanken-grotesk text-[#3D2B1F] mb-4 text-center md:text-left">
                   {item.title}
                 </h3>
 

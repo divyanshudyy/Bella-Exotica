@@ -26,10 +26,10 @@ const Testimonials = () => {
   return (
     <>
       <section className="text-center max-w-5xl mx-auto h-full">
-        <h1 className="text-3xl md:text-5xl font-bold font-oakes-grostek text-[#3D2b1F] leading-snug">
+        <h1 className="text-3xl md:text-5xl font-bold font-hanken-grostek text-[#3D2b1F] leading-snug">
           {data.headingTop}
         </h1>
-        <h2 className="text-3xl md:text-5xl font-oakes-grostek font-bold text-[#3D2b1F] tracking-tight leading-snug">
+        <h2 className="text-3xl md:text-5xl font-hanken-grostek font-bold text-[#3D2b1F] tracking-tight leading-snug">
           {data.headingBottom}
         </h2>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-slate-600 text-base sm:text-xl">

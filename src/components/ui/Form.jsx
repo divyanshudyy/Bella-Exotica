@@ -64,7 +64,7 @@ const ContactForm = () => {
         </div>
       )}
 
-      <h3 className="text-3xl font-bold mb-2 text-[#3D2B1F] font-oakes-grotesk">
+      <h3 className="text-[2rem] font-bold mb-2 text-[#3D2B1F] font-hanken-grotesk">
         {CONTACT_FORM.title}
       </h3>
       <p className="text-[#3D2B1F] mb-8 max-w-md">{CONTACT_FORM.description}</p>

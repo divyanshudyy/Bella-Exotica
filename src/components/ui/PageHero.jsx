@@ -63,7 +63,7 @@ const PageHero = ({ image, text }) => {
         }}
         className="absolute bottom-0 left-0 w-full flex flex-col justify-end px-4 sm:px-6 md:px-10 lg:px-14 pb-5 text-white bg-gradient-to-t from-black/60 via-black/30 to-transparent"
       >
-        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-snug md:leading-tight drop-shadow-md text-center md:text-left font-oakes-grotesk">
+        <h1 className="text-[2.2rem] sm:text-4xl md:text-6xl lg:text-[5rem] font-bold leading-snug md:leading-tight drop-shadow-md text-center md:text-left font-hanken-grotesk">
           {text}
         </h1>
       </motion.div>

@@ -28,7 +28,7 @@ const LoadingScreen = ({ onAnimationComplete }) => {
   }, [letters, onAnimationComplete]);
 
   return (
-    <main className="absolute top-0 left-0 flex flex-col items-center justify-center h-screen w-full bg-[#f2f2f2] font-oakes-grostek overflow-hidden z-[9999]">
+    <main className="absolute top-0 left-0 flex flex-col items-center justify-center h-screen w-full bg-[#f2f2f2] font-hanken-grostek overflow-hidden z-[9999]">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
