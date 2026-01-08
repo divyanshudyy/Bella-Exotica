@@ -7,13 +7,13 @@ const CategoryFilters = ({
 }) => {
   return (
     <div
-      className={`${mt} sm:mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 font-oakes-grostek`}
+      className={`${mt} sm:mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 font-hanken-grostek`}
     >
       {categories.map((category) => (
         <button
           key={category}
           onClick={() => setActiveCategory(category)}
-          className={`px-4 py-1.5 text-xs sm:px-5 sm:py-2 sm:text-sm font-medium  font-oakes-grostek transition-all duration-300 ease-in-out transform rounded-full focus:outline-none
+          className={`px-4 py-1.5 text-xs sm:px-5 sm:py-2 sm:text-sm font-medium  font-hanken-grostek transition-all duration-300 ease-in-out transform rounded-full focus:outline-none
             ${
               activeCategory === category
                 ? "bg-[#3D2B1F] text-white shadow-lg scale-105"

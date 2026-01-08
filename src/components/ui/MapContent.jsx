@@ -6,7 +6,7 @@ const MapContent = ({ heading, para }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         {/* Heading + Paragraph */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center ">
-          <h2 className="text-4xl sm:text-4xl md:text-5xl font-bold text-[#3D2B1F] font-oakes-grotesk max-w-full md:max-w-lg px-5">
+          <h2 className="text-4xl sm:text-4xl md:text-[3.3rem] font-bold text-[#3D2B1F] font-hanken-grotesk max-w-full md:max-w-lg px-5">
             {heading}
           </h2>
           <div className="mt-4 md:mt-0 flex flex-col items-start md:items-end lg:text-right">

@@ -36,13 +36,13 @@ const Highlight = () => {
           viewport={{ once: true }}
         >
           <p
-            className={`capitalize font-bold font-oakes-grotesk ${item.titleAlign}`}
+            className={`capitalize font-bold font-hanken-grotesk ${item.titleAlign}`}
             style={{ fontSize: `clamp(0.75rem, 2.2vw, 2rem)` }}
           >
             {item.title}
           </p>
           <p
-            className={`font-semibold font-oakes-grotesk ${item.subtitleAlign}`}
+            className={`font-normal font-hanken-grotesk ${item.subtitleAlign}`}
             style={{ fontSize: `clamp(0.65rem, 1.8vw, 1.5rem)` }}
           >
             {item.subtitle}
@@ -53,14 +53,14 @@ const Highlight = () => {
       {/* Center Title */}
       <div className="absolute top-[45%] text-center px-10 py-5">
         <h2
-          className="font-bold text-[#306211] font-oakes-grotesk"
-          style={{ fontSize: "clamp(1.2rem, 4.2vw, 4rem)" }}
+          className="font-bold text-[#306211] font-hanken-grotesk"
+          style={{ fontSize: "clamp(1.2rem, 4.6vw, 4rem)" }}
         >
           {HIGHLIGHT_SECTION.centerTitle}
         </h2>
         <p
-          className="text-[#306211] font-normal font-oakes-grotesk"
-          style={{ fontSize: "clamp(0.85rem, 2.5vw, 3rem)" }}
+          className="text-[#306211] font-normal font-hanken-grotesk"
+          style={{ fontSize: "clamp(0.85rem, 2.7vw, 3rem)" }}
         >
           {HIGHLIGHT_SECTION.centerSubtitle}
         </p>

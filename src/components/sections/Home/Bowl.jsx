@@ -92,7 +92,7 @@ const Bowl = ({ category }) => {
 const Header = ({ categories, selectedCategory, onSelectCategory }) => {
   return (
     <header className="absolute top-0 left-0 w-full  py-6 z-10">
-      <h1 className="text-3xl sm:text-5xl font-bold text-[#3D2B1F] text-center Capitalize mb-4  font-oakes-grostek">
+      <h1 className="text-3xl sm:text-5xl font-bold text-[#3D2B1F] text-center Capitalize mb-4  font-hanken-grostek">
         Unleash Your Morning.
       </h1>
       <nav
