@@ -1,54 +1,60 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Oakes Grotesk";
-  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Light.ttf") format("truetype");
+  font-family: "Hanken Grotesk";
+  src: url("/src/assets/fonts/Hanken Grotesk/HankenGrotesk-Light.ttf")
+    format("truetype");
   font-weight: 300; /* Light */
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Oakes Grotesk";
-  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Regular.ttf") format("truetype");
+  font-family: "Hanken Grotesk";
+  src: url("/src/assets/fonts/Hanken Grotesk/HankenGrotesk-Regular.ttf")
+    format("truetype");
   font-weight: 400; /* Regular */
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Oakes Grotesk";
-  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Medium.ttf") format("truetype");
+  font-family: "Hanken Grotesk";
+  src: url("/src/assets/fonts/Hanken Grotesk/HankenGrotesk-Medium.ttf")
+    format("truetype");
   font-weight: 500; /* Medium */
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Oakes Grotesk";
-  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Semibold.ttf") format("truetype");
+  font-family: "Hanken Grotesk";
+  src: url("/src/assets/fonts/Hanken Grotesk/HankenGrotesk-SemiBold.ttf")
+    format("truetype");
   font-weight: 600; /* SemiBold */
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Oakes Grotesk";
-  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Bold.ttf") format("truetype");
+  font-family: "Hanken Grotesk";
+  src: url("/src/assets/fonts/Hanken Grotesk/HankenGrotesk-Bold.ttf")
+    format("truetype");
   font-weight: 900;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Oakes Grotesk";
-  src: url("/src/assets/fonts/Oakes Grotesk/Oakes Grotesk Bold Italic.ttf") format("truetype");
+  font-family: "Hanken Grotesk";
+  src: url("/src/assets/fonts/Hanken Grotesk/HankenGrotesk-BoldItalic.ttf")
+    format("truetype");
   font-weight: 700;
   font-style: italic;
 }
 
 /* Example of how to define it as a theme variable */
 @theme {
-  --font-oakes-grotesk: "Oakes Grotesk", sans-serif;
+  --font-hanken-grotesk: "Hanken Grotesk", sans-serif;
   --font-playfair: "Playfair Display", serif;
 }
 
@@ -62,14 +68,13 @@
 }
 body {
   background-color: #f2f2f2;
-
 }
 
 html,
 body {
   width: 100%;
   height: 100%;
-  scrollbar-width:  none ;
+  scrollbar-width: none;
   scroll-behavior: smooth;
 }
 
@@ -83,7 +88,6 @@ body {
   display: none; /* Chrome, Safari, Brave, Edge Chromium */
 }
 
-
 .leaflet-container {
   height: 100%;
   width: 100%;
@@ -93,7 +97,7 @@ body {
   outline: none;
 }
 
-.wrapper-section{
+.wrapper-section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,7 +105,7 @@ body {
 
 .canvas-wrapper {
   width: 90vw;
-  height: 100vh; 
+  height: 100vh;
   max-width: 1200px;
   max-height: 600px;
   border-radius: 1.2rem;
@@ -118,6 +122,6 @@ body {
 @media (max-width: 640px) {
   .canvas-wrapper {
     height: 25vh; /* smaller height on mobile */
-    width: 85vw;  /* slightly wider for landscape feel */
+    width: 85vw; /* slightly wider for landscape feel */
   }
 }

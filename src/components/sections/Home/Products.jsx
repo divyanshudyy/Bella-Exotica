@@ -17,7 +17,7 @@ const Products = () => {
     <section className="h-190 w-full flex flex-col items-center text-[#3D2B1F] px-4 py-2 overflow-hidden">
       <div className="w-full h-full flex flex-col items-center">
         {/* Heading */}
-        <h1 className="relative z-10 text-3xl md:text-5xl font-bold font-oakes-grotesk text-[#3D2B1F] mb-5 text-center">
+        <h1 className="relative z-10 text-3xl md:text-[3.3rem] font-bold font-hanken-grotesk text-[#3D2B1F] mb-5 text-center">
           {EX_PRODUCTS_SECTION.heading}
         </h1>
         <p className="relative z-10 text-center text-sm sm:text-base text-gray-600 mb-8 max-w-md px-9 md:px-0">

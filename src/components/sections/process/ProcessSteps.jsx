@@ -28,7 +28,7 @@ const TextComponent = ({
       <div className="inline-block border-b-2 border-gray-800 w-13 my-0"></div>
       <h3
         id={`timeline-item-title-${index}`}
-        className="text-2xl font-extrabold capitalize text-[#3D2B1F] font-oakes-grotesk mt-2"
+        className="text-[1.6rem] font-extrabold capitalize text-[#3D2B1F] font-hanken-grotesk mt-2"
       >
         {title}
       </h3>

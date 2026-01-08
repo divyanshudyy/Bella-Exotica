@@ -481,7 +481,7 @@ const ProductDrawer = ({
             <div className="flex gap-3 w-full">
               <button
                 onClick={() => onAddToCart(activeProduct, quantity)}
-                className="flex-1 bg-[#3D2B1F] text-white font-semibold py-2.5 px-3.5 rounded-md flex items-center justify-center gap-1.5 transition-all duration-300 hover:bg-[#2e1f17] active:scale-95 focus:outline-none disabled:bg-gray-400 disabled:cursor-not-allowed font-oakes-grotesk"
+                className="flex-1 bg-[#3D2B1F] text-white font-semibold py-2.5 px-3.5 rounded-md flex items-center justify-center gap-1.5 transition-all duration-300 hover:bg-[#2e1f17] active:scale-95 focus:outline-none disabled:bg-gray-400 disabled:cursor-not-allowed font-hanken-grotesk"
                 disabled={isAddToCartDisabled}
               >
                 <span className="text-white">
@@ -489,7 +489,7 @@ const ProductDrawer = ({
                 </span>
               </button>
               <button
-                className="flex-1 bg-white text-[#3D2F1F] border border-gray-300 font-semibold py-2.5 px-3.5 rounded-md flex items-center justify-center hover:bg-gray-50 transition-all duration-300 focus:outline-none disabled:bg-gray-200 disabled:text-gray-400 disabled:border-gray-300 disabled:cursor-not-allowed font-oakes-grotesk"
+                className="flex-1 bg-white text-[#3D2F1F] border border-gray-300 font-semibold py-2.5 px-3.5 rounded-md flex items-center justify-center hover:bg-gray-50 transition-all duration-300 focus:outline-none disabled:bg-gray-200 disabled:text-gray-400 disabled:border-gray-300 disabled:cursor-not-allowed font-hanken-grotesk"
                 disabled={isAddToCartDisabled}
               >
                 <span>{PRODUCT_DRAWER.buttons.visitFlipkart}</span>

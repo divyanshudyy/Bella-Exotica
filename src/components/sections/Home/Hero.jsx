@@ -28,10 +28,10 @@ const Hero = () => {
     >
       {/* Text Content */}
       <div className="mt-30 sm:mt-24 lg:mt-25 text-center">
-        <h1 className="text-4xl sm:text-5xl lg:text-5xl text-[#3D2B1F] capitalize font-oakes-grotesk font-bold">
+        <h1 className="text-4xl sm:text-5xl lg:text-[3.3rem] text-[#3D2B1F] capitalize font-hanken-grotesk font-bold">
           {HERO.title}
         </h1>
-        <p className="text-md sm:text-xl lg:text-[25px] text-[#3D2B1F] mt-3 lg:mt-2 max-w-lg sm:max-w-2xl lg:max-w-3xl mx-auto font-oakes-grotesk">
+        <p className="text-lg sm:text-xl lg:text-[27px] text-[#3D2B1F] mt-3 lg:mt-2 max-w-lg sm:max-w-2xl lg:max-w-3xl mx-auto font-hanken-grotesk">
           {HERO.subtitle}
         </p>
       </div>

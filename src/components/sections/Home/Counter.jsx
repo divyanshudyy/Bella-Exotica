@@ -8,7 +8,7 @@ const Counter = () => {
     <section className="px-8 sm:px-8 py-8 md:py-16">
       <div className="mx-auto max-w-6xl text-center bg-white shadow-lg rounded-3xl md:rounded-5xl pt-10 md:pt-15 px-5 sm:px-20">
         {/* Heading */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl text-[#3D2B1F] font-oakes-grostek font-bold capitalize">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl text-[#3D2B1F] font-hanken-grostek font-bold capitalize">
           {COUNTER_SECTION.heading}
         </h1>
 
