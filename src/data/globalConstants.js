@@ -101,3 +101,12 @@ export const FOOTER = {
   ],
   copyright: "© 2025 Bella Exotica",
 };
+
+export const UNDER_MAINTENANCE = true;
+
+export const MAINTENANCE_TEXTS = {
+  logoText: "Bella Exotica",
+  title: "Under Maintenance",
+  subtitle: "Bella Exotica is undergoing brief scheduled updates to refresh our premium range of organic muesli, wholesale grains, seeds, and dried superfoods. We will be back online soon to bring wholesome wellness straight to your pantry."
+};
+

@@ -5,6 +5,8 @@ import Footer from "./components/layout/Footer";
 import "leaflet/dist/leaflet.css";
 import LoadingScreen from "./components/ui/LoadingScreen";
 import RestoreScroll from "./components/utils/RestoreScroll";
+import MaintenanceOverlay from "./components/ui/MaintenanceOverlay";
+import { UNDER_MAINTENANCE } from "./data/globalConstants";
 
 // Lazy imports
 const HomePage = lazy(() => import("./components/pages/HomePage"));
@@ -26,6 +28,10 @@ const App = () => {
     const timer = setTimeout(() => setLoading(false), minDuration);
     return () => clearTimeout(timer);
   }, [location.pathname]);
+
+  if (UNDER_MAINTENANCE) {
+    return <MaintenanceOverlay />;
+  }
 
   return (
     <div className="flex flex-col min-h-screen">
